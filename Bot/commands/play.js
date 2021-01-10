@@ -1,6 +1,6 @@
 //WIP
 
-// Require ytdl-core for YouTube
+// Require ytdl-core for YouTube Music
 const ytdl = require('ytdl-core');
 
 module.exports = {
