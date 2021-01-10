@@ -1,0 +1,11 @@
+//Requires this module for embeds
+const Discord = require('discord.js');
+
+module.exports = {
+	name: 'moon',
+	description: 'A mysterious moon :spy:',
+	execute(message, args) {
+		const moonEmbed = new Discord.MessageEmbed().setColor('#ff0000').setTitle('The Mysterious Moon :spy:').setDescription('A moon with a face. Who knows where they came from? All I know is that they, with their `hack-giveaway bot 9000`, has won the most out of anyone, with 4 wins, 3 of them all in a row.\nDangerous: Do not mess with them.').setThumbnail('https://cdn.discordapp.com/avatars/702558687910166608/80986d82498dac8a59523056975fca25.png');
+		message.channel.send(moonEmbed);
+	},
+};
