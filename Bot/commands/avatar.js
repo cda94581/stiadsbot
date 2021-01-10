@@ -4,7 +4,7 @@ const Discord = require('discord.js');
 module.exports = {
 	name: 'avatar',
 	description: 'Get yours or another user\'s avatar',
-    aliases: [ 'av', 'icon', 'pfp' ],
+	aliases: [ 'av', 'icon', 'pfp' ],
 	usage: '[mention user(s)]',
 	execute(message, args) {
 		if (!message.mentions.users.size) {

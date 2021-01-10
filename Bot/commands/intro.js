@@ -3,13 +3,13 @@ const Discord = require('discord.js');
 
 //Get the prefix value for later use
 const {
-    prefix
+	prefix
 } = require('../config.json');
 
 module.exports = {
 	name: 'intro',
 	description: 'Introduction to the bot',
-    aliases: [ 'hi', 'start' ],
+	aliases: [ 'hi', 'start' ],
 	execute(message, args) {
 		const introEmbed = new Discord.MessageEmbed()
 			.setColor('#ff0000').setTitle('STIADS:eyes: Bot')
