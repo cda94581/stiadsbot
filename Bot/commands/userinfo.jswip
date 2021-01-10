@@ -1,0 +1,15 @@
+//WIP
+
+//Requires this module for embeds
+const Discord = require('discord.js');
+
+module.exports = {
+	name: 'userinfo',
+	description: 'Get information about you or another user',
+    aliases: [ 'whois' ],
+	usage: '[mention user(s)]',
+	execute(message, args) {
+		const userinfoEmbed = new Discord.MessageEmbed().setColor('#ff0000').setTitle(`${message.author.username}#${message.author.discriminator}`).setDescription(`Account created: ${message.author.createdAt}`);
+		message.channel.send(userinfoEmbed);
+	},
+};

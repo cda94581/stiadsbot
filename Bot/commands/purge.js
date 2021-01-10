@@ -5,6 +5,7 @@ module.exports = {
 	usage: '<amount>',
 	perms: [ 'MANAGE_MESSAGES' ],
 	args: true,
+	// roles: [ 'Moderator', 'Helper' ],
 	execute(message, args) {
 		const amount = parseInt(args[0]) + 1;
 
