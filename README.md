@@ -8,11 +8,12 @@ So This Is A Discord Server Bot 👀
 1. Download & Install Git ( "https://git-scm.com/downloads" )
 2. Download & Install Node.js v12+ ( "nodejs.org" )
 3. In your command line, navigate to your desired directory, and input "git clone https://github.com/cda94581/stiadsbot.git"
-4. Navigate to the "/stiadsbot/Bot" folder inside your desired directory, in the command line
-5. Edit the "config.json" file with your bot token and prefix
-6. Input "node index.js"
+4. Download 'discordjs', '@discordjs/opus', and 'ffmpeg-static' ('npm install PACKAGE')
+5. Navigate to the "/stiadsbot/Bot" folder inside your desired directory, in the command line
+6. Edit the "config.json" file with your bot token and prefix
+7. Input "node index.js"
 
-### Method 2
-Insdead of #1 & #3, do the following:
-1. Click on the green "Code" button
-2. Download and extract the ZIP archive in your desired directory
+### Alternatively...
+Instead of #1 & #3, do the following:
+- Click on the green "Code" button
+- Download and extract the ZIP archive in your desired directory
