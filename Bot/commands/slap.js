@@ -5,11 +5,11 @@ const { slap } = require('./interactiongifs.json');
 
 module.exports = {
 	name: 'slap',
-    description: 'Owie',
-    args: true,
-    usage: '<mention users>',
+	description: 'Owie',
+	args: true,
+	usage: '<mention users>',
 	execute(message, args) {
-        if (!message.mentions.users.size) {
+		if (!message.mentions.users.size) {
 			return message.channel.send('You need to mention users');
 		}
 		const randomNum = Math.floor(Math.random() * slap.length); //Random number is a random between 0 and 1, multiplied by the dogs array length, rounded down.

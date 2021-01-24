@@ -1,6 +1,6 @@
 //Get the prefix value for later use
 const {
-    prefix
+	prefix
 } = require('../config.json');
 
 // Add embed in future

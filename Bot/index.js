@@ -64,7 +64,7 @@ client.on('message', async message => {
 		return musicStop(message, serverQueue);
 	}
 	// Music End
-
+  
 	// Dynamically execute commands
 	const command = client.commands.get(commandName) ||
 		client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
@@ -75,12 +75,12 @@ client.on('message', async message => {
 	if (command.guildOnly && message.channel.type === 'dm') {
 		return message.channel.send('I can\'t execute that command inside DMs!');
 	}
-
+  
 	// If command needs to have perms to manage messages
 	if (command.perms && !message.member.hasPermission(command.perms)) {
 		return message.channel.send('nou.');
 	}
-
+  
 	// If the command has arguments and is not the required length of the arguments
 	if (command.args && !args.length) {
 		let reply = `You didn't provide any arguments.`;
