@@ -6,34 +6,34 @@ module.exports = {
 	args: true,
 	usage: '<Gender>',
 	execute(message, args) {
-		let role;
 		switch (args[0]) {
 			case 'male':
 				this.removeAllRoles(message);
-				role = message.member.guild.roles.cache.find(role => role.name === 'Gender: Male');
-				message.member.roles.add(role);
+				message.member.roles.add(message.member.guild.roles.cache.find(role => role.name === 'Gender: Male'));
 				message.channel.send('Success!');
 				break;
 			case 'female':
 				this.removeAllRoles(message);
-				role = message.member.guild.roles.cache.find(role => role.name === 'Gender: Female');
-				message.member.roles.add(role);
+				message.member.roles.add(message.member.guild.roles.cache.find(role => role.name === 'Gender: Female'));
 				message.channel.send('Success!');
 				break;
 			case 'they':
 				this.removeAllRoles(message);
-				role = message.member.guild.roles.cache.find(role => role.name === 'Gender: They');
-				message.member.roles.add(role);
+				message.member.roles.add(message.member.guild.roles.cache.find(role => role.name === 'Gender: They'));
 				message.channel.send('Success!');
 				break;
 			case 'other':
 				this.removeAllRoles(message);
-				role = message.member.guild.roles.cache.find(role => role.name === 'Gender: Other');
-				message.member.roles.add(role);
+				message.member.roles.add(message.member.guild.roles.cache.find(role => role.name === 'Gender: Other'));
+				message.channel.send('Success!');
+				break;
+			case 'remove':
+				this.removeAllRoles(message);
 				message.channel.send('Success!');
 				break;
 			default:
-				message.channel.send('Sorry, please enter either `male`, `female`, `they`, or `other`.\nIf you you\'d prefer another pronoun, please let us know in <#760618980859445348>');
+				message.channel.send('Sorry, please enter either `male`, `female`, `they`, or `other`.\nIf you you\'d prefer another pronoun, please let us know in <#760618980859445348>\nTo remove the roles, use `remove`');
+				break;
 		}
 	},
 	removeAllRoles(message) {
