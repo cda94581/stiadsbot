@@ -81,6 +81,8 @@ module.exports = message => {
 					addRoles();
 				});
 			});
+		} else {
+			con.end();
 		}
 	}
 
@@ -90,5 +92,6 @@ module.exports = message => {
 			let role = message.member.guild.roles.cache.find(role => role.id === roleToAdd);
 			message.member.roles.add(role);
 		}
+		con.end();
 	}
 }
