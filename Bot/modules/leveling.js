@@ -68,7 +68,7 @@ module.exports = message => {
 
 	function leveling() {
 		let xpToLevel = 5 * (level ** 2) + 50 * level + 100;
-		if (xpToLevel < xp) {
+		if (xpToLevel <= xp) {
 			xp -= xpToLevel; // Decrease xp by that amount
 			sql = `UPDATE stiads_xp SET xp = ${xp} WHERE id = ${author}`; // Update in database
 			con.query(sql, err => {
