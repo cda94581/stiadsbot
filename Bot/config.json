@@ -1,4 +1,6 @@
 {
 	"prefix": "YOUR PREFIX HERE",
-	"token": "YOUR TOKEN HERE"
+	"token": "YOUR TOKEN HERE",
+	"levels": [ INSERT LEVELS TO GET ROLES HERE ],
+	"roles": [ INSERT ROLES CORRESPONDING HERE ]
 }
