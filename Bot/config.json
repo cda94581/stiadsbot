@@ -2,5 +2,6 @@
 	"prefix": "YOUR PREFIX HERE",
 	"token": "YOUR TOKEN HERE",
 	"levels": [ INSERT LEVELS TO GET ROLES HERE ],
-	"roles": [ INSERT ROLES CORRESPONDING HERE ]
+	"roles": [ INSERT ROLES CORRESPONDING HERE ],
+	"feedback_channel": "YOUR FEEDBACK CHANNEL ID HERE"
 }

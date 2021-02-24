@@ -52,6 +52,8 @@ client.on('guildMemberAdd', member => {
 client.on('message', async message => {
 	const leveling = require('./modules/leveling'); // Loads leveling.js file
 	leveling(message); // Runs leveling function each time a message is sent
+	const suggestions = require('./modules/suggestions');
+	suggestions(message);
 	// Tests to make sure the command starts with a prefix and wasn't done by a bot, to continue on
 	if (!message.content.startsWith(prefix) || message.author.bot) return;
 	const args = message.content.slice(prefix.length).trim().split(/ +/);
