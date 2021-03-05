@@ -5,7 +5,18 @@ module.exports = {
 	name: 'rank',
 	description: 'Get your level',
 	execute(message, args) {
-		const author = message.author.id;
+		let author = {}
+		if (message.mentions.users.first()) {
+			author = {
+				id: message.mentions.users.first().id,
+				name: message.mentions.users.first().username
+			}
+		} else {
+			author = {
+				id: message.author.id,
+				name: message.author.username
+			}
+		}
 
 		const con = mysql.createConnection({
 			host: 'localhost',
@@ -16,7 +27,7 @@ module.exports = {
 
 		con.connect(err => {
 			if (err) throw err;
-			const sql = `SELECT * FROM stiads_xp WHERE id = ${author}`;
+			const sql = `SELECT * FROM stiads_xp WHERE id = ${author.id}`;
 			con.query(sql, (err, rows) => {
 				if (err) throw err;
 				con.end();
@@ -24,7 +35,7 @@ module.exports = {
 				const xp = rows[0].xp;
 				const level = rows[0].level;
 				const xpToLevel = 5 * (level ** 2) + 50 * level + 100;
-				const embed = new Discord.MessageEmbed().setColor('#0077ff').setTitle(message.author.username).setDescription(`Level: ${level}\nXP: ${xp}/${xpToLevel}`);
+				const embed = new Discord.MessageEmbed().setColor('#0077ff').setTitle(author.name).setDescription(`Level: ${level}\nXP: ${xp}/${xpToLevel}`);
 				message.channel.send(embed);
 			});
 		});
