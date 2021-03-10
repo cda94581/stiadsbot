@@ -1,10 +1,10 @@
 const Discord = require('discord.js');
 const mysql = require('mysql');
 const xpCooldowns = new Set();
-const { levels, roles, prefix } = require('../config.json');
+const { levels, roles, prefix, levelblacklist } = require('../config.json');
 
 module.exports = message => {
-	if (message.author.bot) return; // Bots can't level up
+	if (message.author.bot || levelblacklist.includes(message.channel.id)) return; // Bots can't level up
 	if (message.content.startsWith(prefix)) return; // Don't let commands give xp
 	const author = message.author.id;
 
