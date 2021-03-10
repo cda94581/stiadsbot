@@ -4,5 +4,6 @@
 	"levels": [ INSERT LEVELS TO GET ROLES HERE ],
 	"roles": [ INSERT ROLES CORRESPONDING HERE ],
 	"levelblacklist": [ INSERT BLACKLISTED CHANNELS HERE ],
-	"feedback_channel": "YOUR FEEDBACK CHANNEL ID HERE"
+	"feedback_channel": "YOUR FEEDBACK CHANNEL ID HERE",
+	"n_vwls_cht_channel": "YOUR N VWLS CHT CHANNEL ID HERE"
 }
