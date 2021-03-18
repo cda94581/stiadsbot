@@ -36,8 +36,8 @@ client.once('ready', () => {
 	// Tells the console this is ready
 	console.log('Ready!');
 	// Activities/Statuses
-	// client.user.setActivity('STIADS👀 | -help', { type: 'WATCHING' });
-	client.user.setActivity('STIADS👀Bot Music BETA', { type: 'PLAYING' });
+	client.user.setActivity('STIADS👀 | -help', { type: 'WATCHING' });
+	// client.user.setActivity('STIADS👀Bot Music BETA', { type: 'PLAYING' });
 
 });
 
