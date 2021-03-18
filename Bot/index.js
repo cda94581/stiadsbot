@@ -119,7 +119,7 @@ client.on('message', async message => {
 	}
 
 	try {
-		command.execute(message, args);
+		command.execute(message, args, client);
 	} catch (error) {
 		console.error(error);
 		message.channel.send('There was an error trying to execute that command!');
