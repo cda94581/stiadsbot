@@ -4,7 +4,7 @@ const xpCooldowns = new Set();
 const { levels, roles, prefix, levelblacklist } = require('../config.json');
 
 module.exports = message => {
-	if (message.author.bot || levelblacklist.includes(message.channel.id)) return; // Bots can't level up, filter out blacklisted channels
+	if (message.author.bot || levelblacklist.includes(message.channel.id) || message.channel.type == 'dm') return; // Bots can't level up, filter out blacklisted channels, no dms
 	if (message.content.startsWith(prefix)) return; // Don't let commands give xp
 	const author = message.author.id;
 

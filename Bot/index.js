@@ -54,7 +54,7 @@ client.on('message', async message => {
 	leveling(message); // Runs leveling function each time a message is sent
 	const suggestions = require('./modules/suggestions'); suggestions(message);
 	const nvwlscht = require('./modules/n_vwls_cht'); nvwlscht(message);
-	const moviewriterapplication =  require('./modules/moviewriterapplication'); moviewriterapplication(message, client);
+	const modmessaging =  require('./modules/modmessaging'); modmessaging(message, client);
 	// Tests to make sure the command starts with a prefix and wasn't done by a bot, to continue on
 	if (!message.content.startsWith(prefix) || message.author.bot) return;
 	const args = message.content.slice(prefix.length).trim().split(/ +/);
