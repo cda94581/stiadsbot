@@ -35,7 +35,7 @@ module.exports = message => {
 			sql = 'USE stiadsbot_leveling'; // Switch to this database
 			con.query(sql, err => {
 				if (err) throw err;
-				sql = 'CREATE TABLE IF NOT EXISTS stiads_xp (id VARCHAR(255), xp VARCHAR(255), level VARCHAR(255))' // Creates a table in the database called stiads_xp if it doesn't already exist with 3 columns: id, xp, level
+				sql = 'CREATE TABLE IF NOT EXISTS stiads_xp (id VARCHAR(255), xp INT, level INT)' // Creates a table in the database called stiads_xp if it doesn't already exist with 3 columns: id, xp, level
 				con.query(sql, err => {
 					if (err) throw err;
 					sql = `SELECT * FROM stiads_xp WHERE id = ${author}`; // Selects all rows in the table with an id of the message author (should only be 1 row)
