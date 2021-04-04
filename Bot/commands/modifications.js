@@ -4,6 +4,7 @@ const Discord = require('discord.js');
 module.exports = {
 	name: 'modifications',
 	description: 'Information about cda94581 modifications',
+	type: 'fun',
 	execute(message, args) {
 		const modificationEmbed = new Discord.MessageEmbed()
 			.setColor('#ff0000').setTitle('Cda94581 Modifications')

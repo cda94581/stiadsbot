@@ -1,48 +1,48 @@
-//Get the prefix value for later use
-const {
-	prefix
-} = require('../config.json');
-
-// Add embed in future
+const { prefix } = require('../config.json');
 const Discord = require('discord.js');
 
 module.exports = {
-    name: 'help',
-    description: 'help',
-    aliases: [ 'commands' ],
-    usage: '[command name]',
-    execute(message, args) {
-        const data = [];
-        const {
-            commands
-        } = message.client;
-        var helpEmbed;
-
-        if (!args.length) {
-            data.push('Here\'s a list of all my commands:\`');
-            data.push(commands.map(command => command.name).join('\n'));
-            data.push(`play\nskip\nstop`);
-            data.push(`\`\nYou can send \`${prefix}help [command name]\` to get info on a specific command! (Exception of play, skip, and stop)`);
-
-            helpEmbed = new Discord.MessageEmbed().setColor('#ff0000').setTitle('**STIADS:eyes: Bot Help**').setDescription(data);
-
-            return message.channel.send(helpEmbed);
-        }
-        const name = args[0].toLowerCase();
-        const command = commands.get(name) || commands.find(c => c.aliases && c.aliases.includes(name));
-
-        if (!command) {
-            return message.channel.send('That\'s not a valid command!');
-        }
-
-        if (command.aliases) data.push(`**Aliases:** ${command.aliases.join(', ')}`);
-        if (command.description) data.push(`**Description:** ${command.description}`);
-        if (command.usage) data.push(`**Usage:** ${prefix}${command.name} ${command.usage}`);
-
-        data.push(`**Cooldown:** ${command.cooldown || 0} second(s)`);
-
-        helpEmbed = new Discord.MessageEmbed().setColor('#ff0000').setTitle(command.name).setDescription(data);
-
-        message.channel.send(helpEmbed);
-    },
-};
+	name: 'help',
+	description: 'List & Usage of all commands',
+	aliases: [ 'commands' ],
+	usage: '[command name]',
+	execute (message, args) {
+		let data = [];
+		const {	commands } = message.client;
+		let helpEmbed;
+		if (args.length) { // If it asks for a specific command help
+			const name = args[0].toLowerCase();
+			const command = commands.get(name) || commands.find(c => c.aliases && c.aliases.includes(name));
+			if (!command) return message.channel.send('That\'s not a valid command');
+			data[0] = '';
+			if (command.aliases) data[0] += `**Aliases**: ${command.aliases.join(', ')}\n`;
+			if (command.description) data[0] += `**Description**: ${command.description}\n`;
+			if (command.type) data[0] += `**Type**: ${command.type}\n`;
+			if (command.usage) data[0] += `**Usage:** ${prefix}${command.name} ${command.usage}`;
+			return message.channel.send(new Discord.MessageEmbed().setColor('#cc0000').setTitle(command.name).setDescription(data[0]));
+		}
+		data[0] = 'Here\'s a list of all my commands:\n';
+		let types = [ 'Action', 'Fun', 'Info', 'Moderation' ];
+		for (let i in types) {
+			if (i != 0) data[0] += '`';
+			data[0] += `\n> **${types[i]}**\n\``;
+			data[0] += commands.filter(command => command.type == types[i].toLowerCase()).map(command => command.name).join('`\n`');
+		}
+		data[0] += '`\n> **Music (Broken)**\n`play`\n`skip`\n`stop`'
+        if (commands.filter(command => !command.type)) {
+			data[0] += `\n> **Other**\n\``;
+			data[0] += commands.filter(command => !command.type).map(command => command.name).join('`\n`');
+			data[0] += '`';
+		}
+		data[0] += `\nYou can send \`${prefix}help [command name]\` to get info on a specific command! (Exception of play, skip, and stop)`;
+		for (i = 0; i < data.length; i++) {
+			if (data[i].length > 2000) { // If past character limit
+				let tempData = data[i];
+				data[i] = tempData.slice(0, 2000);
+				data.push(tempData.slice(2000, tempData.length));
+				console.log(data);
+			}
+			message.channel.send(new Discord.MessageEmbed().setColor('#cc0000').setTitle('**STIADS:eyes: Bot Help**').setDescription(data[i]));
+		}
+	}
+}

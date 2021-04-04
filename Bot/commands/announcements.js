@@ -12,6 +12,7 @@ module.exports = {
 	name: 'announcements',
 	description: 'If there are any announcements, this can be different from announcements in <#760628208868655128>.',
 	aliases: [ 'messages' ],
+	type: 'info',
 	execute(message, args) {
 		var announcementsEmbed;
 		// announcementsEmbed = new Discord.MessageEmbed().setColor('#ff0000').setTitle('Bot Updates').setDescription('Nothing to see here...').setTimestamp('2020-12-27T19:15:00.000Z'); //Default Embed if no other embed is present

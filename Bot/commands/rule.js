@@ -6,6 +6,7 @@ module.exports = {
 	description: 'Get a specific rule',
 	usage: '<rule number>',
 	args: true,
+	type: 'info',
 	execute(message, args) {
 		var ruleEmbed;
 		switch (args[0]) {

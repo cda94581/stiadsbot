@@ -10,6 +10,7 @@ module.exports = {
 	name: 'intro',
 	description: 'Introduction to the bot',
 	aliases: [ 'hi', 'start' ],
+	type: 'info',
 	execute(message, args) {
 		const introEmbed = new Discord.MessageEmbed()
 			.setColor('#ff0000').setTitle('STIADS:eyes: Bot')

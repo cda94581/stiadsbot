@@ -7,6 +7,7 @@ module.exports = {
 	usage: '<user> <message>',
 	perms: [ 'BAN_MEMBERS', 'KICK_MEMBERS' ],
 	args: true,
+	type: 'moderation',
 	// roles: [ 'Moderator', 'Helper' ],
 	execute(message, args, client) {
 		const modmessageEmbed = new Discord.MessageEmbed().setColor('#ff0000').setTitle('Incoming Mod Message').setDescription(message.content.slice(`${prefix}modmessage ${args[0]}`.length));

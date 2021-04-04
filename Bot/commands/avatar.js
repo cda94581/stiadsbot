@@ -6,6 +6,7 @@ module.exports = {
 	description: 'Get yours or another user\'s avatar',
 	aliases: [ 'av', 'icon', 'pfp' ],
 	usage: '[mention user(s)]',
+	type: 'info',
 	execute(message, args) {
 		if (!message.mentions.users.size) {
 			return message.channel.send(`Your avatar: ${message.author.displayAvatarURL({ format: "png", dynamic: true })}`);

@@ -4,6 +4,7 @@ const Discord = require('discord.js');
 module.exports = {
 	name: 'movie',
 	description: 'Information about a cda94581 movie',
+	type: 'info',
 	execute(message, args) {
 		const movieEmbed = new Discord.MessageEmbed()
 			.setColor('#ff0000').setTitle('Movie')

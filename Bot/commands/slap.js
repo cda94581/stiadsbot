@@ -8,6 +8,7 @@ module.exports = {
 	description: 'Owie',
 	args: true,
 	usage: '<mention users>',
+	type: 'action',
 	execute(message, args) {
 		if (!message.mentions.users.size) {
 			return message.channel.send('You need to mention users');
