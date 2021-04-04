@@ -35,7 +35,7 @@ module.exports = {
 				const xp = rows[0].xp;
 				const level = rows[0].level;
 				const xpToLevel = 5 * (level ** 2) + 50 * level + 100;
-				const embed = new Discord.MessageEmbed().setColor('#0077ff').setTitle(author.name).setDescription(`Level: ${level}\nXP: ${xp}/${xpToLevel}`);
+				const embed = new Discord.MessageEmbed().setColor('#ff0000').setTitle(author.name).setDescription(`Level: ${level}\nXP: ${xp}/${xpToLevel}`);
 				message.channel.send(embed);
 			});
 		});
