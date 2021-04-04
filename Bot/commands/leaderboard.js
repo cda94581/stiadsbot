@@ -4,6 +4,7 @@ const mysql = require('mysql');
 module.exports = {
 	name: 'leaderboard',
 	description: 'Server rank leaderboard',
+	type: 'leveling',
 	execute(message, args) {
 		const con = mysql.createConnection({
 			host: 'localhost',

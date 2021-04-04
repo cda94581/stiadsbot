@@ -4,6 +4,7 @@ const mysql = require('mysql');
 module.exports = {
 	name: 'rank',
 	description: 'Get your level',
+	type: 'leveling',
 	execute(message, args) {
 		let author = {}
 		if (message.mentions.users.first()) {

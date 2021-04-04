@@ -22,7 +22,7 @@ module.exports = {
 			return message.channel.send(new Discord.MessageEmbed().setColor('#cc0000').setTitle(command.name).setDescription(data[0]));
 		}
 		data[0] = 'Here\'s a list of all my commands:\n';
-		let types = [ 'Action', 'Fun', 'Info', 'Moderation' ];
+		let types = [ 'Action', 'Fun', 'Info', 'Leveling', 'Moderation' ];
 		for (let i in types) {
 			if (i != 0) data[0] += '`';
 			data[0] += `\n> **${types[i]}**\n\``;
