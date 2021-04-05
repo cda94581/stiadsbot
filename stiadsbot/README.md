@@ -11,7 +11,6 @@
 	- You may need to install `unzip` - `sudo apt-get install unzip`
 4. `cd` to the file path
 5. Modify the [`config.json`](config.json) file to fit your needs - `nano config.json` to edit. To write, press `CTRL+O`, to close, press `CTRL+X`
-	- Other files you may need to modify may also include [`index.js`](index.js), [`modules/leveling.js`](modules/leveling.js), [`commands/rank.js`](commands/rank.js), and [`commands/leaderboard.js`](commands/leaderboard.js) (Until I move the settings all to the config file)
 6. Download the packages if you haven't already - `npm i discord.js @discordjs/opus ffmpeg-static ytdl-core mysql`
 7. Run `node index.js`
 
@@ -22,7 +21,6 @@
 3. [Download `stiadsbot.zip`](../Downloads/stiadsbot.zip?raw=true) by clicking the file, then **View Raw**
 4. Unzip the file
 5. Modify the [`config.json`](config.json) file to fit your needs
-	- Other files you may need to modify may also include [`index.js`](index.js), [`modules/leveling.js`](modules/leveling.js), [`commands/rank.js`](commands/rank.js), and [`commands/leaderboard.js`](commands/leaderboard.js) (Until I move the settings all to the config file)
 6. `cd` to the file path in **Command Prompt**
 7. Download the packages if you haven't already - `npm i discord.js @discordjs/opus ffmpeg-static ytdl-core mysql`
 8. Run `node index.js`

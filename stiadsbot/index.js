@@ -5,10 +5,7 @@ const fs = require('fs');
 const Discord = require('discord.js');
 
 // Load the prefix and token from the config.json file
-const {
-	prefix,
-	token
-} = require('./config.json');
+const {	prefix,	token, welcomechannel } = require('./config.json');
 
 // Create a new Discord client
 const client = new Discord.Client();
@@ -43,7 +40,7 @@ client.once('ready', () => {
 
 // Welcome messages
 client.on('guildMemberAdd', member => {
-	member.guild.channels.cache.get('760613444323115021').send(`Welcome ${member}, to ${member.guild.name}. Please be sure to read <#760613526754164777> before chatting with us, thanks! You are member #${member.guild.memberCount}!`);
+	member.guild.channels.cache.get(welcomechannel).send(`Welcome ${member}, to ${member.guild.name}. Please be sure to read <#760613526754164777> before chatting with us, thanks! You are member #${member.guild.memberCount}!`);
 	// Tells the console the user that joined
 	console.log(`${member.user.username} joined`);
 });

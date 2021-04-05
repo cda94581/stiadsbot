@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
 const mysql = require('mysql');
+const { mysqlinfo } = require('../config.json');
 
 module.exports = {
 	name: 'leaderboard',
@@ -7,9 +8,9 @@ module.exports = {
 	type: 'leveling',
 	execute(message, args) {
 		const con = mysql.createConnection({
-			host: 'localhost',
-			user: 'root',
-			password: '',
+			host: mysqlinfo.host,
+			user: mysqlinfo.user,
+			password: mysqlinfo.password,
 			database: 'stiadsbot_leveling'
 		});
 
