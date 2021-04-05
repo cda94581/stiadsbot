@@ -1,0 +1,12 @@
+{
+	"prefix": "YOUR PREFIX HERE",
+	"token": "YOUR TOKEN HERE",
+	"levels": [ INSERT LEVELS TO GET ROLES HERE ],
+	"roles": [ INSERT ROLES CORRESPONDING HERE ],
+	"levelblacklist": [ INSERT BLACKLISTED CHANNELS HERE ],
+	"reactionrolechannel": "CHANNEL WHERE THE YT RR OCCURS",
+	"reactionrolemessage": "MESSAGE ID FOR THE YT RR",
+	"ytreactionemoji": "EMOJI FOR THE YT RR",
+	"ytrole": "ROLE TO GIVE FOR THE YT RR",
+	"acchatchannel": "CHANNEL FOR AWESOME CRAFT CHAT"
+}

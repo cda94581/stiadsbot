@@ -1,4 +1,7 @@
-# staidsbot
+# Discord Bots
+These are Discord Bots that I am developing, zip files to download are located in the Downloads folder
+
+# stiadsbot
 So This Is A Discord Server Bot 👀
 
 *Insert information here*
@@ -17,3 +20,17 @@ So This Is A Discord Server Bot 👀
 Instead of #1 & #3, do the following:
 - Click on the green "Code" button
 - Download and extract the ZIP archive in your desired directory
+
+# Awesome-Bot
+
+Packages required:
+- discord.js
+- mysql
+- ws
+- uuid
+
+# cdabot
+Bot for cda94581's Server
+
+Packages required:
+- discord.js
