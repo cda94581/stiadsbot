@@ -3,7 +3,6 @@ These are Discord Bots that I am developing, zip files to download are located i
 Ordered by date I created the bot
 These bots aren't able to be invited; you need to self-host them.
 
-- [Discord Bots](#Discord-Bots)
 - [stiadsbot](#stiadsbot)
 - [Awesome-Bot](#Awesome-Bot)
 - [cdabot](#cdabot)
