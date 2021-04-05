@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const mysql = require('mysql');
 const xpCooldowns = new Set();
-const { levels, roles, prefix, levelblacklist } = require('../config.json');
+const { levels, roles, prefix, levelblacklist, mysqlinfo } = require('../config.json');
 
 module.exports = message => {
 	if (message.author.bot || levelblacklist.includes(message.channel.id)) return; // Bots can't level up, filter out blacklisted channels
@@ -21,9 +21,9 @@ module.exports = message => {
 	var level;
 
 	var con = mysql.createConnection({ // Create a connection to the database
-		host: 'localhost', // Host of the database
-		user: 'root', // Username for the database
-		password: '' // Password for the database
+		host: mysqlinfo.host, // Host of the database
+		user: mysqlinfo.user, // Username for the database
+		password: mysqlinfo.password // Password for the database
 	});
 
 	con.connect(err => { // Connect to the database

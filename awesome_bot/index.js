@@ -2,7 +2,7 @@ const fs = require('fs'); // Loads node.js file system module
 
 const Discord = require('discord.js'); // Requires discord.js module
 
-const {	prefix,	token, reactionrolechannel, reactionrolemessage, ytreactionemoji, ytrole } = require ('./config.json'); // Loads prefix, token, and rr stuff from config file
+const {	prefix,	token, welcomechannel, reactionrolechannel, reactionrolemessage, ytreactionemoji, ytrole } = require ('./config.json'); // Loads prefix, token, and rr stuff from config file
 
 const client = new Discord.Client({ partials: ['MESSAGE', 'CHANNEL', 'REACTION'] }); // Discord Client, requires partials for reaction roles
 client.commands = new Discord.Collection(); // Collection for commands
@@ -26,7 +26,7 @@ client.once('ready', () => {
 
 // Welcome messages
 client.on('guildMemberAdd', member => {
-	member.guild.channels.cache.get('774104618422370364').send(`Hey ${member}, welcome to ${member.guild.name}! Please read <#712440948302544986> before chatting! You are member #${member.guild.memberCount} You shall be Awesome 4ever!:joy:`); // Send message
+	member.guild.channels.cache.get(welcomechannel).send(`Hey ${member}, welcome to ${member.guild.name}! Please read <#712440948302544986> before chatting! You are member #${member.guild.memberCount} You shall be Awesome 4ever!:joy:`); // Send message
 
 	console.log(`Member joined - ${member.user.username}#${member.user.discriminator}`); // Tells console
 });

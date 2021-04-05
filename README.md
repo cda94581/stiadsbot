@@ -59,7 +59,6 @@ To be written...
 	- You may need to install `unzip` - `sudo apt-get install unzip`
 4. `cd` to the file path
 5. Modify the [`config.json`](awesome_bot/config.json) file to fit your needs - `nano config.json` to edit. To write, press `CTRL+O`, to close, press `CTRL+X`
-	- Other files you may need to modify may also include [`index.js`](awesome_bot/index.js), [`modules/leveling.js`](awesome_bot/modules/leveling.js), and [`commands/rank.js`](awesome_bot/commands/rank.js) (Until I move the settings all to the config file)
 6. Download the packages if you haven't already - `npm i discord.js mysql ws uuid`
 7. Run `node index.js`
 
@@ -70,7 +69,6 @@ To be written...
 3. [Download `awesome_bot.zip`](Downloads/awesome_bot.zip?raw=true) by clicking the file, then **View Raw**
 4. Unzip the file
 5. Modify the [`config.json`](awesome_bot/config.json) file to fit your needs
-	- Other files you may need to modify may also include [`index.js`](awesome_bot/index.js), [`modules/leveling.js`](awesome_bot/modules/leveling.js), and [`commands/rank.js`](awesome_bot/commands/rank.js) (Until I move the settings all to the config file)
 6. `cd` to the file path in **Command Prompt**
 7. Download the packages if you haven't already - `npm i discord.js mysql ws uuid`
 8. Run `node index.js`

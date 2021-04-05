@@ -1,12 +1,18 @@
 {
-	"prefix": "YOUR PREFIX HERE",
+	"prefix": "YOUR PREFIX HERE (STRING)",
 	"token": "YOUR TOKEN HERE",
-	"levels": [ INSERT LEVELS TO GET ROLES HERE ],
-	"roles": [ INSERT ROLES CORRESPONDING HERE ],
-	"levelblacklist": [ INSERT BLACKLISTED CHANNELS HERE ],
-	"reactionrolechannel": "CHANNEL WHERE THE YT RR OCCURS",
-	"reactionrolemessage": "MESSAGE ID FOR THE YT RR",
-	"ytreactionemoji": "EMOJI FOR THE YT RR",
-	"ytrole": "ROLE TO GIVE FOR THE YT RR",
-	"acchatchannel": "CHANNEL FOR AWESOME CRAFT CHAT"
+	"welcomechannel": "YOUR WELCOME CHANNEL HERE (STRING OF ID)",
+	"levels": [ "INSERT LEVELS TO GET ROLES HERE (INT)" ],
+	"roles": [ "INSERT ROLES CORRESPONDING HERE (STRINGS OF IDS)" ],
+	"levelblacklist": [ "INSERT BLACKLISTED CHANNELS HERE (STRINGS OF IDS)" ],
+	"mysqlinfo": {
+		"host": "HOST OF MYSQL DATABASE (IF ON SAME COMPUTER, USE LOCALHOST)",
+		"user": "USERNAME OF MYSQL DATABASE",
+		"password": "PASSWORD OF MYSQL DATABASE"
+	},
+	"reactionrolechannel": "CHANNEL WHERE THE YT RR OCCURS (STRING OF ID)",
+	"reactionrolemessage": "MESSAGE ID FOR THE YT RR (STRING OF ID)",
+	"ytreactionemoji": "EMOJI FOR THE YT RR (STRING OF ID)",
+	"ytrole": "ROLE TO GIVE FOR THE YT RR (STRING OF ID)",
+	"acchatchannel": "CHANNEL FOR AWESOME CRAFT CHAT (STRING OF ID)"
 }
