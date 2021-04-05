@@ -16,7 +16,7 @@ So This Is A Discord Server Bot 👀
 1. Download node.js, npm, and mysql - `sudo apt install nodejs && sudo apt install npm && sudo apt install mysql-server`
 	- You may need to update node.js if `node -v` returns anything less than v12 - `sudo npm cache clean -f && sudo npm install -g n && sudo n stable`
 	- You may need to follow guides on setting up mysql
-2. Download `stiadsbot.zip` - `wget https://github.com/cda94581/discord_bots/blob/main/Downloads/stiadsbot.zip?raw=true`
+2. Download [`stiadsbot.zip`](Downloads/stiadsbot.zip) - `wget https://github.com/cda94581/discord_bots/blob/main/Downloads/stiadsbot.zip`
 3. **Unzip** the downloaded file `'stiadsbot.zip?raw=true'`
 	- You may need to install `unzip` - `sudo apt-get install unzip`
 4. `cd` to the file path
