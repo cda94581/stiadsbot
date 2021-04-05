@@ -1,5 +1,5 @@
 # Discord Bots
-These are Discord Bots that I am developing, zip files to download are located in the Downloads folder
+These are Discord Bots that I am developing, zip files to download are located in the [Downloads](Downloads) folder
 
 # stiadsbot
 So This Is A Discord Server Bot 👀
