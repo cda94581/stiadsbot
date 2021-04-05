@@ -8,7 +8,7 @@ These bots aren't able to be invited; you need to self-host them.
 - [Awesome-Bot](#Awesome-Bot)
 - [cdabot](#cdabot)
 
-[# stiadsbot](stiadsbot)
+# [stiadsbot](stiadsbot)
 *So This Is A Discord Server Bot 👀* is a [*Discord*](https://discord.com) bot designed for [*So This Is A Discord Server*](https://discord.gg/byxaSZr). It features leveling, custom commands, mod messaging, welcome messages, suggestions, and a No Vowels Chat filter, with more to come!
 
 ## Installing & Running
@@ -47,7 +47,7 @@ Packages required:
 ## Contributing
 To be written...
 
-[# Awesome-Bot](awesome_bot)
+# [Awesome-Bot](awesome_bot)
 *Awesome-Bot* is a [*Discord*](https://discord.com) Bot for [*Awesome5834*](https://www.youtube.com/channel/UC8jK9yNTnEdrwBg2hJRlC_A)'s [Discord Server](https://discord.gg/da32ASg). It features leveling, custom commands, welcome messages, and a Minecraft-Discord Chat that would work if  [this bug](https://bugs.mojang.com/browse/BDS-1013) was nonexistent ;-;, with more to come!
 
 ## Installing & Running
@@ -85,7 +85,7 @@ Packages required:
 ## Contributing
 To be written...
 
-[# cdabot](cdabot)
+# [cdabot](cdabot)
 *cdabot* is a [*Discord*](https://discord.com) Bot for [my Discord Server](https://discord.gg/da32ASg). It features custom commands and welcome messages, with more to come!
 
 ## Installing & Running
