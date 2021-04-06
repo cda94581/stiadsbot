@@ -27,7 +27,7 @@ module.exports = {
 				message.channel.send('Success!');
 				break;
 			case 'list':
-				message.channel.send(`Blacklisted Channels:\n${levelinfo.blacklist}\nBlacklisted Users:\n${levelinfo.userblacklist}`);
+				message.channel.send(`Blacklisted Channels:\n${file.levelinfo.blacklist}\nBlacklisted Users:\n${file.levelinfo.userblacklist}`);
 				break;
 		}
 		fs.writeFile((__dirname, '../config.json'), JSON.stringify(file), 'utf-8', err => {
