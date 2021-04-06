@@ -13,7 +13,7 @@ module.exports = {
 	aliases: [ 'blxp' ],
 	execute(message, args, client) {
 		if (args.length < 2) return message.channel.send('Please specify to either blacklist a user or a channel, as well as the id, or to list');
-		fs.readFile('../config.json', 'utf-8', (err, data) => {
+		fs.readFile((__dirname, '../config.json'), 'utf-8', (err, data) => {
 			if (err) throw err;
 			file = JSON.parse(data);
 		});
@@ -30,7 +30,7 @@ module.exports = {
 				message.channel.send(`Blacklisted Channels:\n${levelinfo.blacklist}\nBlacklisted Users:\n${levelinfo.userblacklist}`);
 				break;
 		}
-		fs.writeFile('../config.json', JSON.stringify(file), 'utf-8', err => {
+		fs.writeFile((__dirname, '../config.json'), JSON.stringify(file), 'utf-8', err => {
 			if (err) throw err;
 		});
 	},
