@@ -29,16 +29,22 @@ module.exports = {
 
 		con.connect(err => {
 			if (err) throw err;
-			const sql = `SELECT * FROM stiads_xp WHERE id = ${author.id}`;
+			let sql = `SELECT * FROM stiads_xp WHERE id = ${author.id}`;
 			con.query(sql, (err, rows) => {
 				if (err) throw err;
-				con.end();
+				sql = `SELECT * FROM stiads_xp ORDER BY level DESC, xp DESC`;
 				if (!rows.length) return message.channel.send('Please send some messages to gain xp!');
 				const xp = rows[0].xp;
 				const level = rows[0].level;
 				const xpToLevel = 5 * (level ** 2) + 50 * level + 100;
-				const embed = new Discord.MessageEmbed().setColor('#ff0000').setTitle(author.name).setDescription(`Level: ${level}\nXP: ${xp}/${xpToLevel}`);
-				message.channel.send(embed);
+				con.query(sql, (err, rows) => {
+					if (err) throw err;
+					con.end();
+					const rank = rows.indexOf(rows.find(row => row.id == author.id)) + 1;
+					const size = rows.length;
+					const embed = new Discord.MessageEmbed().setColor('#ff0000').setTitle(author.name).setDescription(`Level: ${level}\nXP: ${xp}/${xpToLevel}\nRank: ${rank}/${size}`);
+					message.channel.send(embed);
+				});
 			});
 		});
 	},
