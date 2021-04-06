@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const mysql = require('mysql');
-const { mysqlinfo } = require('../config.json');
+const { levelinfo } = require('../config.json');
 
 module.exports = {
 	name: 'addxp',
@@ -11,9 +11,9 @@ module.exports = {
 	usage: '<USER> <LEVEL> <XP>',
 	execute(message, args, client) {
 		const con = mysql.createConnection({
-			host: mysqlinfo.host,
-			user: mysqlinfo.user,
-			password: mysqlinfo.password,
+			host: levelinfo.mysqlinfo.host,
+			user: levelinfo.mysqlinfo.user,
+			password: levelinfo.mysqlinfo.password,
 			database: 'stiadsbot_leveling'
 		});
 		if (args.length < 3) return message.channel.send(`Please specify a user ID, Level, and XP`);

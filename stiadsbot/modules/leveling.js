@@ -1,10 +1,10 @@
 const Discord = require('discord.js');
 const mysql = require('mysql');
 const xpCooldowns = new Set();
-const { levels, roles, prefix, levelblacklist, mysqlinfo } = require('../config.json');
+const { levelinfo, prefix } = require('../config.json');
 
 module.exports = message => {
-	if (message.author.bot || levelblacklist.includes(message.channel.id) || message.channel.type == 'dm') return; // Bots can't level up, filter out blacklisted channels, no dms
+	if (message.author.bot || levelinfo.blacklist.includes(message.channel.id) || message.channel.type == 'dm' || levelinfo.userblacklist.includes(message.author.id)) return; // Bots can't level up, filter out blacklisted channels & users, no dms
 	if (message.content.startsWith(prefix)) return; // Don't let commands give xp
 	const author = message.author.id;
 
@@ -21,9 +21,9 @@ module.exports = message => {
 	var level;
 
 	var con = mysql.createConnection({ // Create a connection to the database
-		host: mysqlinfo.host, // Host of the database
-		user: mysqlinfo.user, // Username for the database
-		password: mysqlinfo.password // Password for the database
+		host: levelinfo.mysqlinfo.host, // Host of the database
+		user: levelinfo.mysqlinfo.user, // Username for the database
+		password: levelinfo.mysqlinfo.password // Password for the database
 	});
 
 	con.connect(err => { // Connect to the database
@@ -87,8 +87,8 @@ module.exports = message => {
 	}
 
 	function addRoles() {
-		if (levels.includes(level)) {
-			roleToAdd = roles[levels.indexOf(level)];
+		if (levelinfo.levels.includes(level)) {
+			roleToAdd = levelinfo.roles[levelinfo.levels.indexOf(level)];
 			let role = message.member.guild.roles.cache.find(role => role.id === roleToAdd);
 			message.member.roles.add(role);
 		}
