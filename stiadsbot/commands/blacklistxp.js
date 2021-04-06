@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const mysql = require('mysql');
-const { levelinfo } = require('../config.json');
+let { levelinfo } = require('../config.json');
 
 module.exports = {
 	name: 'blacklistxp',
