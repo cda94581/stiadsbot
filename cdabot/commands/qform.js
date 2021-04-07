@@ -1,9 +1,0 @@
-const Discord = require('discord.js');
-
-module.exports = {
-	name: 'qform',
-	description: 'Format when asking some questions',
-	execute(message, args) {
-		message.channel.send(new Discord.MessageEmbed().setColor('#cc0000').setTitle('Question Format').setDescription('> **Question Format**\nThese format guidelines only apply to problems that you have when creating something.\nWhile not required, it is helpful to format your questions so that you can save time and get your problem done sooner rather than later. As such, we have a few guidelines to asking to fix a problem:\nGuidelines\n• **Try a solution before asking**\n• **Tell us what you want to do**\n• **Tell us what you\'ve tried**\n• **Tell us any relevant sources that you\'ve used**\n\nCommon Problems:\n• **Don\'t Ask to Ask**\n\tIf someone is able to help you, then they will. Asking if someone can help just wastes time. You can find more information at <https://dontasktoask.com/>\n• **The XY Problem**\n\tThis is when someone wants to do `X`, but doesn\'t know how to. They think that by doing `Y`, they can fix that problem, so they ask on how to do `Y`. This results in much wasted time. You can find more information at <https://xyproblem.info/>\n• **No Hello**\n\tThis is when someone says "Hello" or a similar greeting before asking their question. This also results in time wasted. You can find more information at <https://www.nohello.com/>\n\nBe patient! Not all of us are available when you have a question, so understand that we may need to take time before one of us is able to respond. If someone can help, then they will, just give it time. :)\n\nYou can also visit <https://stackoverflow.com/help/how-to-ask> or if you have more time <http://catb.org/~esr/faqs/smart-questions.html> for information on asking good questions'));
-	}
-}
