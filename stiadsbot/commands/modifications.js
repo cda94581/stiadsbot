@@ -22,6 +22,7 @@ module.exports = {
 				case 'open':
 					file.modifications.open = true;
 					client.channels.cache.find(channel => channel.id == file.modifications.channel).send(`Modification Submissions are now OPEN! DM <@!${client.user.id}> and start your message with **Modification Submission** to submit your modification.\nVoting is also OPEN! React with :+1: to vote for a modification.`);
+					break;
 				case 'close':
 					file.modifications.open = false;
 					client.channels.cache.find(channel => channel.id == file.modifications.channel).send(`Modification Submissions & Voting is now CLOSED! A winner will be announced soon.`);
