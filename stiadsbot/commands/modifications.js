@@ -7,7 +7,7 @@ module.exports = {
 	name: 'modifications',
 	description: 'Information about cda94581 modifications',
 	type: 'fun',
-	execute(message, args) {
+	execute(message, args, client) {
 		if (!args.length) {
 			const modificationEmbed = new Discord.MessageEmbed()
 			.setColor('#ff0000').setTitle('Cda94581 Modifications')
