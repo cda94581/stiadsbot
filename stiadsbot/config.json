@@ -15,5 +15,9 @@
 	},
 	"feedback_channel": "YOUR FEEDBACK CHANNEL ID HERE",
 	"n_vwls_cht_channel": "YOUR N VWLS CHT CHANNEL ID HERE",
-	"modmessagingchannel": "YOUR MOVIE WRITER APPLICATION CHANNEL ID HERE"
+	"modmessagingchannel": "YOUR MOD MESSAGING CHANNEL ID HERE",
+	"modifications": {
+		"channel": "YOUR MODIFICATION CHANNEL ID HERE",
+		"open": false
+	}
 }
