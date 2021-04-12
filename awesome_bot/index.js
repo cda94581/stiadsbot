@@ -2,7 +2,7 @@ const fs = require('fs'); // Loads node.js file system module
 
 const Discord = require('discord.js'); // Requires discord.js module
 
-const {	prefix,	token, welcomechannel, reactionrolechannel, reactionrolemessage, ytreactionemoji, ytrole } = require ('./config.json'); // Loads prefix, token, and rr stuff from config file
+const {	prefix,	token, welcomechannel, reactionroles } = require ('./config.json'); // Loads prefix, token, and rr stuff from config file
 
 const client = new Discord.Client({ partials: ['MESSAGE', 'CHANNEL', 'REACTION'] }); // Discord Client, requires partials for reaction roles
 client.commands = new Discord.Collection(); // Collection for commands
@@ -69,11 +69,13 @@ client.on('messageReactionAdd', async (messageReaction, user) => { // When someo
 			return console.error('Something went wrong: ', error);
 		}
 	}
-	if ((messageReaction.message.channel.id =! reactionrolechannel) || (messageReaction.message.id =! reactionrolemessage) || (messageReaction.emoji.id =! ytreactionemoji)) return; // Only a certain message can have the reaction role
-
-	const role = messageReaction.message.member.guild.roles.cache.find(role => role.id === ytrole); // Set role variable
-	const member = messageReaction.message.member.guild.members.cache.find(member => member.id === user.id); // Find the member who reacted
-	member.roles.add(role); // Add role
+	for (i in reactionroles) {
+		if ((messageReaction.message.channel.id == reactionroles[i].channel) && (messageReaction.message.id == reactionroles[i].message) || (messageReaction.emoji.id == reactionroles[i].emoji)) {
+			const role = messageReaction.message.member.guild.roles.cache.find(role => role.id == reactionroles[i].role); // Set role variable
+			const member = messageReaction.message.member.guild.members.cache.find(member => member.id == user.id); // Find the member who reacted
+			member.roles.add(role); // Add role
+		}
+	}
 });
 
 client.on('messageReactionRemove', async (messageReaction, user) => { // when someone removes reaction
@@ -84,11 +86,13 @@ client.on('messageReactionRemove', async (messageReaction, user) => { // when so
 			return console.error('Something went wrong: ', error);
 		}
 	}
-	if ((messageReaction.message.channel.id =! reactionrolechannel) || (messageReaction.message.id =! reactionrolemessage) || (messageReaction.emoji.id =! ytreactionemoji)) return; // Only a certain message can have the reaction role
-
-	const role = messageReaction.message.member.guild.roles.cache.find(role => role.id === ytrole); // Set role variable
-	const member = messageReaction.message.member.guild.members.cache.find(member => member.id === user.id); // Find the member who unreacted
-	member.roles.remove(role); // Remove role
+	for (i in reactionroles) {
+		if ((messageReaction.message.channel.id == reactionroles[i].channel) && (messageReaction.message.id == reactionroles[i].message) || (messageReaction.emoji.id == reactionroles[i].emoji)) {
+			const role = messageReaction.message.member.guild.roles.cache.find(role => role.id == reactionroles[i].role); // Set role variable
+			const member = messageReaction.message.member.guild.members.cache.find(member => member.id == user.id); // Find the member who unreacted
+			member.roles.remove(role); // Remove role
+		}
+	}
 });
 
 client.login(token); // Login

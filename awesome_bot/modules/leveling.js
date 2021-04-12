@@ -1,10 +1,10 @@
 const Discord = require('discord.js');
 const mysql = require('mysql');
 const xpCooldowns = new Set();
-const { levels, roles, prefix, levelblacklist, mysqlinfo } = require('../config.json');
+const { levelinfo, prefix } = require('../config.json');
 
 module.exports = message => {
-	if (message.author.bot || levelblacklist.includes(message.channel.id)) return; // Bots can't level up, filter out blacklisted channels
+	if (message.author.bot || levelinfo.blacklist.includes(message.channel.id)) return; // Bots can't level up, filter out blacklisted channels
 	if (message.content.startsWith(prefix)) return; // Don't let commands give xp
 	const author = message.author.id;
 
@@ -21,9 +21,9 @@ module.exports = message => {
 	var level;
 
 	var con = mysql.createConnection({ // Create a connection to the database
-		host: mysqlinfo.host, // Host of the database
-		user: mysqlinfo.user, // Username for the database
-		password: mysqlinfo.password // Password for the database
+		host: levelinfo.mysqlinfo.host, // Host of the database
+		user: levelinfo.mysqlinfo.user, // Username for the database
+		password: levelinfo.mysqlinfo.password // Password for the database
 	});
 
 	con.connect(err => { // Connect to the database
@@ -35,7 +35,7 @@ module.exports = message => {
 			sql = 'USE awesome_bot_leveling'; // Switch to this database
 			con.query(sql, err => {
 				if (err) throw err;
-				sql = 'CREATE TABLE IF NOT EXISTS awesome_xp (id VARCHAR(255), xp VARCHAR(255), level VARCHAR(255))' // Creates a table in the database called awesome_xp if it doesn't already exist with 3 columns: id, xp, level
+				sql = 'CREATE TABLE IF NOT EXISTS awesome_xp (id VARCHAR(255), xp INT, level INT)' // Creates a table in the database called awesome_xp if it doesn't already exist with 3 columns: id, xp, level
 				con.query(sql, err => {
 					if (err) throw err;
 					sql = `SELECT * FROM awesome_xp WHERE id = ${author}`; // Selects all rows in the table with an id of the message author (should only be 1 row)

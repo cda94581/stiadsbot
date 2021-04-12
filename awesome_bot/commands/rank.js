@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const mysql = require('mysql');
-const { mysqlinfo } = require('../config.json');
+const { levelinfo } = require('../config.json');
 
 module.exports = {
 	name: 'rank',
@@ -21,9 +21,9 @@ module.exports = {
 
 
 		const con = mysql.createConnection({
-			host: mysqlinfo.host,
-			user: mysqlinfo.user,
-			password: mysqlinfo.password,
+			host: levelinfo.mysqlinfo.host,
+			user: levelinfo.mysqlinfo.user,
+			password: levelinfo.mysqlinfo.password,
 			database: 'awesome_bot_leveling'
 		});
 
