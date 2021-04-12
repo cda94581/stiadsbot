@@ -27,18 +27,24 @@
 	<span class="codejsonkey">"prefix"</span>: <span class="codejsonvalue">"PREFIX"</span>,
 	<span class="codejsonkey">"token"</span>: <span class="codejsonvalue">"TOKEN"</span>,
 	<span class="codejsonkey">"welcomechannel"</span>: <span class="codejsonvalue">"WELCOME CHANNEL"</span>,
-	<span class="codejsonkey">"levels"</span>: [ <span class="codejsonvalue">"LEVELS"</span> ],
-	<span class="codejsonkey">"roles"</span>: [ <span class="codejsonvalue">"ROLES"</span> ],
-	<span class="codejsonkey">"levelblacklist"</span>: [ <span class="codejsonvalue">"LEVEL BLACKLIST"</span> ],
-	<span class="codejsonkey">"mysqlinfo"</span>: {
-		<span class="codejsonkey">"host"</span>: <span class="codejsonvalue">"MYSQL HOST"</span>,
-		<span class="codejsonkey">"user"</span>: <span class="codejsonvalue">"MYSQL USERNAME"</span>,
-		<span class="codejsonkey">"password"</span>: <span class="codejsonvalue">"MYSQL PASSWORD"</span>
+	<span class="codejsonkey">"levelinfo"</span>: {
+		<span class="codejsonkey">"levels"</span>: [ <span class="codejsonvalue">"LEVELS"</span> ],
+		<span class="codejsonkey">"roles"</span>: [ <span class="codejsonvalue">"ROLES"</span> ],
+		<span class="codejsonkey">"blacklist"</span>: [ <span class="codejsonvalue">"LEVEL BLACKLIST"</span> ],
+		<span class="codejsonkey">"mysqlinfo"</span>: {
+			<span class="codejsonkey">"host"</span>: <span class="codejsonvalue">"MYSQL HOST"</span>,
+			<span class="codejsonkey">"user"</span>: <span class="codejsonvalue">"MYSQL USERNAME"</span>,
+			<span class="codejsonkey">"password"</span>: <span class="codejsonvalue">"MYSQL PASSWORD"</span>
+		}
 	},
-	<span class="codejsonkey">"reactionrolechannel"</span>: <span class="codejsonvalue">"REACTION ROLE CHANNEL"</span>,
-	<span class="codejsonkey">"reactionrolemessage"</span>: <span class="codejsonvalue">"REACTION ROLE MESSAGE"</span>,
-	<span class="codejsonkey">"ytreactionemoji"</span>: <span class="codejsonvalue">"REACTION ROLE EMOJI"</span>,
-	<span class="codejsonkey">"ytrole"</span>: <span class="codejsonvalue">"YOUTUBE ROLE"</span>,
+	<span class="codejsonkey">"reactionroles"</span>: [
+		{
+			<span class="codejsonkey">"channel"</span>: <span class="codejsonvalue">"REACTION ROLE CHANNEL"</span>,
+			<span class="codejsonkey">"message"</span>: <span class="codejsonvalue">"REACTION ROLE MESSAGE"</span>,
+			<span class="codejsonkey">"emoji"</span>: <span class="codejsonvalue">"REACTION ROLE EMOJI"</span>,
+			<span class="codejsonkey">"role"</span>: <span class="codejsonvalue">"ROLE"</span>
+		}
+	],
 	<span class="codejsonkey">"acchatchannel"</span>: <span class="codejsonvalue">"AWESOME CRAFT CHAT CHANNEL"</span>
 }
 </pre>
@@ -78,25 +84,25 @@
 			This is a <span class="code">STRING</span> data type, be sure to encase in quotations.
 		</p>
 
-		<h3 id="config.json.levels">levels</h3>
+		<h3 id="config.json.levelinfo.levels">levelinfo.levels</h3>
 		<p>
 			Awesome Bot supports leveling.
 			This is an array of Integers with which, when the user reaches one of them, assigns them a corresponding role.
 		</p>
 
-		<h3 id="config.json.roles">roles</h3>
+		<h3 id="config.json.levelinfo.roles">levelinfo.roles</h3>
 		<p>
 			This is an array of Strings, which contain the role IDs.
 			When a user reaches a level in the <span class="code">levels</span> array, the index of that level is the index of the role ID it will choose in this array, to add to the user.
 		</p>
 
-		<h3 id="config.json.levelblacklist">levelblacklist</h3>
+		<h3 id="config.json.levelinfo.blacklist">levelinfo.blacklist</h3>
 		<p>
 			This is an array of Strings, which contain channel IDs.
 			Users who send messages in these channels won't gain any xp.
 		</p>
 
-		<h3 id="config.json.mysqlinfo.host">mysqlinfo.host</h3>
+		<h3 id="config.json.levelinfo.mysqlinfo.host">levelinfo.mysqlinfo.host</h3>
 		<p>
 			Awesome Bot leveling stores user info in a <i>MySQL</i> Database.
 			You will need to manually setup MySQL.<br>
@@ -107,35 +113,35 @@
 			Awesome Bot will create a database called "awesome_bot_leveling", if it doesn't already exist, to store this information.
 		</p>
 
-		<h3 id="config.json.mysqlinfo.user">mysqlinfo.user</h3>
+		<h3 id="config.json.levelinfo.mysqlinfo.user">levelinfo.mysqlinfo.user</h3>
 		<p>
 			This is the username of the MySQL system.
 		</p>
 
-		<h3 id="config.json.mysqlinfo.password">mysqlinfo.password</h3>
+		<h3 id="config.json.levelinfo.mysqlinfo.password">levelinfo.mysqlinfo.password</h3>
 		<p>
 			This is the password of the MySQL system.
 		</p>
 
-		<h3 id="config.json.reactionrolechannel">reactionrolechannel</h3>
+		<h3 id="config.json.reactionroles[INDEX].channel">reactionroles[INDEX].channel</h3>
 		<p>
 			Awesome Bot currently supports a single reaction role.
 			Officially, it is used for YouTube notificaitons.
 			This is the Channel ID in the form of a String, in which the message you react to is located.
 		</p>
 
-		<h3 id="config.json.reactionrolemessage">reactionrolemessage</h3>
+		<h3 id="config.json.reactionroles[INDEX].message">reactionroles[INDEX].message</h3>
 		<p>
 			This is the Message ID in the form of a String, of the message you react to for the reaction role.
 		</p>
 
-		<h3 id="config.json.ytreactionemoji">ytreactionemoji</h3>
+		<h3 id="config.json.reactionroles[INDEX].emoji">reactionroles[INDEX].emoji</h3>
 		<p>
 			This is the Emoji ID in the form of a String, of the emoji you react with to get the reaction role.
 			To get the Emoji ID, place a backslash <span class="code">\</span> before the emoji.
 		</p>
 
-		<h3 id="config.json.ytrole">ytrole</h3>
+		<h3 id="config.json.reactionroles[INDEX].role">reactionroles[INDEX].role</h3>
 		<p>
 			This is the Role ID in the form of a String, of the role to gain when you react.
 		</p>
