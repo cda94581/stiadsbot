@@ -19,5 +19,13 @@
 	"modifications": {
 		"channel": "YOUR MODIFICATION CHANNEL ID HERE",
 		"open": false
-	}
+	},
+	"reactionroles": [
+		{
+			"channel": "CHANNEL WHERE RR OCCURS (STRING OF ID)",
+			"message": "MESSAGE ID OF RR (STRING OF ID)",
+			"emoji": "EMOJI OF RR (STRING OF ID)",
+			"role": "ROLE TO GIVE FOR RR (STRING OF ID)"
+		}
+	]
 }
