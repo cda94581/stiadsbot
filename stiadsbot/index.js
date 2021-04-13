@@ -122,7 +122,7 @@ client.on('messageReactionAdd', async (messageReaction, user) => {
 		if ((messageReaction.message.channel.id == reactionroles[i].channel) && (messageReaction.message.id == reactionroles[i].message) || (messageReaction.emoji.id == reactionroles[i].emoji)) {
 			const role = messageReaction.message.member.guild.roles.cache.find(role => role.id == reactionroles[i].role);
 			const member = messageReaction.message.member.guild.members.cache.find(member => member.id == user.id);
-			member.roles.add(role);
+			return member.roles.add(role);
 		}
 	}
 });
@@ -139,7 +139,7 @@ client.on('messageReactionRemove', async (messageReaction, user) => {
 		if ((messageReaction.message.channel.id == reactionroles[i].channel) && (messageReaction.message.id == reactionroles[i].message) || (messageReaction.emoji.id == reactionroles[i].emoji)) {
 			const role = messageReaction.message.member.guild.roles.cache.find(role => role.id == reactionroles[i].role);
 			const member = messageReaction.message.member.guild.members.cache.find(member => member.id == user.id);
-			member.roles.remove(role);
+			return member.roles.remove(role);
 		}
 	}
 });
