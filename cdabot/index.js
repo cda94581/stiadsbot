@@ -31,8 +31,8 @@ client.on('guildMemberAdd', member => {
 client.on('message', message => {
 	if(message.author.bot) return; // Makes sure it wasn't a bot
 	let modules_json_format = require('./modules/json_format'); modules_json_format(message);
-	if (!message.content.startsWith(prefix)) return; // Makes sure it starts with prefix
 	let modmessaging = require('./modules/modmessaging'); modmessaging(message, client);
+	if (!message.content.startsWith(prefix)) return; // Makes sure it starts with prefix
 	const args = message.content.slice(prefix.length).trim().split(/ +/); // Message arguments
 	const commandName = args.shift().toLowerCase(); // Sets the 'command' input
 
