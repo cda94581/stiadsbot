@@ -32,6 +32,7 @@ client.on('message', message => {
 	if(message.author.bot) return; // Makes sure it wasn't a bot
 	let modules_json_format = require('./modules/json_format'); modules_json_format(message);
 	if (!message.content.startsWith(prefix)) return; // Makes sure it starts with prefix
+	let modmessaging = require('./modules/modmessaging'); modmessaging(message, client);
 	const args = message.content.slice(prefix.length).trim().split(/ +/); // Message arguments
 	const commandName = args.shift().toLowerCase(); // Sets the 'command' input
 
@@ -53,7 +54,7 @@ client.on('message', message => {
 		message.channel.startTyping();
 		setTimeout(() => {
 			message.channel.stopTyping(true);
-			command.execute(message, args);
+			command.execute(message, args, client);
 		}, 2000);
 	} catch (error) {
 		console.error(error);
