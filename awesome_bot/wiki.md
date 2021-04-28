@@ -97,7 +97,8 @@ This is the Message ID in the form of a String, of the message you react to for 
 
 ### reactionroles[INDEX].emoji
 This is the Emoji ID in the form of a String, of the emoji you react with to get the reaction role.
-To get the Emoji ID, place a backslash `\` before the emoji.
+For default emojis, get the Unicode form of it. (This can be done by putting a `\` in front of the emoji and sending it in a chat)
+For custom emojis, input the emoji name
 
 ### reactionroles[INDEX].role
 This is the Role ID in the form of a String, of the role to gain when you react.
