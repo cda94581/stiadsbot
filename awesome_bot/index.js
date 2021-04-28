@@ -70,7 +70,7 @@ client.on('messageReactionAdd', async (messageReaction, user) => { // When someo
 		}
 	}
 	for (i in reactionroles) {
-		if ((messageReaction.message.channel.id == reactionroles[i].channel) && (messageReaction.message.id == reactionroles[i].message) || (messageReaction.emoji.id == reactionroles[i].emoji)) {
+		if ((messageReaction.message.channel.id == reactionroles[i].channel) && (messageReaction.message.id == reactionroles[i].message) && (messageReaction.emoji.name == reactionroles[i].emoji)) {
 			const role = messageReaction.message.member.guild.roles.cache.find(role => role.id == reactionroles[i].role); // Set role variable
 			const member = messageReaction.message.member.guild.members.cache.find(member => member.id == user.id); // Find the member who reacted
 			member.roles.add(role); // Add role
@@ -87,7 +87,7 @@ client.on('messageReactionRemove', async (messageReaction, user) => { // when so
 		}
 	}
 	for (i in reactionroles) {
-		if ((messageReaction.message.channel.id == reactionroles[i].channel) && (messageReaction.message.id == reactionroles[i].message) || (messageReaction.emoji.id == reactionroles[i].emoji)) {
+		if ((messageReaction.message.channel.id == reactionroles[i].channel) && (messageReaction.message.id == reactionroles[i].message) && (messageReaction.emoji.name == reactionroles[i].emoji)) {
 			const role = messageReaction.message.member.guild.roles.cache.find(role => role.id == reactionroles[i].role); // Set role variable
 			const member = messageReaction.message.member.guild.members.cache.find(member => member.id == user.id); // Find the member who unreacted
 			member.roles.remove(role); // Remove role
