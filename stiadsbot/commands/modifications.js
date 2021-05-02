@@ -17,7 +17,7 @@ module.exports = {
 		if (!message.member.hasPermission('ADMINISTRATOR')) return;
 		fs.readFile(path.resolve(__dirname, '../config.json'), 'utf-8', (err, data) => {
 			if (err) throw err;
-			file = JSON.parse(data);
+			let file = JSON.parse(data);
 			switch (args[0].toLowerCase()) {
 				case 'open':
 					file.modifications.open = true;
