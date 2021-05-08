@@ -26,7 +26,7 @@ client.once('ready', () => {
 
 // Welcome messages
 client.on('guildMemberAdd', member => {
-	member.guild.channels.cache.get(welcomechannel).send(`Hey ${member}, welcome to ${member.guild.name}! Please read <#712440948302544986> before chatting! You are member #${member.guild.memberCount} You shall be Awesome 4ever!:joy:`); // Send message
+	member.guild.channels.cache.find(channel => channel.id == welcomechannel).send(`Hey ${member}, welcome to ${member.guild.name}! Please read <#712440948302544986> before chatting! You are member #${member.guild.memberCount} You shall be Awesome 4ever!:joy:`); // Send message
 
 	console.log(`Member joined - ${member.user.username}#${member.user.discriminator}`); // Tells console
 });
