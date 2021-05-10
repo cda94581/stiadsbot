@@ -27,6 +27,7 @@ module.exports = {
 			con.query(sql, (err, rows) => {
 				if (err) throw err;
 				message.channel.send(`**${user.username}**'s level has been decreased by ${args[1]} and xp has decreased by ${args[2]}`);
+				con.end();
 			});
 		});
 	},

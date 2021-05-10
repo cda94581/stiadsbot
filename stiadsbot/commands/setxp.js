@@ -26,6 +26,7 @@ module.exports = {
 			con.query(sql, (err, rows) => {
 				if (err) throw err;
 				message.channel.send(`**${user.username}**'s level is now ${args[1]} and xp is now ${args[2]}`);
+				con.end();
 			});
 		});
 	},

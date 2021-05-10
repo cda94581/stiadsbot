@@ -25,6 +25,7 @@ module.exports = {
 			con.query(sql, (err, rows) => {
 				if (err) throw err;
 				message.channel.send(`Successfully reset **${user.username}**'s levels & xp`);
+				con.end();
 			});
 		});
 	},

@@ -26,6 +26,7 @@ module.exports = {
 			con.query(sql, (err, rows) => {
 				if (err) throw err;
 				message.channel.send(`**${user.username}**'s level has been increased by ${args[1]} and xp has increased by ${args[2]}`);
+				con.end();
 			});
 		});
 	},
