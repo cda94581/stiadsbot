@@ -4,6 +4,11 @@ module.exports = {
 	perms: [ 'ADMINISTRATOR' ],
 	execute(message, args, client) {
 		const content = message.content.slice(0, 5);
-		eval(content);
+		try {
+			eval(content);
+			message.channel.send(`Successfully execute code: ${content}`);
+		} catch {
+			message.channel.send(`There was an error executing code: ${content}`);
+		}
 	},
 };
