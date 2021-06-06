@@ -6,6 +6,6 @@ module.exports = {
 	type: 'exact',
 	channels: config.triggers.helpHi.channels,
 	execute(message) {
-		message.channel.send(new Discord.MessageEmbed().setTitle('Seriously. You don\'t need to greet us to ask a question.').setDescription('Ask your question! By greeting, you\'re just wasting time. Read more: https://www.nohello.com/'));
+		message.channel.send(new Discord.MessageEmbed().setColor('#cc0000').setTitle('Seriously. You don\'t need to greet us to ask a question.').setDescription('Ask your question! By greeting, you\'re just wasting time. Read more: https://www.nohello.com/'));
 	}
 }
