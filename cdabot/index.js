@@ -4,7 +4,7 @@ const Discord = require('discord.js'); // Requires discord.js module
 
 const {	prefix,	token, welcomeChannel } = require ('./config.json'); // Loads prefix and token from config file
 
-const client = new Discord.Client(); // Discord Client, requires partials for reaction roles
+const client = new Discord.Client(); // Discord Client
 client.commands = new Discord.Collection(); // Collection for commands
 
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js')); // Adds all commands
@@ -54,7 +54,7 @@ client.on('message', message => {
 		message.channel.startTyping();
 		setTimeout(() => {
 			message.channel.stopTyping(true);
-			command.execute(message, args, client);
+			command.execute(message, args);
 		}, 2000);
 	} catch (error) {
 		console.error(error);
