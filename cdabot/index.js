@@ -6,8 +6,10 @@ const {	prefix,	token, welcomeChannel } = require ('./config.json'); // Loads pr
 
 const client = new Discord.Client(); // Discord Client
 client.commands = new Discord.Collection(); // Collection for commands
+client.triggers = new Discord.Collection(); // Collection for triggers
 
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js')); // Adds all commands
+const triggerFiles = fs.readdirSync('./triggers').filter(file => file.endsWith('.js')); // Adds all triggers
 
 for (const file of commandFiles) {
 	const command = require(`./commands/${file}`);
@@ -15,6 +17,14 @@ for (const file of commandFiles) {
 	// Set a new item in the Collection
 	// with the key as the command name and the value as the exported module
 	client.commands.set(command.name, command);
+}
+
+for (const file of triggerFiles) {
+	const trigger = require(`./triggers/${file}`);
+
+	// Set a new item in the Collection
+	// with the key as the command name and the value as the exported module
+	client.triggers.set(trigger.name, trigger);
 }
 
 // When ready, run this code
@@ -32,6 +42,11 @@ client.on('message', message => {
 	if(message.author.bot) return; // Makes sure it wasn't a bot
 	let modules_json_format = require('./modules/json_format'); modules_json_format(message);
 	let modmessaging = require('./modules/modmessaging'); modmessaging(message, client);
+	runCommand(message);
+	runTrigger(message);
+});
+
+function runCommand(message) {
 	if (!message.content.startsWith(prefix)) return; // Makes sure it starts with prefix
 	const args = message.content.slice(prefix.length).trim().split(/ +/); // Message arguments
 	const commandName = args.shift().toLowerCase(); // Sets the 'command' input
@@ -60,6 +75,23 @@ client.on('message', message => {
 		console.error(error);
 		message.channel.send('There was an error trying to execute that command');
 	}
-});
+}
+
+function runTrigger(message) {
+	for ( const trigger of client.triggers ) {
+		if (trigger[1].type == 'contain' && !trigger[1].names.some(name => message.content.toLowerCase().includes(name))) return;
+		if (trigger[1].type == 'exact' && !trigger[1].names.some(name => message.content.toLowerCase() == name)) return;
+		try {
+			message.channel.startTyping();
+			setTimeout(() => {
+				message.channel.stopTyping(true);
+				trigger[1].execute(message);
+			}, 2000);
+		} catch (error) {
+			console.error(error);
+			message.channel.send('There was an error trying to execute that trigger');
+		}
+	}
+}
 
 client.login(token); // Login
