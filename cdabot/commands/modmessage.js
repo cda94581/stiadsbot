@@ -9,7 +9,7 @@ module.exports = {
 	args: true,
 	// roles: [ 'Moderator', 'Helper' ],
 	execute(message, args) {
-		const modmessageEmbed = new Discord.MessageEmbed().setColor('#ff0000').setTitle('Incoming Mod Message').setDescription(message.content.slice(`${prefix}modmessage ${args[0]}`.length));
+		const modmessageEmbed = new Discord.MessageEmbed().setColor('#cc0000').setTitle('Incoming Mod Message').setDescription(message.content.slice(`${prefix}modmessage ${args[0]}`.length));
 		if (message.attachments){
 			const attachments = message.attachments.map(m => m.url);
 			modmessageEmbed.attachFiles(attachments);

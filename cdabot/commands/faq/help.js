@@ -27,7 +27,7 @@ module.exports = {
 				data[i] = tempData.slice(0, 2000);
 				data.push(tempData.slice(2000, tempData.length));
 			}
-			message.channel.send(new Discord.MessageEmbed().setColor('#ff0000').setTitle('CdaBot Help').setDescription(data[i]));
+			message.channel.send(new Discord.MessageEmbed().setColor('#444444').setTitle('CdaBot FaQ Help').setDescription(data[i]));
 		}
 	}
 }
