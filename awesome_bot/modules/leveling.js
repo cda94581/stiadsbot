@@ -88,7 +88,7 @@ module.exports = message => {
 
 	function addRoles() {
 		if (levelinfo.levels.includes(level)) {
-			roleToAdd = levelinfo.roles[levels.indexOf(level)];
+			roleToAdd = levelinfo.roles[levelinfo.levels.indexOf(level)];
 			let role = message.member.guild.roles.cache.find(role => role.id === roleToAdd);
 			message.member.roles.add(role);
 		}
