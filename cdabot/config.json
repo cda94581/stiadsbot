@@ -1,6 +1,11 @@
 {
 	"token": "YOUR TOKEN HERE",
 	"prefix": "YOUR PREFIX HERE",
+	"presence": {
+		"name": "PRESENCE NAME HERE",
+		"type": "PRESENCE TYPE HERE",
+		"status": "PRESENCE STATUS HERE"
+	},
 	"welcomeChannel": "YOUR WELCOME CHANNEL ID HERE",
 	"modmessagingchannel": "YOUR MODMESSAGING CHANNEL ID HERE",
 	"triggers": {
