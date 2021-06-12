@@ -14,7 +14,7 @@ module.exports = message => {
 		const args = message.content.slice(prefix.length).trim().split(/ +/); // Message arguments
 		const commandName = args.shift().toLowerCase(); // Sets the 'command' input
 	
-		const command = client.commands.get(commandName) ||	client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName)); // Gets the command corresponding
+		const command = message.client.commands.get(commandName) ||	message.client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName)); // Gets the command corresponding
 		if (!command) return; // If couldn't get a command
 	
 		if (command.guildOnly && message.channel.type === 'dm') return message.channel.send('I can\'t execute this command inside DMs'); // If guildOnly
@@ -41,7 +41,7 @@ module.exports = message => {
 	}
 	
 	function runTrigger(message) {
-		for ( const trigger of client.triggers ) {
+		for ( const trigger of message.client.triggers ) {
 			if (trigger[1].type == 'contain' && !trigger[1].names.some(name => message.content.toLowerCase().includes(name))) return;
 			if (trigger[1].type == 'exact' && !trigger[1].names.some(name => message.content.toLowerCase() == name)) return;
 			if (trigger.channels && !trigger.channels.some(channel => message.channel.id == channel)) return;
