@@ -14,8 +14,8 @@
 		}
 	},
 	"levelinfo": {
-		"levels": [	5 ],
-		"roles": [ "821165244838969395" ],
+		"levels": [ "INSERT LEVELS TO GET ROLES HERE" ],
+		"roles": [ "INSERT ROLES CORRESPONDING HERE" ],
 		"blacklist": {
 			"channels": [ "INSERT BLACKLISTED CHANNELS HERE" ],
 			"users": [ "INSERT BLACKLISTED USERS HERE" ]
