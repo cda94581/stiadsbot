@@ -1,0 +1,1 @@
+module.exports = (oldPresence, newPresence) => {}

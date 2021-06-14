@@ -4,7 +4,7 @@ const Discord = require('discord.js'); // Requires discord.js module
 
 const {	token } = require ('./config.json'); // Loads prefix and token from config file
 
-const client = new Discord.Client(); // Discord Client
+const client = new Discord.Client({ partials: [ 'CHANNEL', 'GUILD_MEMBER', 'MESSAGE', 'REACTION', 'USER' ]}); // Discord Client
 client.commands = new Discord.Collection(); // Collection for commands
 client.triggers = new Discord.Collection(); // Collection for triggers
 
