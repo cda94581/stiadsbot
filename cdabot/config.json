@@ -12,5 +12,13 @@
 		"helpHi": {
 			"channels": [ "CHANNELS TO TRIGGER THE help-hi RESPONSE" ]
 		}
+	},
+	"levelinfo": {
+		"levels": [	5 ],
+		"roles": [ "821165244838969395" ],
+		"blacklist": {
+			"channels": [ "INSERT BLACKLISTED CHANNELS HERE" ],
+			"users": [ "INSERT BLACKLISTED USERS HERE" ]
+		}
 	}
 }

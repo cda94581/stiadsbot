@@ -1,14 +1,57 @@
-const { prefix, modmessagingchannel } = require('../config.json');
+const { prefix, modmessagingchannel, levelinfo } = require('../config.json');
 const Discord = require('discord.js');
+const fs = require('fs-extra');
+const path = require('path');
 
 module.exports = message => {
 	if (message.author.bot) return; // Makes sure it wasn't a bot
-	json_format(message);
-	modmessaging(message, message.client);
-	runCommand(message);
-	runTrigger(message);
+	leveling();
+	json_format();
+	modmessaging();
+	runCommand();
+	runTrigger();
 
-	function json_format(message) {
+	function leveling() {
+		const xpCooldowns = new Set();
+		const author = message.author.id;
+		if (levelinfo.blacklist.channels.includes(message.channel.id) || levelinfo.blacklist.users.includes(author) || message.channel.type == 'dm' || message.content.startsWith(prefix)) return;
+
+		if (xpCooldowns.has(author)) return;
+
+		xpCooldowns.add(author);
+		setTimeout(() => {
+			xpCooldowns.delete(author);
+		}, 60000);
+
+		const filePath = path.resolve(__dirname, `../_data/leveling/${author}.json`);
+
+		if (!fs.existsSync(filePath)) {
+			fs.outputFileSync(filePath, '{"level":0,"xp":0,"messages":0}', 'utf-8', err => {
+				if (err) throw err;
+			});
+		}
+		fs.readFile(filePath, 'utf-8', (err, data) => {
+			if (err) throw err;
+			let text = JSON.parse(data);
+			const addXp = Math.floor(Math.random() * 11) + 15;
+			text.xp += addXp;
+			text.messages++;
+			const xpToLevel = 5 * (text.level ** 2) + 50 * text.level + 100;
+			if (xpToLevel <= text.xp) {
+				text.xp -= xpToLevel;
+				text.level++;
+				message.channel.send(`Nice chatting, ${message.author}, you've advanced to level ${text.level}!`);
+			}
+			if (levelinfo.levels.includes(text.level)) {
+				const roleToAdd = levelinfo.roles[levelinfo.levels.indexOf(text.level)];
+				const role = message.member.guild.roles.cache.find(role => role.id === roleToAdd);
+				message.member.roles.add(role);
+			}
+			fs.writeFile(filePath, JSON.stringify(text), 'utf-8', err => { if (err) throw err });
+		});
+	}
+
+	function json_format() {
 		let valid = false;
 		let data;
 		let text = message.content;
@@ -29,7 +72,7 @@ module.exports = message => {
 		}
 	}
 
-	function modmessaging(message) {
+	function modmessaging() {
 		if (message.channel.type != 'dm' || message.author.bot) return;
 		let modmessageEmbed = new Discord.MessageEmbed().setColor('#ff0000').setTitle(`New Message: ${message.author.username}#${message.author.discriminator} - ${message.author.id}`).setDescription(message.content);
 		if (message.attachments) {
@@ -39,10 +82,10 @@ module.exports = message => {
 		message.client.channels.cache.find(channel => channel.id == modmessagingchannel).send(modmessageEmbed);
 		try {
 			message.channel.send('Message Sent!');
-		} catch {}
+		} catch { }
 	}
 
-	function runCommand(message) {
+	function runCommand() {
 		if (!message.content.startsWith(prefix)) return; // Makes sure it starts with prefix
 		const args = message.content.slice(prefix.length).trim().split(/ +/); // Message arguments
 		const commandName = args.shift().toLowerCase(); // Sets the 'command' input
@@ -73,7 +116,7 @@ module.exports = message => {
 		}
 	}
 
-	function runTrigger(message) {
+	function runTrigger() {
 		for (const trigger of message.client.triggers) {
 			if (trigger[1].type == 'contain' && !trigger[1].names.some(name => message.content.toLowerCase().includes(name))) return;
 			if (trigger[1].type == 'exact' && !trigger[1].names.some(name => message.content.toLowerCase() == name)) return;
