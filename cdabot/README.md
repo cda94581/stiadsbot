@@ -1,5 +1,5 @@
 # cdabot
-*cdabot* is a [*Discord*](https://discord.com) Bot for [my Discord Server](https://discord.gg/da32ASg). It features custom commands and welcome messages, with more to come!
+*cdabot* is a [*Discord*](https://discord.com) Bot for [my Discord Server](https://discord.gg/da32ASg). It features custom commands, welcome messages, and leveling without databases, with more to come!
 
 ## Installing & Running
 ### Ubuntu Command Line
@@ -29,3 +29,30 @@ Packages required:
 
 ## Contributing
 To be written...
+
+## Project Plans
+### General
+- [x] Basic Outline
+- [x] Welcome Messages
+- [x] Command Handler
+- [x] FAQ Command Handler
+- [x] Trigger Handler
+- [x] No Database Leveling
+- [ ] YouTube + Twitch Notifications
+
+### Moderation
+- [x] Moderator Command Handler
+- [ ] Link Filtering
+- [ ] Leave/Rejoin Notifications for Moderators
+- [ ] Welcome Back Messages
+- [ ] Event Responses
+- [ ] Logging
+- [ ] Ban
+- [ ] Kick
+- [ ] Mute
+- [ ] Warn
+- [ ] Note
+- [ ] Easy Notifications & Responses (Reactions)
+- [ ] Reaction Roles
+- [ ] No Welcoming for Certain Reasons
+- [ ] Automatic Nicknames for Inappropriate Names
