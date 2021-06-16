@@ -28,7 +28,6 @@ module.exports = {
 				let tempData = data[i];
 				data[i] = tempData.slice(0, 2000);
 				data.push(tempData.slice(2000, tempData.length));
-				console.log(data);
 			}
 			message.channel.send(new Discord.MessageEmbed().setColor('#cc0000').setTitle('CdaBot Help').setDescription(data[i]));
 		}
