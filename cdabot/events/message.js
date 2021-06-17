@@ -1,3 +1,4 @@
+const xpCooldowns = new Set();
 const { prefix, modmessagingchannel, levelinfo } = require('../config.json');
 const Discord = require('discord.js');
 const fs = require('fs-extra');
@@ -12,7 +13,6 @@ module.exports = message => {
 	runTrigger();
 
 	function leveling() {
-		const xpCooldowns = new Set();
 		const author = message.author.id;
 		if (levelinfo.blacklist.channels.includes(message.channel.id) || levelinfo.blacklist.users.includes(author) || message.channel.type == 'dm' || message.content.startsWith(prefix)) return;
 
