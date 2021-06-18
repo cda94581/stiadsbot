@@ -39,6 +39,7 @@ To be written...
 - [x] Trigger Handler
 - [x] No Database Leveling
 - [ ] YouTube + Twitch Notifications
+- [ ] Giveaway System
 
 ### Moderation
 - [x] Moderator Command Handler
