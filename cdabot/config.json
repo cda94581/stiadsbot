@@ -8,6 +8,7 @@
 	},
 	"welcomeChannel": "YOUR WELCOME CHANNEL ID HERE",
 	"modmessagingchannel": "YOUR MODMESSAGING CHANNEL ID HERE",
+	"logchannel": "LOG EVENTS HERE",
 	"triggers": {
 		"helpHi": {
 			"channels": [ "CHANNELS TO TRIGGER THE help-hi RESPONSE" ]
