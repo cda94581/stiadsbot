@@ -13,7 +13,7 @@ module.exports = {
 			if (err) throw err;
 			const info = JSON.parse(data);
 			const toLevelUp = 5 * (info.level ** 2) + 50 * info.level + 100;
-			message.channel.send(new Discord.MessageEmbed().setColor('#cc0000').setTitle(`cdaBot Leveling - ${message.guild.members.cache.get(m => m.id == author).displayName}`).setDescription(`**Level**: ${info.level}\n**XP**: ${info.xp}/${toLevelUp}\n**Messages**: ${info.messages}`));
+			message.channel.send(new Discord.MessageEmbed().setColor('#cc0000').setTitle(`cdaBot Leveling - ${message.guild.members.cache.find(m => m.id == author).displayName}`).setDescription(`**Level**: ${info.level}\n**XP**: ${info.xp}/${toLevelUp}\n**Messages**: ${info.messages}`));
 		});
 	}	
 }
