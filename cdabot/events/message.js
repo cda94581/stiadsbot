@@ -26,7 +26,7 @@ module.exports = message => {
 		const filePath = path.resolve(__dirname, `../_data/leveling/${author}.json`);
 
 		if (!fs.existsSync(filePath)) {
-			fs.outputFileSync(filePath, '{"level":0,"xp":0,"messages":0}', 'utf-8', err => {
+			fs.outputFileSync(filePath, `{"id":${author},"level":0,"xp":0,"messages":0}`, 'utf-8', err => {
 				if (err) throw err;
 			});
 		}
