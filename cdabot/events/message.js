@@ -26,7 +26,7 @@ module.exports = message => {
 		const filePath = path.resolve(__dirname, `../_data/leveling/${author}.json`);
 
 		if (!fs.existsSync(filePath)) {
-			fs.outputFileSync(filePath, `{"id":${author},"level":0,"xp":0,"messages":0}`, 'utf-8', err => {
+			fs.outputFileSync(filePath, `{"id":0,"level":0,"xp":0,"messages":0}`, 'utf-8', err => {
 				if (err) throw err;
 			});
 		}
@@ -40,6 +40,7 @@ module.exports = message => {
 			if (xpToLevel <= text.xp) {
 				text.xp -= xpToLevel;
 				text.level++;
+				text.id = author;
 				message.channel.send(`Nice chatting, ${message.author}, you've advanced to level ${text.level}!`);
 			}
 			if (levelinfo.levels.includes(text.level)) {
