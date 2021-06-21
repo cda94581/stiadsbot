@@ -9,7 +9,7 @@ module.exports = (oldMessage, newMessage) => {
 			desc[i] = tempData.slice(0, 2000);
 			desc.push(tempData.slice(2000, tempData.length));
 		}
-		data[0].client.channels.cache.get(logchannel).send(new Discord.MessageEmbed().setColor('#00cccc').setTitle(`Message Updated in #${data[0].channel.name}`).setDescription(desc[i]).setTimestamp(Date.now()));
-		console.log(`> ${Date().toString()}\t-\tMessage Updated in #${data[0].channel.name}:\n${desc[i]}`);
+		oldMessage.client.channels.cache.get(logchannel).send(new Discord.MessageEmbed().setColor('#00cccc').setTitle(`Message Updated in #${oldMessage.channel.name}`).setDescription(desc[i]).setTimestamp(Date.now()));
+		console.log(`> ${Date().toString()}\t-\tMessage Updated in #${oldMessage.channel.name}:\n${desc[i]}`);
 	}
 }
