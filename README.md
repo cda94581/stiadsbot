@@ -139,3 +139,53 @@ To be written...
 - [ ] Reaction Roles
 - [ ] No Welcoming for Certain Reasons
 - [ ] Automatic Nicknames for Inappropriate Names
+
+### Commands to Add
+#### Moderators
+- [x] Purge
+- [x] Slowmode
+- [ ] Ban
+- [ ] Kick
+- [ ] Mute
+- [ ] Warn
+- [ ] Note
+- [ ] Notify Join
+
+#### Admin
+- [ ] Blacklist XP
+- [ ] Add XP
+- [ ] Remove XP
+- [ ] Set XP
+
+### Logging to Add
+#### Server Events
+- [ ] Channel Creation
+- [ ] Updated Channel
+- [ ] Channel Deletion
+- [ ] Role Creaiton
+- [ ] Role Updates
+- [ ] Role Deletion
+- [ ] Server Updates
+- [ ] Emoji Changes
+
+#### Member Events
+- [ ] Role Updates
+- [ ] Name Changes
+- [ ] Avatar Changes
+- [x] Member Bans
+- [x] Member Unbans
+
+#### Voice Events
+- [ ] Join Voice Channel
+- [ ] Move Between Voice Channels
+- [ ] Leave Voice Channel
+
+#### Message Events
+- [x] Deleted Messages
+- [x] Edited Messages
+- [x] Purged Messages
+- [ ] Discord Invites
+
+#### Members Joining and Leaving
+- [x] Members Joining
+- [x] Members Leaving
