@@ -121,7 +121,7 @@ module.exports = message => {
 		for (const trigger of message.client.triggers) {
 			if (trigger[1].type == 'contain' && !trigger[1].names.some(name => message.content.toLowerCase().includes(name))) return;
 			if (trigger[1].type == 'exact' && !trigger[1].names.some(name => message.content.toLowerCase() == name)) return;
-			if (trigger.channels && !trigger.channels.some(channel => message.channel.id == channel)) return;
+			if (trigger[1].channels && !trigger[1].channels.some(channel => message.channel.id == channel)) return;
 			try {
 				message.channel.startTyping();
 				setTimeout(() => {
