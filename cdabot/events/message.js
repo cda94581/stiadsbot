@@ -1,16 +1,30 @@
 const xpCooldowns = new Set();
-const { prefix, modmessagingchannel, levelinfo } = require('../config.json');
+const { prefix, modmessagingchannel, levelinfo, bannedwords } = require('../config.json');
 const Discord = require('discord.js');
 const fs = require('fs-extra');
 const path = require('path');
 
 module.exports = message => {
 	if (message.author.bot) return; // Makes sure it wasn't a bot
-	leveling();
-	json_format();
-	modmessaging();
-	runCommand();
-	runTrigger();
+	if (moderation()) {
+		leveling();
+		json_format();
+		modmessaging();
+		runCommand();
+		runTrigger();
+	}
+
+	function moderation() {
+		if (bannedwords.some(phrase => message.content.toLowerCase().includes(phrase))) {
+			message.delete();
+			message.channel.send(`${message.author}, you aren't allowed to say this phrase.`).then(sentMsg => {
+				setTimeout(() => {
+					sentMsg.delete();
+				}, 5000);
+			});
+			return false;
+		} else return true;
+	}
 
 	function leveling() {
 		const author = message.author.id;

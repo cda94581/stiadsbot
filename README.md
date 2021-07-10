@@ -184,7 +184,7 @@ To be written...
 - [x] Deleted Messages
 - [x] Edited Messages
 - [x] Purged Messages
-- [ ] Discord Invites
+- [x] Discord Invites/Banned Words
 
 #### Members Joining and Leaving
 - [x] Members Joining
