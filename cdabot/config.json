@@ -9,7 +9,6 @@
 	"welcomeChannel": "YOUR WELCOME CHANNEL ID HERE",
 	"modmessagingchannel": "YOUR MODMESSAGING CHANNEL ID HERE",
 	"logchannel": "LOG EVENTS HERE",
-	"bannedwords": [ "discord.gg", "discord gg", "INSERT BANNED PHRASES HERE" ],
 	"triggers": {
 		"helpHi": {
 			"channels": [ "CHANNELS TO TRIGGER THE help-hi RESPONSE" ]
