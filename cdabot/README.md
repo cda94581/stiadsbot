@@ -88,9 +88,9 @@ To be written...
 - [ ] Emoji Changes
 
 #### Member Events
-- [ ] Role Updates
-- [ ] Name Changes
-- [ ] Avatar Changes
+- [x] Role Updates
+- [x] Name Changes
+- [x] Avatar Changes
 - [x] Member Bans
 - [x] Member Unbans
 
