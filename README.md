@@ -136,7 +136,7 @@ To be written...
 - [ ] Warn
 - [ ] Note
 - [ ] Easy Notifications & Responses (Reactions)
-- [ ] Reaction Roles
+- [x] Reaction Roles
 - [ ] No Welcoming for Certain Reasons
 - [ ] Automatic Nicknames for Inappropriate Names
 
