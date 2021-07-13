@@ -28,6 +28,6 @@ for (const file of triggerFiles) {
 }
 
 // Run events
-const events = require('./events/index'); events(client);
+const events = require('./events/index'); events.event(client);
 
 client.login(token); // Login
