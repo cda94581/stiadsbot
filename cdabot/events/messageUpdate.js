@@ -1,6 +1,13 @@
 const Discord = require('discord.js');
 
-module.exports = (oldMessage, newMessage) => {
+module.exports = async (oldMessage, newMessage) => {
+	if (oldMessage.partial) {
+		try {
+			await oldMessage.fetch()
+		} catch {
+			return console.error('Something went wrong: ', error);
+		}
+	}
 	const index = require('./index');
 
 	let desc = [ `**Old**:\n${oldMessage.content}\n\n**New**:\n${newMessage.content}` ];

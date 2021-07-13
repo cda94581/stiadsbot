@@ -1,7 +1,14 @@
 const Discord = require('discord.js');
 const { welcomeChannel } = require('../config.json');
 
-module.exports = member => {
+module.exports = async member => {
+	if (member.partial) {
+		try {
+			await member.fetch();
+		} catch {
+			return console.error('Something went wrong: ', error);
+		}
+	}
 	const index = require('./index');
 
 	const desc = `${member.user} - ${member.user.username}#${member.user.discriminator}\n**ID**: ${member.user.id}`;

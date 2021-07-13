@@ -1,6 +1,13 @@
 const Discord = require('discord.js');
 
 module.exports = message => {
+	if (message.partial) {
+		try {
+			message.fetch();
+		} catch {
+			return console.error('Something went wrong: ', error);
+		}
+	}
 	const index = require('./index');
 
 	const desc = message.content;

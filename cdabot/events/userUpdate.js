@@ -1,6 +1,13 @@
 const Discord = require('discord.js');
 
-module.exports = (oldUser, newUser) => {
+module.exports = async (oldUser, newUser) => {
+	if (oldUser.partial) {
+		try {
+			await oldUser.fetch();
+		} catch {
+			return console.error('Something went wrong: ', error);
+		}
+	}
 	const index = require('./index');
 
 	let desc = `${oldUser}`;
