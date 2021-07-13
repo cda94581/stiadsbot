@@ -1,8 +1,13 @@
 const Discord = require('discord.js');
-const { logchannel } = require('../config.json');
 
 module.exports = (oldUser, newUser) => {
-	const desc = `${oldUser}\nI'm lazy to do the other information rn so just check console logs for details.`;
-	oldUser.client.channels.cache.get(logchannel).send(new Discord.MessageEmbed().setColor('#00cccc').setTitle(`User Updated: ${oldUser.username}#${oldUser.discriminator}`).setDescription(desc).setTimestamp(Date.now()));
-	console.log(`> ${Date().toString()}\t-\tMember Updated: ${oldUser.username}#${oldUser.discriminator}:\nOld:\n${oldUser}\n\nNew:\n${newUser}`);
+	const index = require('./index');
+
+	let desc = `${oldUser}`;
+	if (oldUser.defaultAvatarURL != newUser.defaultAvatarURL) data += `\n**Avatar Changed** - \`Old\`: ${oldUser.defaultAvatarURL} \`New\`: ${newUser.defaultAvatarURL}`;
+	if (oldUser.discriminator != newUser.discriminator) data += `\n**Discriminator Changed** - \`Old\`: ${oldUser.discriminator} \`New\`: ${newUser.discriminator}`;
+	if (oldUser.username != newUser.username) data += `\n**Username Changed** - \`Old\`: ${oldUser.username} \`New\`: ${newUser.username}`
+
+	index.log(oldUser, new Discord.MessageEmbed().setColor('#00cccc').setTitle(`User Updated: ${oldUser.username}#${oldUser.discriminator}`).setDescription(desc).setTimestamp(Date.now()));
+	console.log(`> ${Date().toString()}\t-\tMember Updated: ${oldUser.username}#${oldUser.discriminator}:\n${desc}`);
 }
