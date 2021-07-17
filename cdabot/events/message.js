@@ -16,7 +16,7 @@ module.exports = message => {
 	}
 
 	function moderation() {
-		if (message.channel.type == 'dm') return true;
+		if (message.channel.type == 'dm' || message.author.id == message.guild.ownerID) return true;
 		if (bannedwords.some(phrase => message.content.toLowerCase().includes(phrase))) {
 			message.delete();
 			message.channel.send(`${message.author}, you aren't allowed to say this phrase.`).then(sentMsg => {
