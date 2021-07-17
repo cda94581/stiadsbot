@@ -11,7 +11,7 @@ module.exports = async (oldUser, newUser) => {
 	const index = require('./index');
 
 	let desc = `${oldUser}`;
-	if (oldUser.defaultAvatarURL != newUser.defaultAvatarURL) desc += `\n**Avatar Changed** - \`Old\`: ${oldUser.defaultAvatarURL} \`New\`: ${newUser.defaultAvatarURL}`;
+	if (oldUser.avatar != newUser.avatar) desc += `\n**Avatar Changed** - \`Old\`: ${oldUser.displayAvatarURL({ format: "png", dynamic: true })} \`New\`: ${newUser.displayAvatarURL({ format: "png", dynamic: true })}`;
 	if (oldUser.discriminator != newUser.discriminator) desc += `\n**Discriminator Changed** - \`Old\`: ${oldUser.discriminator} \`New\`: ${newUser.discriminator}`;
 	if (oldUser.username != newUser.username) desc += `\n**Username Changed** - \`Old\`: ${oldUser.username} \`New\`: ${newUser.username}`
 
