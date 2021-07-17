@@ -138,7 +138,7 @@ To be written...
 - [ ] Easy Notifications & Responses (Reactions)
 - [x] Reaction Roles
 - [ ] No Welcoming for Certain Reasons
-- [ ] Automatic Nicknames for Inappropriate Names
+- [x] Automatic Nicknames for Inappropriate Names
 
 ### Commands to Add
 #### Moderators
