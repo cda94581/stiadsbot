@@ -1,4 +1,5 @@
 const Discord = require('discord.js');
+const bannedwords = require('../bannedwords.json');
 
 module.exports = async (oldMessage, newMessage) => {
 	if (oldMessage.partial) {
@@ -10,7 +11,18 @@ module.exports = async (oldMessage, newMessage) => {
 	}
 	const index = require('./index');
 
-	let desc = [ `**Old**:\n${oldMessage.content}\n\n**New**:\n${newMessage.content}` ];
+	if (newMessage.channel.type != 'dm' && newMessage.author.id != newMessage.guild.ownerID) {
+		if (bannedwords.some(phrase => newMessage.content.toLowerCase().includes(phrase))) {
+			newMessage.delete();
+			newMessage.channel.send(`${newMessage.author}, you aren't allowed to say this phrase.`).then(sentMsg => {
+				setTimeout(() => {
+					sentMsg.delete();
+				}, 5000);
+			});
+		}
+	}
+
+	let desc = [ `**Old**:\n${oldMessage.content}\n\n**New**:\n${newMessage.content}\n\n[Jump](${newMessage.url})` ];
 	for (i=0;i<desc.length;i++) {
 		if (desc[i].length > 2000) {
 			const tempData = desc[i];
