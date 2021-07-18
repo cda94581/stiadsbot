@@ -6,8 +6,8 @@ module.exports = client => {
 	console.log(`> ${Date().toString()}\t-\tReady!`); // Tells the console
 	repeat();
 	function repeat() {
+		client.user.setPresence({ activity: { name: presence.name, type: presence.type }, status: presence.status});
 		setTimeout(() => {
-			client.user.setPresence({ activity: { name: presence.name, type: presence.type }, status: presence.status});
 			repeat();
 		}, 86400000);
 	}
