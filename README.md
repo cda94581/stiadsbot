@@ -1,7 +1,5 @@
 # Discord Bots
-These are Discord Bots that I am developing, zip files to download are located in the [Downloads](Downloads) folder
-Ordered by date I created the bot
-These bots aren't able to be invited; you need to self-host them.
+These are Discord Bots that I am developing, zip files to download are located in the [Downloads](Downloads) folder. Ordered by date I created the bot. These bots aren't able to be invited; you need to self-host them.
 
 - [stiadsbot](#stiadsbot)
 - [Awesome-Bot](#Awesome-Bot)
@@ -42,7 +40,13 @@ Packages required:
 - mysql
 
 ## Contributing
-To be written...
+Contributions are welcome, and they're fairly simple, however it is beyond the scope of a README file to explain in detail. In general however, look up information as needed:
+- Fork the Repository
+- Clone the Fork
+- Make Changes & Commit
+	- Write Proper Commit Messages!
+- Create a Pull Request to merge with the main branch
+	- Make it Detailed!
 
 # [Awesome-Bot](awesome_bot)
 *Awesome-Bot* is a [*Discord*](https://discord.com) Bot for [*Awesome5834*](https://www.youtube.com/channel/UC8jK9yNTnEdrwBg2hJRlC_A)'s [Discord Server](https://discord.gg/da32ASg). It features leveling, custom commands, welcome messages, and a Minecraft-Discord Chat that would work if  [this bug](https://bugs.mojang.com/browse/BDS-1013) was nonexistent ;-;, with more to come!
@@ -78,7 +82,13 @@ Packages required:
 - uuid
 
 ## Contributing
-To be written...
+Contributions are welcome, and they're fairly simple, however it is beyond the scope of a README file to explain in detail. In general however, look up information as needed:
+- Fork the Repository
+- Clone the Fork
+- Make Changes & Commit
+	- Write Proper Commit Messages!
+- Create a Pull Request to merge with the main branch
+	- Make it Detailed!
 
 # [cdabot](cdabot)
 *cdabot* is a [*Discord*](https://discord.com) Bot for [my Discord Server](https://discord.gg/da32ASg). It features custom commands, welcome messages, and leveling without databases, with more to come!
@@ -110,7 +120,13 @@ Packages required:
 - fs-extra
 
 ## Contributing
-To be written...
+Contributions are welcome, and they're fairly simple, however it is beyond the scope of a README file to explain in detail. In general however, look up information as needed:
+- Fork the Repository
+- Clone the Fork
+- Make Changes & Commit
+	- Write Proper Commit Messages!
+- Create a Pull Request to merge with the main branch
+	- Make it Detailed!
 
 ## Project Plans
 ### General
