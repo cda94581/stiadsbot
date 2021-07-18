@@ -1,4 +1,6 @@
 const Discord = require('discord.js');
+const fs = require('fs');
+const path = require('path');
 const { welcomeChannel } = require('../config.json');
 const bannedwords = require('../bannedwords.json');
 
@@ -16,10 +18,26 @@ module.exports = async member => {
 		if (bannedwords.some(phrase => member.displayName.toLowerCase().includes(phrase))) member.setNickname( 'Name', 'Inappropriate Name' );
 	}
 
-	const desc = `${member.user} - ${member.user.username}#${member.user.discriminator}\n**ID**: ${member.user.id}\n**Account Created**: ${member.user.createdAt.UTC()}`;
+	const desc = `${member.user} - ${member.user.username}#${member.user.discriminator}\n**ID**: ${member.id}\n**Account Created**: ${member.user.createdAt.UTC()}`;
 
-	index.log(member, new Discord.MessageEmbed().setColor('#00cccc').setTitle('Member Joined').setDescription(desc).setTimestamp(Date.now()));
-	console.log(`> ${Date().toString()}\t-\tMember Joined: ${desc}`);
+	fs.readFile(path.resolve(__dirname, '../_data/member_history.json'), (err, data) => {
+		if (err) throw err;
+		let memberhistory = JSON.parse(data);
+		if (memberhistory.includes(member.id)) {
+			index.log(member, new Discord.MessageEmbed().setColor('#00cccc').setTitle('Member Rejoined').setDescription(desc).setTimestamp(Date.now()));
+			console.log(`> ${Date().toString()}\t-\tMember Rejoined: ${desc}`);
+		
+			member.client.channels.cache.get(welcomeChannel).send(`Oh hey there, ${member}, welcome back to **${member.guild.name}! You are now member #${member.guild.memberCount}.`);
+		} else {
+			index.log(member, new Discord.MessageEmbed().setColor('#00cccc').setTitle('Member Joined').setDescription(desc).setTimestamp(Date.now()));
+			console.log(`> ${Date().toString()}\t-\tMember Joined: ${desc}`);
+		
+			member.client.channels.cache.get(welcomeChannel).send(`Hey, ${member}, welcome to **${member.guild.name}**! You are member #${member.guild.memberCount}. Enjoy your time here!`);
 
-	member.client.channels.cache.get(welcomeChannel).send(`Hey, ${member}, welcome to **${member.guild.name}**! You are member #${member.guild.memberCount}. Enjoy your time here!`);
+			memberhistory.push(member.id);
+			fs.writeFile(path.resolve(__dirname, '../_data/member_history.json'), JSON.stringify(memberhistory, null, '\t'), err => {
+				if (err) throw err;
+			});
+		}
+	});
 }
