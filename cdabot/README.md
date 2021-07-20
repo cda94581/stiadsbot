@@ -56,7 +56,7 @@ Contributions are welcome, and they're fairly simple, however it is beyond the s
 - [ ] Event Responses
 - [ ] Logging
 - [ ] Ban
-- [ ] Kick
+- [x] Kick
 - [ ] Mute
 - [ ] Warn
 - [ ] Note
