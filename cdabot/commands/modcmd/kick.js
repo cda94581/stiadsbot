@@ -29,8 +29,8 @@ module.exports = {
 		file.push({ id: file.length + 1, timestamp: Date.now(), reason: reason });
 		fs.writeFile(filePath, JSON.stringify(file), 'utf-8', err => { if (err) throw err });
 
-		const desc = `${member.user} - ${member.user.username}#${member.user.discriminator}\n**ID**: ${member.id}\n**Reason**: ${reason}`;
-		index.log(guild, new Discord.MessageEmbed().setColor('#00cccc').setTitle('Member Kicked').setDescription(desc).setTimestamp(Date.now()));
+		const desc = `${member.user} - ${member.user.username}#${member.user.discriminator}\n**ID**: ${member.id}\n**Reason**: ${reason}\n**Kick ID**: ${file.length}`;
+		index.log(member, new Discord.MessageEmbed().setColor('#00cccc').setTitle('Member Kicked').setDescription(desc).setTimestamp(Date.now()));
 		console.log(`> ${Date().toString()}\t-\tMember Kicked: ${desc}`);
 	}
 }
