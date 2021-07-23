@@ -17,7 +17,7 @@ module.exports = {
 
 		const filePath = path.resolve(__dirname, `../../_data/modactions/notes/${args[0]}.json`);
 		if (!fs.existsSync(filePath)) fs.outputFileSync(filePath, `[]`, 'utf-8', err => { if (err) throw err; } );
-		let file = require(path.resolve(__dirname, `../../_data/modactions/notes/${args[0]}.json`));
+		let file = require(filePath);
 		file.push({ id: file.length + 1, timestamp: Date.now(), note: note });
 		fs.writeFile(filePath, JSON.stringify(file), 'utf-8', err => { if (err) throw err });
 		message.channel.send(`Successfully wrote a note for ${member.displayName}#${member.user.discriminator} (ID: ${file.length})`);
