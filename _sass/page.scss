@@ -18,9 +18,9 @@ a {
 }
 
 /* Not Mode Dependent */
-.no_deco_link a {
-	text-decoration: none;
-}
-.topnav {
+nav#top {
+	a { text-decoration: none; }
 	text-align: center;
+	margin: auto;
+	font-size: large;
 }
