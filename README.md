@@ -146,10 +146,10 @@ Contributions are welcome, and they're fairly simple, however it is beyond the s
 - [ ] Welcome Back Messages
 - [ ] Event Responses
 - [ ] Logging
-- [ ] Ban
+- [x] Ban
 - [x] Kick
 - [ ] Mute
-- [ ] Warn
+- [x] Warn
 - [x] Note
 - [ ] Easy Notifications & Responses (Reactions)
 - [x] Reaction Roles
@@ -160,10 +160,10 @@ Contributions are welcome, and they're fairly simple, however it is beyond the s
 #### Moderators
 - [x] Purge
 - [x] Slowmode
-- [ ] Ban
-- [ ] Kick
+- [x] Ban
+- [x] Kick
 - [ ] Mute
-- [ ] Warn
+- [x] Warn
 - [x] Note
 - [ ] Notify Join
 
