@@ -9,7 +9,7 @@ title: Installation
 3. **Unzip** the downloaded file - `unzip 'awesome_bot.zip?raw=true'`
 	- You may need to install `unzip` - `sudo apt-get install unzip`
 4. `cd` to the file path
-5. Modify the [`config.json`](config.json) file to fit your needs - `nano config.json` to edit. To write, press `CTRL+O`, to close, press `CTRL+X`
+5. Modify the [`config.json`](../config.json) file to fit your needs - `nano config.json` to edit. To write, press `CTRL+O`, to close, press `CTRL+X`
 6. Download the packages if you haven't already - `npm i discord.js mysql ws uuid`
 7. Run `node index.js`
 
@@ -19,7 +19,7 @@ title: Installation
 2. Navigate to the [Downloads](https://github.com/cda94581/discord_bots/blob/main/Downloads/){:target="_blank"} folder
 3. [Download `awesome_bot.zip`](https://github.com/cda94581/discord_bots/blob/main/Downloads/awesome_bot.zip?raw=true){:target="_blank"} by clicking the file, then **View Raw**
 4. Unzip the file
-5. Modify the [`config.json`](config.json) file to fit your needs
+5. Modify the [`config.json`](../config.json) file to fit your needs
 6. `cd` to the file path in **Command Prompt**
 7. Download the packages if you haven't already - `npm i discord.js mysql ws uuid`
 8. Run `node index.js`
