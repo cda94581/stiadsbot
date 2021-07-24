@@ -2,17 +2,24 @@
 <html>
 	<head>
 		<link rel="stylesheet" href="/discord_bots/assets/css/page.css">
-		<script src="/discord_bots/assets/js/pagecreator.js"></script>
-		<title>Discord Bots by cda94581</title>
+		<title>{{ page.title }} | Discord Bots by cda94581</title>
 		{% feed_meta %}
 		{% seo %}
 		<link rel="icon" type="image/png" href="/discord_bots/assets/images/favicon.png">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	</head>
 	<body>
-		<script>
-			determineMode();
-		</script>
 		{% include main_nav.html %}
+		{% if page.url contains '/stiadsbot' %}
+			{% include stiadsbot_nav.html %}
+		{% endif %}
+		{% if page.url contains '/awesome_bot' %}
+			{% include awesome_bot_nav.html %}
+		{% endif %}
+		{% if page.url contains '/cdabot' %}
+			{% include cdabot_nav.html %}
+		{% endif %}
+		<h1 id="Top"><a href="#Top">{{ page.title }}</a></h1>
 		{{ content }}
 	</body>
 </html>

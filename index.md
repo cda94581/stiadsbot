@@ -1,3 +1,6 @@
 ---
+title: Discord Bots by cda94581
 ---
-Hello there, this is a Major WIP...
+Discord Bots, created by [cda94581](https://github.com/cda94581/).
+
+WIP
