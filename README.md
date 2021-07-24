@@ -15,7 +15,7 @@ This is currently in Alpha, quite literally everything is a WIP lol
 	- [ ] Commands & Other Features Documentation
 - [ ] stiadsbot
 	- [x] Installation
-	- [x] config.json
+	- [ ] config.json
 	- [x] Contributing
 	- [ ] Commands & Other Features Documentation
 - [ ] cdaBot
