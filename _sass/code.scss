@@ -1,16 +1,8 @@
-.darkmode code {
-	background-color: #2F3136;
-}
-
 code {
 	font-family: "SFMono-Regular",Menlo,Consolas,Monospace;
 	font-weight: 400;
-	background-color: #F2F3F5;
+	background-color: #2F3136;
 	border: 1px solid #202225;
-}
-
-.darkmode div.highlighter-rouge {
-	background-color: #2F3136
 }
 
 div.highlighter-rouge {
@@ -18,7 +10,7 @@ div.highlighter-rouge {
 	margin-top: 0;
 	margin-bottom: 0.75rem;
 	overflow-x: auto;
-	background-color: #F2F3F5;
+	background-color: #2F3136;
 	border-radius: 4px;
 	box-shadow: none;
 	-webkit-overflow-scrolling: touch;
@@ -31,12 +23,6 @@ div.highlighter-rouge {
 		padding: 0;
 		margin: 0;
 		border: 0;
-	}
-}
-
-.darkmode .highlight {
-	.p, .err {
-		color: #4F545C
 	}
 }
 
@@ -57,9 +43,9 @@ div.highlighter-rouge {
 		color: #2AA198;
 	} // keyword.constant // Boolean Values //
 	.p {
-		color: #C7CCD1;
+		color: #4F545C;
 	} // punctuation //
 	.err {
-		color: #C7CCD1;
+		color: #4F545C;
 	} // error //
 }
