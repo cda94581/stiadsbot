@@ -3,3 +3,23 @@ This is currently in Alpha, quite literally everything is a WIP lol
 
 ## Notes
 - Code Blocks must have both the `code` and `largecode` class.
+
+## To-Do
+- [ ] Top Navigation
+- [ ] Individual Bot Navigation
+- [ ] Responsive Design
+- [ ] Awesome Bot
+	- [x] Installation
+	- [x] config.json
+	- [x] Contributing
+	- [ ] Commands & Other Features Documentation
+- [ ] stiadsbot
+	- [x] Installation
+	- [x] config.json
+	- [x] Contributing
+	- [ ] Commands & Other Features Documentation
+- [ ] cdaBot
+	- [ ] Installation
+	- [ ] config.json
+	- [ ] Contributing
+	- [ ] Commands & Other Features Documentation
