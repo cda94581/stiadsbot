@@ -1,5 +1,3 @@
-const fs = require('fs');
-const path = require('path');
 const { presence } = require('../config.json');
 
 module.exports = client => {
@@ -9,6 +7,6 @@ module.exports = client => {
 		client.user.setPresence({ activity: { name: presence.name, type: presence.type }, status: presence.status});
 		setTimeout(() => {
 			repeat();
-		}, 86400000);
+		}, 3600000);
 	}
 }
