@@ -12,14 +12,17 @@ This is currently in Alpha, quite literally everything is a WIP lol
 	- [x] Installation
 	- [x] config.json
 	- [x] Contributing
-	- [ ] Commands & Other Features Documentation
+	- [ ] Commands Documentation
+	- [ ] Features Documentation
 - [ ] stiadsbot
 	- [x] Installation
-	- [ ] config.json
+	- [x] config.json
 	- [x] Contributing
-	- [ ] Commands & Other Features Documentation
+	- [ ] Commands Documentation
+	- [ ] Features Documentation
 - [ ] cdaBot
 	- [ ] Installation
 	- [ ] config.json
 	- [ ] Contributing
-	- [ ] Commands & Other Features Documentation
+	- [ ] Commands Documentation
+	- [ ] Features Documentation
