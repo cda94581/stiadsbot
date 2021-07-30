@@ -21,6 +21,7 @@ Some commands shouldn't be able to be executed by all members. These define the 
 This is an example of the command used in action.
 
 ## List of Commands
+
 | Command | Aliases | Usage | Description | Required Permissions | Example & Result |
 | ------- | ------- | ----- | ----------- | -------------------- | ---------------- |
 | `eval` | N/A | `eval <JavaScript Code>` | Execute a line of JavaScript code, can be useful for single-use configuration | Administrator | WIP |
