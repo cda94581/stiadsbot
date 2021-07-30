@@ -114,3 +114,7 @@ Contributions are welcome, and they're fairly simple, however it is beyond the s
 #### Members Joining and Leaving
 - [x] Members Joining
 - [x] Members Leaving
+
+## Version Milestones
+- [ ] 0.5.0 - Moderation & Admin Complete
+- [ ] 1.0.0 - Project Plans Complete
