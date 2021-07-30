@@ -7,7 +7,7 @@ title: config.json
 	"token": "STRING",
 	"welcomechannel": "STRING OF ID",
 	"levelinfo": {
-		"levels": [	"INT" ],
+		"levels": [ "INT" ],
 		"roles": [ "STRINGS OF IDS" ],
 		"blacklist": [ "STRINGS OF IDS" ],
 		"mysqlinfo": {
