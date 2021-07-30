@@ -83,6 +83,8 @@ Contributions are welcome, and they're fairly simple, however it is beyond the s
 - [ ] Set XP
 
 ### Logging to Add
+- [ ] Make Logging Cleaner
+
 #### Server Events
 - [ ] Channel Creation
 - [ ] Updated Channel
