@@ -27,7 +27,7 @@ module.exports = async member => {
 			index.log(member, new Discord.MessageEmbed().setColor('#00cccc').setTitle('Member Rejoined').setDescription(desc).setTimestamp(Date.now()));
 			console.log(`> ${Date().toString()}\t-\tMember Rejoined: ${desc}`);
 		
-			member.client.channels.cache.get(welcomeChannel).send(`Oh hey there, ${member}, welcome back to **${member.guild.name}! You are now member #${member.guild.memberCount}.`);
+			member.client.channels.cache.get(welcomeChannel).send(`Oh hey there, ${member}, welcome back to **${member.guild.name}**! You are now member #${member.guild.memberCount}.`);
 		} else {
 			index.log(member, new Discord.MessageEmbed().setColor('#00cccc').setTitle('Member Joined').setDescription(desc).setTimestamp(Date.now()));
 			console.log(`> ${Date().toString()}\t-\tMember Joined: ${desc}`);
