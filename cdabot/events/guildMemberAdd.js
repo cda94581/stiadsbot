@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const fs = require('fs');
+const fs = require('fs-extra');
 const path = require('path');
 const { welcomeChannel } = require('../config.json');
 const bannedwords = require('../bannedwords.json');
@@ -14,13 +14,13 @@ module.exports = async member => {
 	}
 	const index = require('./index');
 
-	if (member.id != member.guild.ownerID) {
-		if (bannedwords.some(phrase => member.displayName.toLowerCase().includes(phrase))) member.setNickname( 'Name', 'Inappropriate Name' );
-	}
+	if (member.id != member.guild.ownerID) if (bannedwords.some(phrase => member.displayName.toLowerCase().includes(phrase))) member.setNickname( 'Name', 'Inappropriate Name' );
 
-	const desc = `${member.user} - ${member.user.username}#${member.user.discriminator}\n**ID**: ${member.id}\n**Account Created**: ${member.user.createdAt.UTC()}`;
+	const desc = `${member.user} - ${member.user.username}#${member.user.discriminator}\n**ID**: ${member.id}\n**Account Created**: ${member.user.createdAt}`;
 
-	fs.readFile(path.resolve(__dirname, '../_data/member_history.json'), (err, data) => {
+	const filePath = path.resolve(__dirname, '../_data/member_history.json');
+	if (!fs.existsSync(filePath)) fs.outputFileSync(filePath, '[]', 'utf-8', err => { if (err) throw err; });
+	fs.readFile(filePath, (err, data) => {
 		if (err) throw err;
 		let memberhistory = JSON.parse(data);
 		if (memberhistory.includes(member.id)) {
