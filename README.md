@@ -12,7 +12,7 @@ This is currently in Alpha, quite literally everything is a WIP lol
 	- [x] Installation
 	- [x] config.json
 	- [x] Contributing
-	- [ ] Commands Documentation
+	- [x] Commands Documentation
 	- [ ] Features Documentation
 - [ ] stiadsbot
 	- [x] Installation
