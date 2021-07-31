@@ -6,11 +6,6 @@
 		"levels": [	"INSERT LEVELS TO GET ROLES HERE" ],
 		"roles": [ "INSERT ROLES CORRESPONDING HERE" ],
 		"blacklist": [	"INSERT BLACKLISTED CHANNELS HERE" ],
-		"mysqlinfo": {
-			"host": "INSERT MYSQL DATABASE HOST HERE",
-			"user": "INSERT USERNAME HERE",
-			"password": "INSERT PASSWORD HERE"
-		},
 		"userblacklist": [ "INSERT BLACKLISTED USERS HERE" ]
 	},
 	"feedback_channel": "YOUR FEEDBACK CHANNEL ID HERE",

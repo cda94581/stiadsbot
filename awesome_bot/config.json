@@ -5,12 +5,7 @@
 	"levelinfo": {
 		"levels": [	"INSERT LEVELS TO GET ROLES HERE (INT)"	],
 		"roles": [ "INSERT ROLES CORRESPONDING HERE (STRINGS OF IDS)" ],
-		"blacklist": [	"INSERT BLACKLISTED CHANNELS HERE (STRINGS OF IDS)"	],
-		"mysqlinfo": {
-			"host": "HOST OF MYSQL DATABASE (IF ON SAME COMPUTER, USE LOCALHOST)",
-			"user": "USERNAME OF MYSQL DATABASE",
-			"password": "PASSWORD OF MYSQL DATABASE"
-		}
+		"blacklist": [	"INSERT BLACKLISTED CHANNELS HERE (STRINGS OF IDS)"	]
 	},
 	"reactionroles": [
 		{

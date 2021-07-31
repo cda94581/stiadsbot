@@ -1,31 +1,28 @@
 const Discord = require('discord.js');
-const mysql = require('mysql');
-const { levelinfo } = require('../config.json');
+const fs = require('fs');
+const path = require('path');
 
 module.exports = {
 	name: 'leaderboard',
 	description: 'Server rank leaderboard',
 	type: 'leveling',
 	execute(message, args) {
-		const con = mysql.createConnection({
-			host: levelinfo.mysqlinfo.host,
-			user: levelinfo.mysqlinfo.user,
-			password: levelinfo.mysqlinfo.password,
-			database: 'stiadsbot_leveling'
-		});
+		const levelFiles = fs.readdirSync(path.resolve(__dirname, '../_data/leveling'), 'utf-8').filter(f => f.endsWith('.json'));
+		let levelData = [];
+		for (file of levelFiles) {
+			const f = require(`../_data/leveling/${file}`);
+			levelData.push(f);
+		}
+		levelData.sort((a, b) => b.level - a.level || b.xp - a.xp);
 
-		con.connect(err => {
-			if (err) throw err;
-			const sql = `SELECT * FROM stiads_xp ORDER BY level DESC, xp DESC`;
-			con.query(sql, (err, rows) => {
-				if (err) throw err;
-				con.end();
-				let data = '**PLACE. USER - LEVEL/XP**\n';
-				for (let i in rows) {
-					if (i < 20) data += `${i*1+1}. <@!${rows[i].id}> - ${rows[i].level}/${rows[i].xp}\n`;
-				}
-				message.channel.send(new Discord.MessageEmbed().setColor('#ff0000').setTitle('STIADS:eyes: Bot Leaderboard').setDescription(data));
-			});
-		});
+		let data = ['**PLACE. USER - LEVEL/XP - MESSAGES**\n'];
+		for (i in levelData) {
+			let dataIndex = Math.floor(i / 20);
+			if (!data[dataIndex])data[dataIndex] = '**PLACE. USER - LEVEL/XP - MESSAGES**\n';
+			data[dataIndex] += `${i*1+1}. <@!${levelData[i].id}> - ${levelData[i].level}/${levelData[i].xp} - ${levelData[i].messages}\n`;
+		}
+		
+		if (args.length) return message.channel.send(new Discord.MessageEmbed().setColor('#ff0000').setTitle('STIADS:eyes: Bot Leaderboard').setDescription(data[args[0] - 1]).setFooter(`Leaderboard Page ${args[0]}/${data.length}`));
+		message.channel.send(new Discord.MessageEmbed().setColor('#ff0000').setTitle('STIADS:eyes: Bot Leaderboard').setDescription(data[0]).setFooter(`Leaderboard Page 1/${data.length}`));
 	},
 };
