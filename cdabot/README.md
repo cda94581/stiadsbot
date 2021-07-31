@@ -10,8 +10,8 @@
 	- You may need to install `unzip` - `sudo apt-get install unzip`
 4. `cd` to the file path
 5. Modify the [`config.json`](config.json) file to fit your needs - `nano config.json` to edit. To write, press `CTRL+O`, to close, press `CTRL+X`
-6. Download the packages if you haven't already - `npm i discord.js fs-extra`
-7. Run `node index.js`
+6. Download the packages if you haven't already - `npm i`
+7. Run `node .`
 
 ### Windows 10
 1. Download [Node.js](https://nodejs.org/) (Recommended stable version is enough) and install with **NPM**
@@ -20,8 +20,8 @@
 4. Unzip the file
 5. Modify the [`config.json`](config.json) file to fit your needs
 6. `cd` to the file path in **Command Prompt**
-7. Download the packages if you haven't already - `npm i discord.js fs-extra`
-8. Run `node index.js`
+7. Download the packages if you haven't already - `npm i`
+8. Run `node .`
 
 Packages required:
 - discord.js
