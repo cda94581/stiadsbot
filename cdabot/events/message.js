@@ -30,7 +30,7 @@ module.exports = message => {
 
 	function leveling() {
 		const author = message.author.id;
-		if (levelinfo.blacklist.channels.includes(message.channel.id) || levelinfo.blacklist.users.includes(author) || message.channel.type == 'dm' || message.content.startsWith(prefix)) return;
+		if (levelinfo.blacklist.channels.includes(message.channel.id) || levelinfo.blacklist.users.includes(author) || message.channel.type == 'dm' || message.content.startsWith(prefix) || message.author.bot) return;
 
 		if (xpCooldowns.has(author)) return;
 
