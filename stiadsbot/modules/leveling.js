@@ -9,15 +9,15 @@ module.exports = message => {
 
 	if (xpCooldowns.has(author)) return;
 
-	// xpCooldowns.add(author);
-	// setTimeout(() => {
-	// 	xpCooldowns.delete(author);
-	// }, 60000);
+	xpCooldowns.add(author);
+	setTimeout(() => {
+		xpCooldowns.delete(author);
+	}, 60000);
 
 	const filePath = path.resolve(__dirname, `../_data/leveling/${author}.json`);
 
 	if (!fs.existsSync(filePath)) {
-		fs.outputFileSync(filePath, `{"id":"${author}","level":0,"xp":0,"messages":0}`, 'utf-8', err => {
+		fs.outputFileSync(filePath, `{"id":"${author}","level":0,"xp":0}`, 'utf-8', err => {
 			if (err) throw err;
 		});
 	}
@@ -30,7 +30,6 @@ module.exports = message => {
 		const xpToLevel = 5 * (text.level ** 2) + 50 * text.level + 100;
 		if (xpToLevel <= text.xp) {
 			text.xp -= xpToLevel;
-			text.level++;
 			message.channel.send(`Nice chatting, ${message.author}, you've advanced to level ${text.level}!`);
 		}
 		if (levelinfo.levels.includes(text.level)) {

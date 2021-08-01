@@ -17,7 +17,7 @@ module.exports = message => {
 	const filePath = path.resolve(__dirname, `../_data/leveling/${author}.json`);
 
 	if (!fs.existsSync(filePath)) {
-		fs.outputFileSync(filePath, `{"id":"${author}","level":0,"xp":0,"messages":0}`, 'utf-8', err => {
+		fs.outputFileSync(filePath, `{"id":"${author}","level":0,"xp":0}`, 'utf-8', err => {
 			if (err) throw err;
 		});
 	}
@@ -26,7 +26,6 @@ module.exports = message => {
 		let text = JSON.parse(data);
 		const addXp = Math.floor(Math.random() * 11) + 15;
 		text.xp += addXp;
-		text.messages++;
 		const xpToLevel = 5 * (text.level ** 2) + 50 * text.level + 100;
 		if (xpToLevel <= text.xp) {
 			text.xp -= xpToLevel;

@@ -15,11 +15,11 @@ module.exports = {
 		}
 		levelData.sort((a, b) => b.level - a.level || b.xp - a.xp);
 
-		let data = ['**PLACE. USER - LEVEL/XP - MESSAGES**\n'];
+		let data = ['**PLACE. USER - LEVEL/XP**\n'];
 		for (i in levelData) {
 			let dataIndex = Math.floor(i / 20);
-			if (!data[dataIndex])data[dataIndex] = '**PLACE. USER - LEVEL/XP - MESSAGES**\n';
-			data[dataIndex] += `${i*1+1}. <@!${levelData[i].id}> - ${levelData[i].level}/${levelData[i].xp} - ${levelData[i].messages}\n`;
+			if (!data[dataIndex])data[dataIndex] = '**PLACE. USER - LEVEL/XP**\n';
+			data[dataIndex] += `${i*1+1}. <@!${levelData[i].id}> - ${levelData[i].level}/${levelData[i].xp}\n`;
 		}
 		
 		if (args.length) return message.channel.send(new Discord.MessageEmbed().setColor('#ff0000').setTitle('STIADS:eyes: Bot Leaderboard').setDescription(data[args[0] - 1]).setFooter(`Leaderboard Page ${args[0]}/${data.length}`));
