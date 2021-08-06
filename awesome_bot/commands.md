@@ -25,7 +25,7 @@ This is an example of the command used in action.
 | Command | Aliases | Usage | Description | Required Permissions | Example & Result |
 | ------- | ------- | ----- | ----------- | -------------------- | ---------------- |
 | `eval` | N/A | `eval <JavaScript Code>` | Execute a line of JavaScript code, can be useful for single-use configuration | Administrator | WIP |
-| `help` | `commands` | `help [Command Name]` or `commands [Command Name]` | Gets a list of all commands to use, or a description of a command if an argument is provided | N/A | WIP |
+| `help` | `commands` | `help [Command Name]` | Gets a list of all commands to use, or a description of a command if an argument is provided | N/A | WIP |
 | `leaderboard` | N/A | `leaderboard` | Gets the leaderboard for the leveling system. Only displays the first 20 members. | N/A | WIP |
 | `ping` | N/A | `ping` | Checks to see the response time for Awesome Bot, and if it's still alive. | N/A | WIP |
 | `presence` | N/A | `presence dnd|idle|invisible|online` | Sets the bot to appear online, idle, do not disturb, or invisible. | Administrator | WIP |
