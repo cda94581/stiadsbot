@@ -40,6 +40,7 @@ Contributions are welcome, and they're fairly simple, however it is beyond the s
 ### General
 - [x] Basic Outline
 - [x] Welcome Messages
+- [x] Welcome Back Messages
 - [x] Command Handler
 - [x] FAQ Command Handler
 - [x] Trigger Handler
@@ -52,7 +53,6 @@ Contributions are welcome, and they're fairly simple, however it is beyond the s
 - [x] Moderator Command Handler
 - [ ] Link Filtering
 - [ ] Leave/Rejoin Notifications for Moderators
-- [ ] Welcome Back Messages
 - [ ] Event Responses
 - [ ] Logging
 - [x] Ban
