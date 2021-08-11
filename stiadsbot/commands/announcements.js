@@ -23,7 +23,7 @@ module.exports = {
 		personalEmbed = new Discord.MessageEmbed().setColor('#ff0000').setTitle('Message from cda94581 - 2021/01/01').setDescription('Hey all! For the new 2021 year, I have resolved to start limiting my time on Discord to 5 minutes per day, max. Due to this, I won\'t have as much time to be checking messages, so if there is anything you\' like me to see, feel free to Ping me or DM me.\nDon\'t worry about me, this has been my choice. Like with an alcohol or smoking addiction, I have been addicted to non-essential computer things to the point where it could be harmful. As such, I will break my addiction to that in a similar fashion to alcohol, extreme reduction of usage, or none at all. After I can control it to the point where I am no longer constantly thinking of, and inevitably pouting, these things, I can then work on returning to a much more balanced life.\n\nI plan to still continue projects I\'ve started, like this bot, and many other things that aren\'t related to this story. This includes cda94581 modifications, however as I won\'t be online as often, I\'d recommend refraining from any Nickname or Status modifications, as I wouldn\'t be able to talk so others can see. You\'ll have to get creative as to getting others to see, if you wanted. Perhaps an `-av` command, or something else.\nI also want to just say a massive thank you to all of you for being my friends! Even though I\'ll be online less, you will all have a special place in my heart!\n\nHave a Happy New Year,\n-cda94581').setTimestamp('2021-01-01T00:00:00.000Z'); //Message from cda94581 - 2021/01/01
 			
 		//Send the Embed
-		message.channel.send(personalEmbed);
-		message.channel.send(announcementsEmbed);
+		message.channel.send({ embeds: [ personalEmbed ]});
+		message.channel.send({ embeds: [ announcementsEmbed ]});
 	},
 };

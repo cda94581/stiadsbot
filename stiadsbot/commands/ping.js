@@ -4,6 +4,6 @@ module.exports = {
 	type: 'info',
 	execute(message, args) {
 		var ping = Math.round(message.guild.shard.ping);
-		message.channel.send(`Pong. \`${ping}ms\``);
+		message.channel.send({ content: `Pong. \`${ping}ms\`` });
 	},
 };

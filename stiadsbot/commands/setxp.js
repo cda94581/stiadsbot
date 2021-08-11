@@ -10,7 +10,7 @@ module.exports = {
 	perms: [ 'ADMINISTRATOR' ],
 	usage: '<USER> <LEVEL> <XP>',
 	execute(message, args, client) {
-		message.channel.send('WIP');
+		message.channel.send({ content: 'WIP' });
 		// const con = mysql.createConnection({
 		// 	host: levelinfo.mysqlinfo.host,
 		// 	user: levelinfo.mysqlinfo.user,

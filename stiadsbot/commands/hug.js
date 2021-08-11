@@ -10,9 +10,9 @@ module.exports = {
 	usage: '<mention users>',
 	type: 'action',
 	execute(message, args) {
-		if (!message.mentions.users.size) return message.channel.send('You need to mention users');
+		if (!message.mentions.users.size) return message.channel.send({ content: 'You need to mention users' });
 		const randomNum = Math.floor(Math.random() * hug.length);
 		const hugEmbed = new Discord.MessageEmbed().setColor('#ff0000').setTitle('Lazy Title').setThumbnail(hug[randomNum]);
-		message.channel.send(hugEmbed);
+		message.channel.send({ embeds: [ hugEmbed ]});
 	},
 };

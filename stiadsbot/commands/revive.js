@@ -4,6 +4,6 @@ module.exports = {
 	aliases: [ 'revive-chat' ],
 	type: 'fun',
 	execute(message, args) {
-		message.channel.send('no.');
+		message.channel.send({ content: 'no.' });
 	},
 };

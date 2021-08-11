@@ -6,6 +6,6 @@ module.exports = {
 	args: true,
 	type: 'fun',
 	execute(message, args) {
-		message.channel.send(responses[Math.floor(Math.random() * responses.length)]);
+		message.channel.send({ content: responses[Math.floor(Math.random() * responses.length)] });
 	},
 };

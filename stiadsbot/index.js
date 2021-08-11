@@ -8,7 +8,7 @@ const Discord = require('discord.js');
 const {	prefix,	token, welcomechannel, reactionroles } = require('./config.json');
 
 // Create a new Discord client
-const client = new Discord.Client({ partials: ['CHANNEL', 'MESSAGE', 'REACTION']});
+const client = new Discord.Client({ partials: ['CHANNEL', 'MESSAGE', 'REACTION'], intents: [ Discord.Intents.FLAGS.DIRECT_MESSAGES, Discord.Intents.FLAGS.DIRECT_MESSAGE_REACTIONS, Discord.Intents.FLAGS.DIRECT_MESSAGE_TYPING, Discord.Intents.FLAGS.GUILDS, Discord.Intents.FLAGS.GUILD_BANS, Discord.Intents.FLAGS.GUILD_EMOJIS_AND_STICKERS, Discord.Intents.FLAGS.GUILD_INTEGRATIONS, Discord.Intents.FLAGS.GUILD_INVITES, Discord.Intents.FLAGS.GUILD_MEMBERS, Discord.Intents.FLAGS.GUILD_MESSAGES, Discord.Intents.FLAGS.GUILD_MESSAGE_REACTIONS, Discord.Intents.FLAGS.GUILD_MESSAGE_TYPING, Discord.Intents.FLAGS.GUILD_PRESENCES, Discord.Intents.FLAGS.GUILD_VOICE_STATES, Discord.Intents.FLAGS.GUILD_WEBHOOKS ]});
 client.commands = new Discord.Collection();
 
 // Adds all command files that are in the "commands" directory and ends with ".js"
@@ -37,13 +37,13 @@ client.once('ready', () => {
 
 // Welcome messages
 client.on('guildMemberAdd', member => {
-	member.guild.channels.cache.find(channel => channel.id == welcomechannel).send(`Welcome ${member}, to ${member.guild.name}. Please be sure to read <#760613526754164777> before chatting with us, thanks! You are member #${member.guild.memberCount}!`);
+	member.guild.channels.cache.find(channel => channel.id == welcomechannel).send({ content: `Welcome ${member}, to ${member.guild.name}. Please be sure to read <#760613526754164777> before chatting with us, thanks! You are member #${member.guild.memberCount}!` });
 	// Tells the console the user that joined
 	console.log(`${member.user.username} joined`);
 });
 
 // When a client sends a message
-client.on('message', async message => {
+client.on('messageCreate', async message => {
 	const leveling = require('./modules/leveling'); // Loads leveling.js file
 	leveling(message); // Runs leveling function each time a message is sent
 	const suggestions = require('./modules/suggestions'); suggestions(message);
@@ -62,13 +62,15 @@ client.on('message', async message => {
 	if (!command) return;
 
 	// If the command is only for guilds/servers and was executed in dms
-	if (command.guildOnly && message.channel.type === 'dm') {
-		return message.channel.send('I can\'t execute that command inside DMs!');
+	if (command.guildOnly && message.channel.type === 'DM') {
+		return message.channel.send({ content: 'I can\'t execute that command inside DMs!' });
 	}
   
 	// If command needs to have perms to manage messages
-	if (command.perms && !message.member.hasPermission(command.perms)) {
-		return message.channel.send('nou.');
+	if (command.perms) {
+		for ( i in command.perms ) {
+			if (!message.member.permissions.has(eval(`Discord.Permissions.FLAGS.${command.perms[i]}`))) return message.channel.send({ content: 'nou.' });
+		}
 	}
   
 	// If the command has arguments and is not the required length of the arguments
@@ -81,7 +83,7 @@ client.on('message', async message => {
 		}
 
 		// Send error
-		return message.channel.send(reply);
+		return message.channel.send({ content: reply });
 	}
 
 	// Cooldowns
@@ -98,7 +100,7 @@ client.on('message', async message => {
 
 		if (now < expirationTime) {
 			const timeLeft = (expirationTime - now) / 1000;
-			return message.channel.send(`Please wait ${timeLeft.toFixed(1)} more second(s) before reusing the \`${command.name}\` command.`);
+			return message.channel.send({ content: `Please wait ${timeLeft.toFixed(1)} more second(s) before reusing the \`${command.name}\` command.` });
 		}
 	}
 
@@ -106,7 +108,7 @@ client.on('message', async message => {
 		command.execute(message, args, client);
 	} catch (error) {
 		console.error(error);
-		message.channel.send('There was an error trying to execute that command!');
+		message.channel.send({ content: 'There was an error trying to execute that command!' });
 	}
 });
 

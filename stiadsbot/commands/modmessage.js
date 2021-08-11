@@ -12,10 +12,10 @@ module.exports = {
 	execute(message, args, client) {
 		const modmessageEmbed = new Discord.MessageEmbed().setColor('#ff0000').setTitle('Incoming Mod Message').setDescription(message.content.slice(`${prefix}modmessage ${args[0]}`.length));
 		try {
-			client.users.cache.get(args[0]).send(modmessageEmbed);
-			message.channel.send('Message Sent Successfully');
+			client.users.cache.get(args[0]).send({ embeds: [ modmessageEmbed ]});
+			message.channel.send({ content: 'Message Sent Successfully' });
 		} catch {
-			message.channel.send('I couldn\'t DM that user');
+			message.channel.send({ content: 'I couldn\'t DM that user' });
 		}
 	},
 };

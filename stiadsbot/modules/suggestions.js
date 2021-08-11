@@ -1,9 +1,9 @@
 const { feedback_channel } = require('../config.json');
 
-module.exports = message => {
+module.exports = async message => {
 	if (message.author.bot || !message.content.toLowerCase().startsWith('suggestion')) return;
 	if (message.channel.id == feedback_channel) {
-		message.react('⬆');
-		message.react('⬇');
+		await message.react('⬆');
+		await message.react('⬇');
 	};
 }

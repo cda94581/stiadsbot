@@ -5,7 +5,7 @@ const path = require('path');
 
 module.exports = message => {
 	const author = message.author.id;
-	if (levelinfo.blacklist.includes(message.channel.id) || levelinfo.userblacklist.includes(author) || message.channel.type == 'dm' || message.content.startsWith(prefix) || message.author.bot ) return;
+	if (levelinfo.blacklist.includes(message.channel.id) || levelinfo.userblacklist.includes(author) || message.channel.type == 'DM' || message.content.startsWith(prefix) || message.author.bot ) return;
 
 	if (xpCooldowns.has(author)) return;
 
@@ -30,7 +30,8 @@ module.exports = message => {
 		const xpToLevel = 5 * (text.level ** 2) + 50 * text.level + 100;
 		if (xpToLevel <= text.xp) {
 			text.xp -= xpToLevel;
-			message.channel.send(`Nice chatting, ${message.author}, you've advanced to level ${text.level}!`);
+			text.level++;
+			message.channel.send({ content: `Nice chatting, ${message.author}, you've advanced to level ${text.level}!` });
 		}
 		if (levelinfo.levels.includes(text.level)) {
 			const roleToAdd = levelinfo.roles[levelinfo.levels.indexOf(text.level)];

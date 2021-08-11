@@ -21,7 +21,7 @@ module.exports = {
         if (actualArgs.length - 1 >= 9) pollOptions += '9. ' + actualArgs[9] + "\n";
         if (actualArgs.length - 1 >= 10) pollOptions += '10. ' + actualArgs[10] + "\n";
         const pollEmbed = new Discord.MessageEmbed().setColor('#ff0000').setTitle('Poll! (Beta) - ' + actualArgs[0]).setDescription('**Options:**\n' + pollOptions);
-        message.channel.send(pollEmbed).then(sentEmbed => {
+        message.channel.send({ embeds: [ pollEmbed ]}).then(sentEmbed => {
             if (actualArgs.length - 1 >= 1) sentEmbed.react('1️⃣');
             if (actualArgs.length - 2 >= 1) sentEmbed.react('2️⃣');
             if (actualArgs.length - 3 >= 1) sentEmbed.react('3️⃣');
