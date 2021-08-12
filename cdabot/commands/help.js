@@ -9,7 +9,6 @@ module.exports = {
 	execute (message, args) {
 		let data = [];
 		const {	commands } = message.client;
-		let helpEmbed;
 		if (args.length) { // If it asks for a specific command help
 			const name = args[0].toLowerCase();
 			const command = commands.get(name) || commands.find(c => c.aliases && c.aliases.includes(name));
