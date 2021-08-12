@@ -1,5 +1,4 @@
 const Discord = require('discord.js');
-const mysql = require('mysql');
 const { levelinfo } = require('../config.json');
 
 module.exports = {
