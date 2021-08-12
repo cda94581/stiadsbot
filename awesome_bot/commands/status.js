@@ -9,13 +9,13 @@ module.exports = {
 			status += [args[i] + ' '];
 		}
 		switch (statusType) {	
-			case 'competing': message.client.user.setActivity( status, { type: 'COMPETING' }).then(message.channel.send('Success!')); break;
-			case 'custom_status': message.client.user.setActivity( status, { type: 'CUSTOM_STATUS' }).then(message.channel.send('Success!')); break;
-			case 'listening': message.client.user.setActivity( status, { type: 'LISTENING' }).then(message.channel.send('Success!')); break;
-			case 'playing': message.client.user.setActivity( status, { type: 'PLAYING' }).then(message.channel.send('Success!')); break;
-			case 'streaming': message.client.user.setActivity( status, { type: 'STREAMING' }).then(message.channel.send('Success!')); break;
-			case 'watching': message.client.user.setActivity( status, { type: 'WATCHING' }).then(message.channel.send('Success!')); break;
-			default: return message.channel.send('Please enter a valid status type (`competing`, `custom_status`, `listening`, `playing`, `streaming`, `watching`)');
+			case 'competing': message.client.user.setActivity( status, { type: 'COMPETING' }).then(message.channel.send({ content: 'Success!' })); break;
+			case 'custom_status': message.client.user.setActivity( status, { type: 'CUSTOM_STATUS' }).then(message.channel.send({ content: 'Success!' })); break;
+			case 'listening': message.client.user.setActivity( status, { type: 'LISTENING' }).then(message.channel.send({ content: 'Success!' })); break;
+			case 'playing': message.client.user.setActivity( status, { type: 'PLAYING' }).then(message.channel.send({ content: 'Success!' })); break;
+			case 'streaming': message.client.user.setActivity( status, { type: 'STREAMING' }).then(message.channel.send({ content: 'Success!' })); break;
+			case 'watching': message.client.user.setActivity( status, { type: 'WATCHING' }).then(message.channel.send({ content: 'Success!' })); break;
+			default: return message.channel.send({ content: 'Please enter a valid status type (`competing`, `custom_status`, `listening`, `playing`, `streaming`, `watching`)' });
 		}
 	},
 };

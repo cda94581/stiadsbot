@@ -26,7 +26,7 @@ module.exports = client => {
 			if (msg.body.eventName === 'PlayerMessage') {
 				if (msg.body.properties.Sender === 'External') return;
 				const embed = new Discord.MessageEmbed().setColor('#0000ff').setTitle(`${msg.body.properties.Sender}`).setDescription(`${msg.body.properties.Message}`).setTimestamp(Date.now());
-				client.channels.cache.find(channel => channel.id == acchatchannel).send(embed);
+				client.channels.cache.find(channel => channel.id == acchatchannel).send({ embeds: [ embed ]});
 			}
 		});
 	});

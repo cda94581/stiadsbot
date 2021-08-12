@@ -6,6 +6,6 @@ module.exports = {
 	aliases: [ 'github' ],
 	execute(message, args) {
 		const repoEmbed = new Discord.MessageEmbed().setColor('##77ff').setTitle('Github Repository').setURL('https://github.com/cda94581/discord_bots/tree/main/awesome_bot').setDescription('Learn how this bot was made, suggest additions, report bugs');
-		message.channel.send(repoEmbed);
+		message.channel.send({ embeds: [ repoEmbed ]});
 	},
 };

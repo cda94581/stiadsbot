@@ -22,7 +22,7 @@ module.exports = {
 			data[dataIndex] += `${i*1+1}. <@!${levelData[i].id}> - ${levelData[i].level}/${levelData[i].xp}\n`;
 		}
 		
-		if (args.length) return message.channel.send(new Discord.MessageEmbed().setColor('#0077ff').setTitle('Awesome Bot Leaderboard').setDescription(data[args[0] - 1]).setFooter(`Leaderboard Page ${args[0]}/${data.length}`));
-		message.channel.send(new Discord.MessageEmbed().setColor('#0077ff').setTitle('Awesome Bot Leaderboard').setDescription(data[0]).setFooter(`Leaderboard Page 1/${data.length}`));
+		if (args.length) return message.channel.send({ embeds: [ new Discord.MessageEmbed().setColor('#0077ff').setTitle('Awesome Bot Leaderboard').setDescription(data[args[0] - 1]).setFooter(`Leaderboard Page ${args[0]}/${data.length}`) ]});
+		message.channel.send({ embeds: [ new Discord.MessageEmbed().setColor('#0077ff').setTitle('Awesome Bot Leaderboard').setDescription(data[0]).setFooter(`Leaderboard Page 1/${data.length}`) ]});
 	},
 };
