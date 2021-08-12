@@ -16,10 +16,10 @@ module.exports = message => {
 	}
 
 	function moderation() {
-		if (message.channel.type == 'dm' || message.author.id == message.guild.ownerID) return true;
+		if (message.channel.type == 'DM' || message.author.id == message.guild.ownerID) return true;
 		if (bannedwords.some(phrase => message.content.toLowerCase().includes(phrase))) {
 			message.delete();
-			message.channel.send(`${message.author}, you aren't allowed to say this phrase.`).then(sentMsg => {
+			message.channel.send({ content: `${message.author}, you aren't allowed to say this phrase.` }).then(sentMsg => {
 				setTimeout(() => {
 					sentMsg.delete();
 				}, 5000);
@@ -30,7 +30,7 @@ module.exports = message => {
 
 	function leveling() {
 		const author = message.author.id;
-		if (levelinfo.blacklist.channels.includes(message.channel.id) || levelinfo.blacklist.users.includes(author) || message.channel.type == 'dm' || message.content.startsWith(prefix) || message.author.bot) return;
+		if (levelinfo.blacklist.channels.includes(message.channel.id) || levelinfo.blacklist.users.includes(author) || message.channel.type == 'DM' || message.content.startsWith(prefix) || message.author.bot) return;
 
 		if (xpCooldowns.has(author)) return;
 
@@ -56,11 +56,11 @@ module.exports = message => {
 			if (xpToLevel <= text.xp) {
 				text.xp -= xpToLevel;
 				text.level++;
-				message.channel.send(`Nice chatting, ${message.author}, you've advanced to level ${text.level}!`);
+				message.channel.send({ content: `Nice chatting, ${message.author}, you've advanced to level ${text.level}!` });
 			}
 			if (levelinfo.levels.includes(text.level)) {
 				const roleToAdd = levelinfo.roles[levelinfo.levels.indexOf(text.level)];
-				const role = message.member.guild.roles.cache.find(role => role.id === roleToAdd);
+				const role = message.member.guild.roles.cache.find(role => role.id == roleToAdd);
 				message.member.roles.add(role);
 			}
 			fs.writeFile(filePath, JSON.stringify(text), 'utf-8', err => { if (err) throw err });
@@ -84,20 +84,17 @@ module.exports = message => {
 			valid = true;
 		} catch { }
 		if (valid && text.length > 60) {
-			message.channel.send(`Hey, ${message.member.displayName}, I've formatted the JSON for you!\n\`\`\`json\n${JSON.stringify(data, null, '\t')}\`\`\``);
+			message.channel.send({ content: `Hey, ${message.member.displayName}, I've formatted the JSON for you!\n\`\`\`json\n${JSON.stringify(data, null, '\t')}\`\`\`` });
 		}
 	}
 
 	function modmessaging() {
-		if (message.channel.type != 'dm' || message.author.bot) return;
-		let modmessageEmbed = new Discord.MessageEmbed().setColor('#ff0000').setTitle(`New Message: ${message.author.username}#${message.author.discriminator} - ${message.author.id}`).setDescription(message.content);
-		if (message.attachments) {
-			const attachments = message.attachments.map(m => m.url);
-			modmessageEmbed.attachFiles(attachments);
-		}
-		message.client.channels.cache.find(channel => channel.id == modmessagingchannel).send(modmessageEmbed);
+		if (message.channel.type != 'DM' || message.author.bot) return;
+		let modmessageEmbed = new Discord.MessageEmbed().setColor('#ff0000').setTitle(`New Message: ${message.author.tag} - ${message.author.id}`).setDescription(message.content);
+		const attachments = message.attachments.map(m => m.url);
+		message.client.channels.cache.find(channel => channel.id == modmessagingchannel).send({ embeds: [ modmessageEmbed ], files: attachments });
 		try {
-			message.channel.send('Message Sent!');
+			message.channel.send({ content: 'Message Sent!' });
 		} catch { }
 	}
 
@@ -109,26 +106,29 @@ module.exports = message => {
 		const command = message.client.commands.get(commandName) || message.client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName)); // Gets the command corresponding
 		if (!command) return; // If couldn't get a command
 
-		if (command.guildOnly && message.channel.type === 'dm') return message.channel.send('I can\'t execute this command inside DMs'); // If guildOnly
-		if (command.perms && !message.member.hasPermission(command.perms)) return message.channel.send('You don\'t have the permission to use this command'); // If requires certain permission
+		if (command.guildOnly && message.channel.type == 'DM') return message.channel.send({ content: 'I can\'t execute this command inside DMs' }); // If guildOnly
+		if (command.perms) {
+			for ( i in command.perms) {
+				if (!message.member.permissions.has(eval(`Discord.Permissions.FLAGS.${command.perms[i]}`))) return message.channel.send({ content: 'You don\'t have the permission to use this command' }); // If requires certain permission
+			}
+		}
 
 		// If required arguments, and doesn't have any
 		if (command.args && !args.length) {
 			let reply = 'You didn\'t provide any arguments';
 			if (command.usage) reply += `\nThe proper usage would be: \`${prefix}${command.name} ${command.usage}\``; // If has a usage, add it to the reply
-			return message.channel.send(reply); // Send reply
+			return message.channel.send({ content: reply }); // Send reply
 		}
 
 		// Attempts to execute command
 		try {
-			message.channel.startTyping();
+			message.channel.sendTyping();
 			setTimeout(() => {
-				message.channel.stopTyping(true);
 				return command.execute(message, args);
 			}, 2000);
 		} catch (error) {
 			console.error(error);
-			return message.channel.send('There was an error trying to execute that command');
+			return message.channel.send({ content: 'There was an error trying to execute that command' });
 		}
 	}
 
@@ -138,14 +138,13 @@ module.exports = message => {
 			if (trigger[1].type == 'exact' && !trigger[1].names.some(name => message.content.toLowerCase() == name)) return;
 			if (trigger[1].channels && !trigger[1].channels.some(channel => message.channel.id == channel)) return;
 			try {
-				message.channel.startTyping();
+				message.channel.sendTyping();
 				setTimeout(() => {
-					message.channel.stopTyping(true);
 					return trigger[1].execute(message);
 				}, 2000);
 			} catch (error) {
 				console.error(error);
-				return message.channel.send('There was an error trying to execute that trigger');
+				return message.channel.send({ content: 'There was an error trying to execute that trigger' });
 			}
 		}
 	}

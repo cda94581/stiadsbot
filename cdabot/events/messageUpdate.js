@@ -11,10 +11,10 @@ module.exports = async (oldMessage, newMessage) => {
 	}
 	const index = require('./index');
 
-	if (newMessage.channel.type != 'dm' && newMessage.author.id != newMessage.guild.ownerID) {
+	if (newMessage.channel.type != 'DM' && newMessage.author.id != newMessage.guild.ownerID) {
 		if (bannedwords.some(phrase => newMessage.content.toLowerCase().includes(phrase))) {
 			newMessage.delete();
-			newMessage.channel.send(`${newMessage.author}, you aren't allowed to say this phrase.`).then(sentMsg => {
+			newMessage.channel.send({ content: `${newMessage.author}, you aren't allowed to say this phrase.` }).then(sentMsg => {
 				setTimeout(() => {
 					sentMsg.delete();
 				}, 5000);

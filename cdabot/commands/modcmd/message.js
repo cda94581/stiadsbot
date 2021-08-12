@@ -10,15 +10,12 @@ module.exports = {
 	// roles: [ 'Moderator', 'Helper' ],
 	execute(message, args) {
 		const modmessageEmbed = new Discord.MessageEmbed().setColor('#cc0000').setTitle('Incoming Mod Message').setDescription(message.content.slice(`${prefix}modcmd message ${args[0]}`.length));
-		if (message.attachments){
-			const attachments = message.attachments.map(m => m.url);
-			modmessageEmbed.attachFiles(attachments);
-		}
+		const attachments = message.attachments.map(m => m.url);
 		try {
-			message.client.users.cache.get(args[0]).send(modmessageEmbed);
-			message.channel.send('Message Sent Successfully');
+			message.client.users.cache.get(args[0]).send({ embeds: [ modmessageEmbed ], files: attachments });
+			message.channel.send({ content: 'Message Sent Successfully' });
 		} catch {
-			message.channel.send('I couldn\'t DM that user');
+			message.channel.send({ content: 'I couldn\'t DM that user' });
 		}
 	},
 };

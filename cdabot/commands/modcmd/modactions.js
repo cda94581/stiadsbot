@@ -48,7 +48,7 @@ module.exports = {
 				data[i] = tempData.slice(0, 2000);
 				data.push(tempData.slice(2000, tempData.length));
 			}
-			message.channel.send(new Discord.MessageEmbed().setColor('#444444').setTitle('Moderator Actions').setDescription(data[i]));
+			message.channel.send({ embeds: [ new Discord.MessageEmbed().setColor('#444444').setTitle('Moderator Actions').setDescription(data[i]) ]});
 		}
 	}
 }

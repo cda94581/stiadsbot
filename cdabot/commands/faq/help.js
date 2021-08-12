@@ -11,12 +11,12 @@ module.exports = {
 		if (args.length) { // If it asks for a specific faq help
 			const name = args[0].toLowerCase();
 			const faq = faqs.get(name) || faqs.find(c => c.aliases && c.aliases.includes(name));
-			if (!faq) return message.channel.send('That\'s not a valid faq');
+			if (!faq) return message.channel.send({ content: 'That\'s not a valid faq' });
 			data[0] = '';
 			if (faq.aliases) data[0] += `**Aliases**: ${faq.aliases.join(', ')}\n`;
 			if (faq.description) data[0] += `**Description**: ${faq.description}\n`;
 			if (faq.usage) data[0] += `**Usage:** ${prefix}${faq.name} ${faq.usage}`;
-			return message.channel.send(new Discord.MessageEmbed().setColor('#44434d').setTitle(faq.name).setDescription(data[0]));
+			return message.channel.send({ embeds: [ new Discord.MessageEmbed().setColor('#44434d').setTitle(faq.name).setDescription(data[0]) ]});
 		}
 		data[0] = 'Here\'s a list of all my faqs:\n`';
 		data[0] += faqs.map(faq => faq.name).join('`\n`');
@@ -27,7 +27,7 @@ module.exports = {
 				data[i] = tempData.slice(0, 2000);
 				data.push(tempData.slice(2000, tempData.length));
 			}
-			message.channel.send(new Discord.MessageEmbed().setColor('#444444').setTitle('CdaBot FaQ Help').setDescription(data[i]));
+			message.channel.send({ embeds: [ new Discord.MessageEmbed().setColor('#444444').setTitle('CdaBot FaQ Help').setDescription(data[i]) ]});
 		}
 	}
 }

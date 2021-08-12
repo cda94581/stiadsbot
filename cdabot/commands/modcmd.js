@@ -16,7 +16,7 @@ module.exports = {
 	usage: '[help|modcmd name]',
 	modcmds: modcmds, // For the modcmd help
 	execute(message, args) {
-		if (!args.length) return message.channel.send(new Discord.MessageEmbed().setColor('#444444').setTitle('Mod Commands').setDescription('These are commands for people with certain permissions. Use the `modcmd help` command to get a list of all commands. Use `modcmd [modcmd name]` (without brackets) to use the command.'));
+		if (!args.length) return message.channel.send({ embeds: [ new Discord.MessageEmbed().setColor('#444444').setTitle('Mod Commands').setDescription('These are commands for people with certain permissions. Use the `modcmd help` command to get a list of all commands. Use `modcmd [modcmd name]` (without brackets) to use the command.') ]});
 
 		// Dynamic modcmds
 		const modcmdArgs = message.content.slice(prefix.length).trim().split(/ +/); // Message arguments
@@ -26,14 +26,18 @@ module.exports = {
 		const modcmd = modcmds.get(modcmdName); // Gets the modcmd corresponding
 		if (!modcmd) return; // If couldn't get a modcmd
 
-		if (modcmd.perms && !message.member.hasPermission(modcmd.perms)) return message.channel.send('You don\'t have the permission to use this command');
+		if (modcmd.perms) {
+			for ( i in modcmd.perms ) {
+				if (!message.member.permissions.has(eval(`Discord.Permissions.FLAGS.${modcmd.perms[i]}`))) return message.channel.send({ content: 'You don\'t have the permission to use this command' });
+			}
+		}
 
 		// Attempts to execute modcmd
 		try {
 			modcmd.execute(message, modcmdArgs);
 		} catch (error) {
 			console.error(error);
-			message.channel.send('There was an error trying to execute that Mod Command');
+			message.channel.send({ content: 'There was an error trying to execute that Mod Command' });
 		}
 	}
 }

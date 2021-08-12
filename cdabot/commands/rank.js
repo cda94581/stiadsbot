@@ -8,12 +8,12 @@ module.exports = {
 	execute(message, args) {
 		const author = args[0] || message.author.id;
 		const filePath = path.resolve(__dirname, `../_data/leveling/${author}.json`);
-		if (!fs.existsSync(filePath)) return message.channel.send('You aren\'t ranked yet, send some messages to gain XP.');
+		if (!fs.existsSync(filePath)) return message.channel.send({ content: 'You aren\'t ranked yet, send some messages to gain XP.' });
 		fs.readFile(filePath, 'utf-8', (err, data) => {
 			if (err) throw err;
 			const info = JSON.parse(data);
 			const toLevelUp = 5 * (info.level ** 2) + 50 * info.level + 100;
-			message.channel.send(new Discord.MessageEmbed().setColor('#cc0000').setTitle(`cdaBot Leveling - ${message.guild.members.cache.find(m => m.id == author).displayName}`).setDescription(`**Level**: ${info.level}\n**XP**: ${info.xp}/${toLevelUp}\n**Messages**: ${info.messages}`));
+			message.channel.send({ embeds: [ new Discord.MessageEmbed().setColor('#cc0000').setTitle(`cdaBot Leveling - ${message.guild.members.cache.find(m => m.id == author).displayName}`).setDescription(`**Level**: ${info.level}\n**XP**: ${info.xp}/${toLevelUp}\n**Messages**: ${info.messages}`) ]});
 		});
 	}	
 }

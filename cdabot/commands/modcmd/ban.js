@@ -10,17 +10,17 @@ module.exports = {
 	perms: [ 'BAN_MEMBERS' ],
 	execute (message, args) {
 		const member = message.guild.members.cache.find(m => m.id == args[0]);
-		if (!member) return message.channel.send('This member doesn\'t exist on this guild.');
+		if (!member) return message.channel.send({ content: 'This member doesn\'t exist on this guild.' });
 		const reason = message.content.slice(`${prefix}modcmd ban ${args[0]} `.length);
 		try {
 			let dm = `You were banned on **${message.guild.name}**.`;
 			if (reason) dm += `\nReason: ${reason}`;
-			member.user.send(dm);
+			member.user.send({ content: dm });
 			member.ban({ reason: reason });
-			message.channel.send('Member banned.');
+			message.channel.send({ content: 'Member banned.' });
 		} catch {
 			member.ban({ reason: reason });
-			message.channel.send('Member banned. I couldn\'t DM them.');
+			message.channel.send({ content: 'Member banned. I couldn\'t DM them.' });
 		}
 
 		const filePath = path.resolve(__dirname, `../../_data/modactions/bans/${args[0]}.json`);

@@ -9,13 +9,13 @@ module.exports = {
 		const content = message.content.slice(prefix.length + 5,);
 		try {
 			eval(content);
-			message.channel.send(`Successfully executed code: ${content}`).then(sentMsg => {
+			message.channel.send({ content: `Successfully executed code: ${content}` }).then(sentMsg => {
 				setTimeout(() => {
 					sentMsg.delete();
 				}, 5000);
 			});
-		} catch {
-			message.channel.send(`There was an error executing code: ${content}`).then(sentMsg => {
+		} catch (error) {
+			message.channel.send({ content: `There was an error executing code: ${content}\n${error}` }).then(sentMsg => {
 				setTimeout(() => {
 					sentMsg.delete();
 				}, 5000);

@@ -5,7 +5,7 @@ module.exports = {
 	perms: [ 'MANAGE_CHANNELS' ],
 	execute(message, args) {
 		message.channel.setRateLimitPerUser(args[0]);
-		message.channel.send(`Slowmode set to ${args[0]} seconds.`);
+		message.channel.send({ content: `Slowmode set to ${args[0]} seconds.` });
 		console.log(`> ${Date().toString()}\t-\tSlowmode of ${args[0]} seconds set for #${message.channel.name}`);
 	}
 }
