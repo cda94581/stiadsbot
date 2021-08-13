@@ -5,6 +5,6 @@ module.exports = async message => {
 	if (message.channel.id == feedback_channel) {
 		await message.react('⬆');
 		await message.react('⬇');
-		message.startThread({ name: message.content, autoArchiveDuration: 'MAX', reason: 'New Suggestion.' }).then(threadChannel => { threadChannel.join() });
+		message.startThread({ name: message.content, autoArchiveDuration: 1440, reason: 'New Suggestion.' }).then(threadChannel => { threadChannel.join() });
 	};
 }
