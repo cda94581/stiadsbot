@@ -3,7 +3,7 @@ home: true
 heroImage: /images/logo.png
 heroAlt: Discord Bots by cda94581
 heroTitle: Discord Bots by cda94581
-tagline: A collection of Discord Bots, made by cda94581. The bots include a variety of features.
+tagline: A collection of Discord Bots, made by cda94581, including a variety of useful and useless features.
 actions:
   - text: STIADS👀 Bot
     link: /stiadsbot
@@ -16,7 +16,7 @@ actions:
 	type: primary
 features:
   - title: Free
-    details: At no cost to you (except for hosting), you're provided the source code to bots that may carry you.
+    details: At no cost to you (except for hosting), you're provided the source code to bots that may carry you with the features that each provides.
   - title: Open Source
     details: Under the MIT License, you're free to do whatever you want with the code provided.
   - title: Updating
