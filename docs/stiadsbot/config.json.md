@@ -1,6 +1,4 @@
----
-title: config.json
----
+# config.json
 ```json
 {
 	"prefix": "STRING",
@@ -10,11 +8,6 @@ title: config.json
 		"levels": [ "INT" ],
 		"roles": [ "STRINGS OF IDS" ],
 		"blacklist": [ "STRINGS OF IDS" ],
-		"mysqlinfo": {
-			"host": "STRING",
-			"user": "STRING",
-			"password": "STRING"
-		},
 		"userblacklist": [ "STRINGS OF IDS" ]
 	},
 	"feedback_channel": "STRING OF ID",
@@ -76,21 +69,6 @@ the role ID it will choose in this array, to add to the user.
 ### levelinfo.blacklist
 This is an array of Strings, which contain channel IDs.
 Users who send messages in these channels won't gain any xp.
-
-### levelinfo.mysqlinfo.host
-STIADS👀 Bot leveling stores user info in a *MySQL* Database.
-You will need to manually setup MySQL.<br>
-Once that is setup, if you are running on your local device, the host will be "localhost".<br>
-Otherwise, you will need the IP of the device hosting the database.<br>
-If it is hosted on the web, you will need that IP.<br>
-If you are hosting it elsewhere, you may need to portforward the router and connect via that IP.<br>
-STIADS👀 Bot will create a database called "STIADS👀 Bot_leveling", if it doesn't already exist, to store this information.
-
-### levelinfo.mysqlinfo.user
-This is the username of the MySQL system.
-
-### levelinfo.mysqlinfo.password
-This is the password of the MySQL system.
 
 ### feedback_channel
 STIADS👀 Bot reacts with ⬆ and ⬇ for each message in a specific channel, that starts with "Suggestion" (case insensitive). This specifies that channel. This is the Channel ID in the form of a String.

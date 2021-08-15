@@ -1,7 +1,4 @@
----
-title: config.json
----
-
+# config.json
 ```json
 {
 	"prefix": "PREFIX",
@@ -10,12 +7,7 @@ title: config.json
 	"levelinfo": {
 		"levels": [ "LEVELS" ],
 		"roles": [ "ROLES" ],
-		"blacklist": [ "LEVEL BLACKLIST" ],
-		"mysqlinfo": {
-			"host": "MYSQL HOST",
-			"user": "MYSQL USERNAME",
-			"password": "MYSQL PASSWORD"
-		}
+		"blacklist": [ "LEVEL BLACKLIST" ]
 	},
 	"reactionroles": [
 		{

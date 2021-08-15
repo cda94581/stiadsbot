@@ -1,6 +1,4 @@
----
-title: Commands
----
+# Commands
 ## How to Read
 ### Command
 This is the command name. This is what you enter to trigger the command.
@@ -33,7 +31,7 @@ This is an example of the command used in action.
 | `announcements` | `messages` | Info | `announcements` | If there are any announcements about STIADS👀 Bot or from cda94581, if anyone had the interest to check. | N/A | WIP |
 | `avatar` | `av`, `icon`, `pfp` | Info | `avatar [@Mention Users]` | Get a user's avatar. | N/A | WIP |
 | `bite` | N/A | Action | `bite <@Mention Users>` | Bite a user. | N/A | WIP |
-| `blacklistxp` | `blxp` | Leveling | `blacklist (user|channel <User ID>)|list` | Prevents a user or channel from gaining XP. There is currently an issue, where `list` doesn't work unless you add a random argument after that. | Administrator | WIP |
+| `blacklistxp` | `blxp` | Leveling | `blacklistxp (user\|channel <User ID>)\|list` | Prevents a user or channel from gaining XP. There is currently an issue, where `list` doesn't work unless you add a random argument after that. | Administrator | WIP |
 | `blush` | N/A | Action | `blush <@Mention Users>` | Blush at a user. | N/A | WIP |
 | `cat` | N/A | Fun | `cat` | Get a random cat picture from a `.json` file. This does not access an internet database, so images are limited. | N/A | WIP |
 | `cda` | N/A | Fun | `cda` | Information about a Child Development Associate | N/A | WIP |
@@ -44,7 +42,7 @@ This is an example of the command used in action.
 | `intro` | `hi`, `start` | Info | `intro` | Get an introduction and information about STIADS👀 Bot. | N/A | WIP |
 | `kiss` | N/A | Action | `kiss <@Mention Users>` | Kiss a user. | N/A | WIP |
 | `leaderboard` | N/A | Leveling | `leaderboard [Leaderboard Page]` | Gets a server rank leaderboard, with 20 names displayed. An optional argument will switch to a different page. | N/A | WIP |
-| `modifications` | N/A | Fun | `modifications [open|close]` | Get information about modifications, or if an argument is specified, open or close modifications for submissions (requires Administrator). | N/A | WIP |
+| `modifications` | N/A | Fun | `modifications [open\|close]` | Get information about modifications, or if an argument is specified, open or close modifications for submissions (requires Administrator). | N/A | WIP |
 | `modmessage` | N/A | Moderation | `modmessage <User ID> <Message>` | DM a user a private message, for moderator/member contact. | Ban Members, Kick Members | WIP |
 | `moon` | N/A | Fun | `moon` | Get information about a mysterious moon. | N/A | WIP |
 | `movie` | N/A | Info | `movie` | Information about an apparent cda94581 movie. | N/A | WIP |

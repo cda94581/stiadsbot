@@ -1,6 +1,4 @@
----
-title: Commands
----
+# Commands
 ## How to Read
 ### Command
 This is the command name. This is what you enter to trigger the command.
@@ -28,7 +26,7 @@ This is an example of the command used in action.
 | `help` | `commands` | `help [Command Name]` | Gets a list of all commands to use, or a description of a command if an argument is provided | N/A | WIP |
 | `leaderboard` | N/A | `leaderboard` | Gets the leaderboard for the leveling system. Only displays the first 20 members. | N/A | WIP |
 | `ping` | N/A | `ping` | Checks to see the response time for Awesome Bot, and if it's still alive. | N/A | WIP |
-| `presence` | N/A | `presence dnd|idle|invisible|online` | Sets the bot to appear online, idle, do not disturb, or invisible. | Administrator | WIP |
+| `presence` | N/A | `presence dnd\|idle\|invisible\|online` | Sets the bot to appear online, idle, do not disturb, or invisible. | Administrator | WIP |
 | `rank` | N/A | `rank [User]` | Gets the rank of the member, or the pinged member if an argument is provided. | N/A | WIP |
 | `repo` | N/A | `repo` | Gets the link to the repository for Awesome Bot | N/A | WIP |
-| `status` | N/A | `status competing|custom_status|listening|playing|streaming|watching <Name>` | Sets if Awesome Bot is competing, a custom status, listening, playing, streaming, or watching a certain thing. | Administrator | WIP |
+| `status` | N/A | `status competing\|custom_status\|listening\|playing\|streaming\|watching <Name>` | Sets if Awesome Bot is competing, a custom status, listening, playing, streaming, or watching a certain thing. | Administrator | WIP |

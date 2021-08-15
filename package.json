@@ -1,0 +1,23 @@
+{
+  "name": "discord_bots",
+  "version": "0.0.1",
+  "description": "Source of files for VuePress cda94581's Discord Bots website",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vuepress dev docs",
+    "build": "vuepress build docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cda94581/discord_bots.git"
+  },
+  "author": "cda94581",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cda94581/discord_bots/issues"
+  },
+  "homepage": "https://github.com/cda94581/discord_bots#readme",
+  "dependencies": {
+    "vuepress": "^2.0.0-beta.24"
+  }
+}
