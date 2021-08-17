@@ -1,6 +1,7 @@
 const { prefix } = require('../../config.json');
 const fs = require('fs-extra');
 const path = require('path');
+const index = require('../../events/index');
 
 module.exports = {
 	name: 'kick',
@@ -8,14 +9,14 @@ module.exports = {
 	args: true,
 	usage: '<MEMBERID> [REASON]',
 	perms: [ 'KICK_MEMBERS' ],
-	execute (message, args) {
+	async execute (message, args) {
 		const member = message.guild.members.cache.find(m => m.id == args[0]);
 		if (!member) return message.channel.send({ content: 'This member doesn\'t exist on this guild.' });
 		const reason = message.content.slice(`${prefix}modcmd kick ${args[0]} `.length);
 		try {
 			let dm = `You were kicked from **${message.guild.name}**.`;
 			if (reason) dm += `\nReason: ${reason}`;
-			member.user.send({ content: dm });
+			await member.user.send({ content: dm });
 			member.kick(reason);
 			message.channel.send({ content: 'Member kicked.' });
 		} catch {

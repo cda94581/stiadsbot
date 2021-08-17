@@ -10,14 +10,14 @@ module.exports = {
 	args: true,
 	usage: '<MEMBERID> [REASON]',
 	perms: [ 'KICK_MEMBERS', 'BAN_MEMBERS' ],
-	execute (message, args) {
+	async execute (message, args) {
 		const member = message.guild.members.cache.find(m => m.id == args[0]);
 		if (!member) return message.channel.send({ content: 'This member doesn\'t exist on this guild.' });
 		const reason = message.content.slice(`${prefix}modcmd warn ${args[0]} `.length);
 		try {
 			let dm = `You were warned on **${message.guild.name}**.`;
 			if (reason) dm += `\nReason: ${reason}`;
-			member.user.send({ content: dm });
+			await member.user.send({ content: dm });
 			message.channel.send({ content: 'Member warned.' });
 		} catch {
 			message.channel.send({ content: 'Member warned. I couldn\'t DM them.' });
