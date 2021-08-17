@@ -4,7 +4,7 @@ module.exports = async member => {
 	if (member.partial) {
 		try {
 			await member.fetch();
-		} catch {
+		} catch (error) {
 			return console.error('Something went wrong: ', error);
 		}
 	}

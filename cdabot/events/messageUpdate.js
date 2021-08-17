@@ -5,7 +5,7 @@ module.exports = async (oldMessage, newMessage) => {
 	if (oldMessage.partial) {
 		try {
 			await oldMessage.fetch()
-		} catch {
+		} catch (error) {
 			return console.error('Something went wrong: ', error);
 		}
 	}

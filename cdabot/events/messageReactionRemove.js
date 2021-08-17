@@ -4,7 +4,7 @@ module.exports = async (messageReaction, user) => {
 	if (messageReaction.partial) {
 		try {
 			await messageReaction.fetch();
-		} catch {
+		} catch (error) {
 			return console.error('Something went wrong: ', error);
 		}
 	}
