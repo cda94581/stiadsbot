@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const fs = require('fs-extra');
 const path = require('path');
-const { welcomeChannel } = require('../config.json');
+const { welcomeChannel, embedcolors } = require('../config.json');
 const bannedwords = require('../bannedwords.json');
 
 module.exports = async member => {
@@ -24,12 +24,12 @@ module.exports = async member => {
 		if (err) throw err;
 		let memberhistory = JSON.parse(data);
 		if (memberhistory.includes(member.id)) {
-			index.log(member, new Discord.MessageEmbed().setColor('#00cccc').setTitle('Member Rejoined').setDescription(desc).setTimestamp(Date.now()));
+			index.log(member, new Discord.MessageEmbed().setColor(embedcolors.log).setTitle('Member Rejoined').setDescription(desc).setTimestamp(Date.now()));
 			console.log(`> ${Date().toString()}\t-\tMember Rejoined: ${desc}`);
 		
 			member.client.channels.cache.get(welcomeChannel).send({ content: `Oh hey there, ${member}, welcome back to **${member.guild.name}**! You are now member #${member.guild.memberCount}.` });
 		} else {
-			index.log(member, new Discord.MessageEmbed().setColor('#00cccc').setTitle('Member Joined').setDescription(desc).setTimestamp(Date.now()));
+			index.log(member, new Discord.MessageEmbed().setColor(embedcolors.log).setTitle('Member Joined').setDescription(desc).setTimestamp(Date.now()));
 			console.log(`> ${Date().toString()}\t-\tMember Joined: ${desc}`);
 		
 			member.client.channels.cache.get(welcomeChannel).send({ content: `Hey, ${member}, welcome to **${member.guild.name}**! You are member #${member.guild.memberCount}. Enjoy your time here!` });

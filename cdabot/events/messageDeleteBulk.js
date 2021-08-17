@@ -1,3 +1,4 @@
+const { embedcolors } = require('../config.json');
 const Discord = require('discord.js');
 
 module.exports = messages => {
@@ -17,7 +18,7 @@ module.exports = messages => {
 			desc.push(tempData.slice(2000, tempData.length));
 		}
 		
-		index.log(data[0], new Discord.MessageEmbed().setColor('#00cccc').setTitle(`Bulk Messages Deleted in #${data[0].channel.name}`).setDescription(desc[i]).setTimestamp(Date.now()));
+		index.log(data[0], new Discord.MessageEmbed().setColor(embedcolors.log).setTitle(`Bulk Messages Deleted in #${data[0].channel.name}`).setDescription(desc[i]).setTimestamp(Date.now()));
 		console.log(`> ${Date().toString()}\t-\tBulk Messages Deleted in #${data[0].channel.name}:\n${desc[i]}`);
 	}
 }

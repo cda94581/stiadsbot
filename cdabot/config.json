@@ -15,6 +15,12 @@
 			"channels": [ "CHANNELS TO TRIGGER THE help-hi RESPONSE" ]
 		}
 	},
+	"embedcolors": {
+		"command": "#HEX",
+		"faq": "#HEX",
+		"trigger": "#HEX",
+		"log": "#HEX"
+	},
 	"levelinfo": {
 		"levels": [ "INSERT LEVELS TO GET ROLES HERE" ],
 		"roles": [ "INSERT ROLES CORRESPONDING HERE" ],

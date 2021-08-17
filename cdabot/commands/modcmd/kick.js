@@ -1,4 +1,4 @@
-const { prefix } = require('../../config.json');
+const { prefix, embedcolors } = require('../../config.json');
 const fs = require('fs-extra');
 const path = require('path');
 const index = require('../../events/index');
@@ -31,7 +31,7 @@ module.exports = {
 		fs.writeFile(filePath, JSON.stringify(file), 'utf-8', err => { if (err) throw err });
 
 		const desc = `${member.user} - ${member.user.tag}\n**ID**: ${member.id}\n**Reason**: ${reason}\n**Kick ID**: ${file.length}`;
-		index.log(member, new Discord.MessageEmbed().setColor('#00cccc').setTitle('Member Kicked').setDescription(desc).setTimestamp(Date.now()));
+		index.log(member, new Discord.MessageEmbed().setColor(embedcolors.log).setTitle('Member Kicked').setDescription(desc).setTimestamp(Date.now()));
 		console.log(`> ${Date().toString()}\t-\tMember Kicked: ${desc}`);
 	}
 }

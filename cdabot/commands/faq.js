@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const fs = require('fs');
-const { prefix } = require('../config.json');
+const { prefix, embedcolors } = require('../config.json');
 
 let faqs = new Discord.Collection();
 let faqFiles = fs.readdirSync('./commands/faq').filter(file => file.endsWith('.js'));
@@ -16,7 +16,7 @@ module.exports = {
 	usage: '[help|faq name]',
 	faqs: faqs, // For the faq help
 	execute(message, args) {
-		if (!args.length) return message.channel.send({ embeds: [ new Discord.MessageEmbed().setColor('#444444').setTitle('FAQ').setDescription('These are some handy things to know! Use the `faq help` command to get a list of all queries. Use `faq [faq name]` (without brackets) to use the command') ]});
+		if (!args.length) return message.channel.send({ embeds: [ new Discord.MessageEmbed().setColor(embedcolors.faq).setTitle('FAQ').setDescription('These are some handy things to know! Use the `faq help` command to get a list of all queries. Use `faq [faq name]` (without brackets) to use the command') ]});
 
 		// Dynamic faqs
 		const faqArgs = message.content.slice(prefix.length).trim().split(/ +/); // Message arguments

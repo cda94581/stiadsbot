@@ -1,5 +1,5 @@
 const xpCooldowns = new Set();
-const { prefix, modmessagingchannel, levelinfo } = require('../config.json');
+const { prefix, modmessagingchannel, levelinfo, embedcolors } = require('../config.json');
 const bannedwords = require('../bannedwords.json');
 const Discord = require('discord.js');
 const fs = require('fs-extra');
@@ -90,7 +90,7 @@ module.exports = message => {
 
 	function modmessaging() {
 		if (message.channel.type != 'DM' || message.author.bot) return;
-		let modmessageEmbed = new Discord.MessageEmbed().setColor('#ff0000').setTitle(`New Message: ${message.author.tag} - ${message.author.id}`).setDescription(message.content);
+		let modmessageEmbed = new Discord.MessageEmbed().setColor(embedcolors.log).setTitle(`New Message: ${message.author.tag} - ${message.author.id}`).setDescription(message.content);
 		const attachments = message.attachments.map(m => m.url);
 		message.client.channels.cache.find(channel => channel.id == modmessagingchannel).send({ embeds: [ modmessageEmbed ], files: attachments });
 		try {

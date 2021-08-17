@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const { prefix } = require('../../config.json');
+const { prefix, embedcolors } = require('../../config.json');
 const fs = require('fs-extra');
 const path = require('path');
 const index = require('../../events/index');
@@ -23,7 +23,7 @@ module.exports = {
 		message.channel.send({ content: `Successfully wrote a note for ${member.user.tag} (ID: ${file.length})` });
 
 		const desc = `${member.user} - ${member.user.tag}\n**ID**: ${member.id}\n**Note**: ${note}\n**Note ID**: ${file.length}`;
-		index.log(member, new Discord.MessageEmbed().setColor('#00cccc').setTitle('Member Note Added').setDescription(desc).setTimestamp(Date.now()));
+		index.log(member, new Discord.MessageEmbed().setColor(embedcolors.log).setTitle('Member Note Added').setDescription(desc).setTimestamp(Date.now()));
 		console.log(`> ${Date().toString()}\t-\tMember Note Added: ${desc}`);
 	}
 }

@@ -1,3 +1,4 @@
+const { embedcolors } = require('../../config.json');
 const Discord = require('discord.js');
 const fs = require('fs');
 const path = require('path');
@@ -48,7 +49,7 @@ module.exports = {
 				data[i] = tempData.slice(0, 2000);
 				data.push(tempData.slice(2000, tempData.length));
 			}
-			message.channel.send({ embeds: [ new Discord.MessageEmbed().setColor('#444444').setTitle('Moderator Actions').setDescription(data[i]) ]});
+			message.channel.send({ embeds: [ new Discord.MessageEmbed().setColor(embedcolors.log).setTitle('Moderator Actions').setDescription(data[i]) ]});
 		}
 	}
 }

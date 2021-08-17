@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const { prefix } = require('../../config.json');
+const { prefix, embedcolors } = require('../../config.json');
 
 module.exports = {
 	name: 'help',
@@ -16,7 +16,7 @@ module.exports = {
 			if (modcmd.aliases) data[0] += `**Aliases**: ${modcmd.aliases.join(', ')}\n`;
 			if (modcmd.description) data[0] += `**Description**: ${modcmd.description}\n`;
 			if (modcmd.usage) data[0] += `**Usage:** ${prefix}${modcmd.name} ${modcmd.usage}`;
-			return message.channel.send({ embeds: [ new Discord.MessageEmbed().setColor('#44434d').setTitle(modcmd.name).setDescription(data[0]) ]});
+			return message.channel.send({ embeds: [ new Discord.MessageEmbed().setColor(embedcolors.log).setTitle(modcmd.name).setDescription(data[0]) ]});
 		}
 		data[0] = 'Here\'s a list of all my Mod Commands:\n`';
 		data[0] += modcmds.map(modcmd => modcmd.name).join('`\n`');
@@ -27,7 +27,7 @@ module.exports = {
 				data[i] = tempData.slice(0, 2000);
 				data.push(tempData.slice(2000, tempData.length));
 			}
-			message.channel.send({ embeds: [ new Discord.MessageEmbed().setColor('#444444').setTitle('CdaBot Mod Command Help').setDescription(data[i]) ]});
+			message.channel.send({ embeds: [ new Discord.MessageEmbed().setColor(embedcolors.log).setTitle('CdaBot Mod Command Help').setDescription(data[i]) ]});
 		}
 	}
 }

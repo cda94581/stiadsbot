@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const { prefix } = require('../../config.json');
+const { prefix, embedcolors } = require('../../config.json');
 
 module.exports = {
 	name: 'message',
@@ -9,7 +9,7 @@ module.exports = {
 	args: true,
 	// roles: [ 'Moderator', 'Helper' ],
 	execute(message, args) {
-		const modmessageEmbed = new Discord.MessageEmbed().setColor('#cc0000').setTitle('Incoming Mod Message').setDescription(message.content.slice(`${prefix}modcmd message ${args[0]}`.length));
+		const modmessageEmbed = new Discord.MessageEmbed().setColor(embedcolors.command).setTitle('Incoming Mod Message').setDescription(message.content.slice(`${prefix}modcmd message ${args[0]}`.length));
 		const attachments = message.attachments.map(m => m.url);
 		try {
 			message.client.users.cache.get(args[0]).send({ embeds: [ modmessageEmbed ], files: attachments });

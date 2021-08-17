@@ -1,3 +1,4 @@
+const { embedcolors } = require('../config.json');
 const Discord = require('discord.js');
 
 module.exports = async member => {
@@ -12,6 +13,6 @@ module.exports = async member => {
 
 	const desc = `${member.user} - ${member.user.tag}\n**ID**: ${member.user.id}`;
 
-	index.log(member, new Discord.MessageEmbed().setColor('#00cccc').setTitle('Member Left').setDescription(desc).setTimestamp(Date.now()));
+	index.log(member, new Discord.MessageEmbed().setColor(embedcolors.log).setTitle('Member Left').setDescription(desc).setTimestamp(Date.now()));
 	console.log(`> ${Date().toString()}\t-\tMember Left: ${desc}`);
 }

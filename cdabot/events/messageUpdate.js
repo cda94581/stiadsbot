@@ -1,3 +1,4 @@
+const { embedcolors } = require('../config.json');
 const Discord = require('discord.js');
 const bannedwords = require('../bannedwords.json');
 
@@ -30,7 +31,7 @@ module.exports = async (oldMessage, newMessage) => {
 			desc.push(tempData.slice(2000, tempData.length));
 		}
 
-		index.log(oldMessage, new Discord.MessageEmbed().setColor('#00cccc').setTitle(`Message Updated in #${oldMessage.channel.name}`).setDescription(desc[i]).setTimestamp(Date.now()));
+		index.log(oldMessage, new Discord.MessageEmbed().setColor(embedcolors.log).setTitle(`Message Updated in #${oldMessage.channel.name}`).setDescription(desc[i]).setTimestamp(Date.now()));
 		console.log(`> ${Date().toString()}\t-\tMessage Updated in #${oldMessage.channel.name}:\n${desc[i]}`);
 	}
 }
