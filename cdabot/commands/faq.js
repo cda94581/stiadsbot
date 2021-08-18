@@ -1,37 +1,27 @@
 const Discord = require('discord.js');
-const fs = require('fs');
 const { prefix, embedcolors } = require('../config.json');
-
-let faqs = new Discord.Collection();
-let faqFiles = fs.readdirSync('./commands/faq').filter(file => file.endsWith('.js'));
-
-for (const file of faqFiles) {
-	const faq = require(`./faq/${file}`);
-	faqs.set(faq.name, faq);
-}
+const faqList = require('../faq.json');
 
 module.exports = {
 	name: 'faq',
 	description: 'Common issues and things to know',
 	usage: '[help|faq name]',
-	faqs: faqs, // For the faq help
 	execute(message, args) {
-		if (!args.length) return message.channel.send({ embeds: [ new Discord.MessageEmbed().setColor(embedcolors.faq).setTitle('FAQ').setDescription('These are some handy things to know! Use the `faq help` command to get a list of all queries. Use `faq [faq name]` (without brackets) to use the command') ]});
+		if (!args.length) return message.channel.send({ embeds: [ new Discord.MessageEmbed().setColor(embedcolors.faq).setTitle('FAQ').setDescription('These are some handy things to know! Use the `faq list` command to get a list of all queries. Use `faq [faq name]` (without brackets) to use the command') ]});
 
-		// Dynamic faqs
 		const faqArgs = message.content.slice(prefix.length).trim().split(/ +/); // Message arguments
 		faqArgs.shift();
 		const faqName = faqArgs.shift().toLowerCase(); // Sets the 'faq' input
 
-		const faq = faqs.get(faqName); // Gets the faq corresponding
-		if (!faq) return; // If couldn't get a faq
+		const faq = faqList.find(f => f.name.toLowerCase() == faqName);
+		if (faq) {
+			const embeds = faq.embeds.map(embed => new Discord.MessageEmbed().setColor(embedcolors.faq).setTitle(embed.title).setDescription(embed.description));
+			return message.channel.send({ embeds: embeds });
+		}
 
-		// Attempts to execute faq
-		try {
-			faq.execute(message, faqArgs);
-		} catch (error) {
-			console.error(error);
-			message.channel.send({ content: 'There was an error trying to execute that faq' });
+		if (faqName == 'list') {
+			const data = faqList.map(faq => faq.name).join('`, `');
+			message.channel.send({ embeds: [ new Discord.MessageEmbed().setColor(embedcolors.faq).setTitle('cdaBot FaQ List').setDescription(`\`${data}\``) ] });
 		}
 	}
 }

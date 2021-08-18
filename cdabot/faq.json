@@ -7,27 +7,5 @@
 				"description": "EMBED DESCRIPTION"
 			}
 		]
-	},
-	{
-		"name": "test",
-		"embeds": [
-			{
-				"title": "A Test FAQ",
-				"description": "This is a test FAQ using a config file."
-			}
-		]
-	},
-	{
-		"name": "test-2-embeds",
-		"embeds": [
-			{
-				"title": "A Test FAQ - 2",
-				"description": "This is a test FAQ with 2 embeds."
-			},
-			{
-				"title": "",
-				"description": "This is message #2 of the test FAQ."
-			}
-		]
 	}
 ]
