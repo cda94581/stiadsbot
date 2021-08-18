@@ -6,10 +6,8 @@ const {	token } = require ('./config/config.json'); // Loads prefix and token fr
 
 const client = new Discord.Client({ partials: [ 'CHANNEL', 'GUILD_MEMBER', 'MESSAGE', 'REACTION', 'USER' ], intents: [ Discord.Intents.FLAGS.DIRECT_MESSAGES, Discord.Intents.FLAGS.DIRECT_MESSAGE_REACTIONS, Discord.Intents.FLAGS.DIRECT_MESSAGE_TYPING, Discord.Intents.FLAGS.GUILDS, Discord.Intents.FLAGS.GUILD_BANS, Discord.Intents.FLAGS.GUILD_EMOJIS_AND_STICKERS, Discord.Intents.FLAGS.GUILD_INTEGRATIONS, Discord.Intents.FLAGS.GUILD_INVITES, Discord.Intents.FLAGS.GUILD_MEMBERS, Discord.Intents.FLAGS.GUILD_MESSAGES, Discord.Intents.FLAGS.GUILD_MESSAGE_REACTIONS, Discord.Intents.FLAGS.GUILD_MESSAGE_TYPING, Discord.Intents.FLAGS.GUILD_PRESENCES, Discord.Intents.FLAGS.GUILD_VOICE_STATES, Discord.Intents.FLAGS.GUILD_WEBHOOKS ]}); // Discord Client
 client.commands = new Discord.Collection(); // Collection for commands
-client.triggers = new Discord.Collection(); // Collection for triggers
 
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js')); // Adds all commands
-const triggerFiles = fs.readdirSync('./triggers').filter(file => file.endsWith('.js')); // Adds all triggers
 
 for (const file of commandFiles) {
 	const command = require(`./commands/${file}`);
@@ -17,14 +15,6 @@ for (const file of commandFiles) {
 	// Set a new item in the Collection
 	// with the key as the command name and the value as the exported module
 	client.commands.set(command.name, command);
-}
-
-for (const file of triggerFiles) {
-	const trigger = require(`./triggers/${file}`);
-
-	// Set a new item in the Collection
-	// with the key as the command name and the value as the exported module
-	client.triggers.set(trigger.name, trigger);
 }
 
 // Run events

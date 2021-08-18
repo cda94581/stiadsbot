@@ -1,6 +1,7 @@
 const xpCooldowns = new Set();
 const { prefix, modmessagingchannel, levelinfo, embedcolors } = require('../config/config.json');
 const bannedwords = require('../config/bannedwords.json');
+const triggers = require('../config/triggers.json');
 const Discord = require('discord.js');
 const fs = require('fs-extra');
 const path = require('path');
@@ -133,19 +134,19 @@ module.exports = message => {
 	}
 
 	function runTrigger() {
-		for (const trigger of message.client.triggers) {
-			if (trigger[1].type == 'contain' && !trigger[1].names.some(name => message.content.toLowerCase().includes(name))) return;
-			if (trigger[1].type == 'exact' && !trigger[1].names.some(name => message.content.toLowerCase() == name)) return;
-			if (trigger[1].channels && !trigger[1].channels.some(channel => message.channel.id == channel)) return;
+		const trigger = triggers.find(t => (t.type == 'exact' && t.names.some(name => message.content.toLowerCase() == name.toLowerCase())) || t.type == 'contain' && t.names.some(name => message.content.toLowerCase().includes(name.toLowerCase())));
+		if (trigger) {
+			if (trigger.channels && !trigger.channels.some(channel => message.channel.id == channel)) return;
+			const embeds = trigger.embeds.map(embed => new Discord.MessageEmbed().setColor(embedcolors.trigger).setTitle(embed.title).setDescription(embed.description));
 			try {
 				message.channel.sendTyping();
 				setTimeout(() => {
-					return trigger[1].execute(message);
+					return message.channel.send({ embeds: embeds });
 				}, 2000);
 			} catch (error) {
 				console.error(error);
-				return message.channel.send({ content: 'There was an error trying to execute that trigger' });
+				return message.client.users.cache.get(message.guild.ownerId).send('Hey there, there was an error trying to execute a trigger.');
 			}
-		}
+		};
 	}
 }
