@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
-const { prefix, embedcolors } = require('../config.json');
-const faqList = require('../faq.json');
+const { prefix, embedcolors } = require('../config/config.json');
+const faqList = require('../config/faq.json');
 
 module.exports = {
 	name: 'faq',

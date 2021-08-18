@@ -1,8 +1,8 @@
 const Discord = require('discord.js');
 const fs = require('fs-extra');
 const path = require('path');
-const { welcomeChannel, embedcolors } = require('../config.json');
-const bannedwords = require('../bannedwords.json');
+const { welcomeChannel, embedcolors } = require('../config/config.json');
+const bannedwords = require('../config/bannedwords.json');
 
 module.exports = async member => {
 	if (member.partial) {

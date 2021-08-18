@@ -1,4 +1,4 @@
-const { embedcolors } = require('../../config.json');
+const { embedcolors } = require('../../config/config.json');
 const Discord = require('discord.js');
 const fs = require('fs');
 const path = require('path');

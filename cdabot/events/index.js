@@ -12,7 +12,7 @@ const messageUpdate = require('./messageUpdate');
 const ready = require('./ready');
 const userUpdate = require('./userUpdate');
 
-const { logchannel } = require('../config.json');
+const { logchannel } = require('../config/config.json');
 
 module.exports = {
 	event(client) {

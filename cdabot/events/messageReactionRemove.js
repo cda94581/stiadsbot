@@ -1,4 +1,4 @@
-const reactionroles = require('../reactionroles.json');
+const reactionroles = require('../config/reactionroles.json');
 
 module.exports = async (messageReaction, user) => {
 	if (messageReaction.partial) {

@@ -1,4 +1,4 @@
-const { presence } = require('../config.json');
+const { presence } = require('../config/config.json');
 
 module.exports = client => {
 	console.log(`> ${Date().toString()}\t-\tReady!`); // Tells the console

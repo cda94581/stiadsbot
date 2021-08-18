@@ -1,6 +1,6 @@
 const xpCooldowns = new Set();
-const { prefix, modmessagingchannel, levelinfo, embedcolors } = require('../config.json');
-const bannedwords = require('../bannedwords.json');
+const { prefix, modmessagingchannel, levelinfo, embedcolors } = require('../config/config.json');
+const bannedwords = require('../config/bannedwords.json');
 const Discord = require('discord.js');
 const fs = require('fs-extra');
 const path = require('path');

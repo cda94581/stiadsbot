@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const fs = require('fs');
-const { prefix, embedcolors } = require('../config.json');
+const { prefix, embedcolors } = require('../config/config.json');
 
 let modcmds = new Discord.Collection();
 let modcmdFiles = fs.readdirSync('./commands/modcmd').filter(file => file.endsWith('.js'));

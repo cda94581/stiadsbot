@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const { prefix, embedcolors } = require('../../config.json');
+const { prefix, embedcolors } = require('../../config/config.json');
 
 module.exports = {
 	name: 'help',

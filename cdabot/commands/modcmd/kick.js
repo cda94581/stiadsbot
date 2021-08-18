@@ -1,4 +1,4 @@
-const { prefix, embedcolors } = require('../../config.json');
+const { prefix, embedcolors } = require('../../config/config.json');
 const fs = require('fs-extra');
 const path = require('path');
 const index = require('../../events/index');

@@ -9,7 +9,7 @@
 3. **Unzip** the downloaded file - `unzip 'cdabot.zip?raw=true'`
 	- You may need to install `unzip` - `sudo apt-get install unzip`
 4. `cd` to the file path
-5. Modify the [`config.json`](config.json) file to fit your needs - `nano config.json` to edit. To write, press `CTRL+O`, to close, press `CTRL+X`
+5. Modify the [`config.json`](config/config.json) file to fit your needs - `nano config/config.json` to edit. To write, press `CTRL+O`, to close, press `CTRL+X`
 6. Download the packages if you haven't already - `npm i`
 7. Run `node .`
 
@@ -18,7 +18,7 @@
 2. Navigate to the [Downloads](../Downloads) folder
 3. [Download `cdabot.zip`](../Downloads/cdabot.zip?raw=true) by clicking the file, then **View Raw**
 4. Unzip the file
-5. Modify the [`config.json`](config.json) file to fit your needs
+5. Modify the [`config.json`](config/config.json) file to fit your needs
 6. `cd` to the file path in **Command Prompt**
 7. Download the packages if you haven't already - `npm i`
 8. Run `node .`

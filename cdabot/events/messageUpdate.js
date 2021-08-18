@@ -1,6 +1,6 @@
-const { embedcolors } = require('../config.json');
+const { embedcolors } = require('../config/config.json');
 const Discord = require('discord.js');
-const bannedwords = require('../bannedwords.json');
+const bannedwords = require('../config/bannedwords.json');
 
 module.exports = async (oldMessage, newMessage) => {
 	if (oldMessage.partial) {

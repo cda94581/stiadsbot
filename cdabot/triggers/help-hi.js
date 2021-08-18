@@ -1,6 +1,6 @@
-const { embedcolors } = require('../config.json');
+const { embedcolors } = require('../config/config.json');
 const Discord = require('discord.js');
-const config = require('../config.json');
+const config = require('../config/config.json');
 
 module.exports = {
 	names: [ 'hi', 'hello', 'hey', 'heyy' ],

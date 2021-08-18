@@ -1,4 +1,4 @@
-const { prefix } = require('../../config.json');
+const { prefix } = require('../../config/config.json');
 const fs = require('fs-extra');
 const path = require('path');
 
