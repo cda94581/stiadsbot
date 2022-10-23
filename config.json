@@ -1,0 +1,61 @@
+{
+	"leveling": {
+		"blacklist": {
+			"channels": { "ID": "NAME" },
+			"users": { "ID": "NAME" }
+		},
+		"roles": {
+			"LEVEL": [ "ROLES" ]
+		}
+	},
+	"misc": {
+		"feedback": "FEEDBACK CHANNEL",
+		"modifications": {
+			"channel": "MODIFICATION CHANNEL",
+			"open": false
+		},
+		"modMessaging": "MOD MESSAGING CHANNEL",
+		"nVwls": "N VWLS CHT",
+		"threadChannels": { "ID": "NAME" }
+	},
+	"prefix": "PREFIX",
+	"presence": {
+		"activities": [
+			{
+				"name": "NAME",
+				"type": "TYPE"
+			}
+		],
+		"status": "ONLINE"
+	},
+	"reactions": [
+		{
+			"channel": "CHANNEL",
+			"description": "REACTION ROLE DESCRIPTION",
+			"keep": false,
+			"message": "MESSAGE",
+			"roles": {
+				"EMOJI": "ROLE"
+			}
+		}
+	],
+	"roleSelect": {
+		"add": [
+			{ "role": "ROLE", "emoji": "EMOJI", "description": "DESCRIPTION" }
+		],
+		"remove": [
+			{ "role": "ROLE", "emoji": "EMOJI", "description": "DESCRIPTION" }
+		]
+	},
+	"token": "BOT TOKEN",
+	"welcome": "WELCOME CHANNEL",
+	"youtube": {
+		"channel": "CHANNEL ID",
+		"message": "MESSAGE FORMAT (variables are {{link}} and {{channel}})",
+		"channels": {
+			"CHANNEL ID": [
+				"POSTED VIDEO IDS"
+			]
+		}
+	}
+}
