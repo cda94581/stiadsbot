@@ -1,6 +1,6 @@
 {
 	"name": "stiadsbot",
-	"version": "2022.11.26-1",
+	"version": "2022.11.26-2",
 	"description": "*So This Is A Discord Server Bot 👀* is a [*Discord*](https://discord.com) bot designed for [*So This Is A Discord Server*](https://discord.gg/byxaSZr). It features leveling, custom commands, mod messaging, welcome messages, suggestions, and a No Vowels Chat filter, with more to come!",
 	"main": "index.js",
 	"scripts": {
