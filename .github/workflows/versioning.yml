@@ -14,8 +14,8 @@ jobs:
           node-version: 18
       - name: Setup Git Enviornment
         run: |
-          git config -g user.name = "cda94581"
-          git config -g user.email = "76138236+cda94581@users.noreply.github.com"
+          git config --global user.name = "cda94581"
+          git config --global user.email = "76138236+cda94581@users.noreply.github.com"
       - id: bump
         name: Bump Version
         run: |
