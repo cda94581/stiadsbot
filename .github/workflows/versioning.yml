@@ -28,7 +28,8 @@ jobs:
           git add -A
           git commit -m "Bump version to $VERSION"
           git tag -a "$VERSION" -m "Tag for version $VERSION"
-          git push --follow-tags
+          git push
+          git push --tags
         env:
           VERSION: ${{ env.VERSION }}
   release:
@@ -41,4 +42,3 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           generate_release_notes: true
-          tag: ${{ needs.bump.outputs.version }}
