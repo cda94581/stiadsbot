@@ -1,5 +1,5 @@
 # stiadsbot
-Version 2022.11.26-2
+Version 2022.11.26-3
 
 *So This Is A Discord Server Bot 👀* is a [*Discord*](https://discord.com) bot designed for [*So This Is A Discord Server*](https://discord.gg/byxaSZr). It features leveling, custom commands, mod messaging, welcome messages, suggestions, and a No Vowels Chat filter, with more to come!
 
