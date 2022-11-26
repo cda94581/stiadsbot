@@ -1,12 +1,13 @@
-const Discord = require('discord.js');
-const { misc: { nVwls } } = require('../config.json');
+import { client } from '../index.js'
+import config from '../config.json' assert { type: 'json' };
+const { misc } = config; const { nVwls } = misc;
 
-module.exports = async (message = Discord.Message.prototype) => {
-	if (message.author.bot || message.channel.id != nVwls) return;
+client.on('messageCreate', async message => {
+	if (message.channelId != nVwls || message.author.bot) return;
 
 	if (message.content.toLowerCase().match(/[aeiou]/g)) {
-		await message.reply({ content: 'n vwls smh' })
-			.then(sentMessage => setTimeout(() => sentMessage.delete(), 10000));
+		const sentMsg = await message.reply({ content: 'n vwls smh' });
 		await message.delete();
+		setTimeout(sentMsg.delete, 10000);
 	}
-}
+});

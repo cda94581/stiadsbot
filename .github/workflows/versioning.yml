@@ -1,0 +1,40 @@
+name: Versioning
+on: [push]
+jobs:
+  bump:
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.bump.outputs.VERSION }}
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+      - name: Setup Node.JS V18
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Setup Git Enviornment
+        run: |
+          git config -g user.name = "cda94581"
+          git config -g user.email = "76138236+cda94581@users.noreply.github.com"
+      - id: bump
+        name: Bump Version
+        run: |
+          npm run version
+          npm i
+          rm -rf node_modules
+      - name: Push and Tag Commits
+        run: |
+          git add -A
+          git commit -m "Bump version"
+          git tag -a ${{ env.VERSION }}
+          git push
+  release:
+    runs-on: ubuntu-latest
+    needs: bump
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          generate_release_notes: true

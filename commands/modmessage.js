@@ -1,19 +1,30 @@
-const Discord = require('discord.js');
-const { prefix } = require('../config.json');
+import { ChatInputCommandInteraction, PermissionFlagsBits, SlashCommandBuilder } from 'discord.js'
 
-module.exports = {
+export const command = {
 	name: 'modmessage',
-	description: 'Mods may use this to privately DM you asking for [additional] information',
-	usage: '<user> <message>',
-	perms: [ 'BAN_MEMBERS', 'KICK_MEMBERS' ],
-	args: true,
-	type: 'moderation',
-	execute(message = Discord.Message.prototype, args = []) {
-		const embed = new Discord.MessageEmbed().setColor('#ff0000').setTitle('Incoming Mod Message')
-			.setDescription(message.content.slice(`${prefix}modmessage ${args[0]}`.length));
+	description: '[MODERATION] Mods may use this to privately DM you asking for [additional] information',
+	global: true,
+	builder: new SlashCommandBuilder()
+		.addUserOption((option) => option
+			.setName('user')
+			.setDescription('The user to send the message to')
+			.setRequired(true)
+		)
+		.addStringOption((option) => option
+			.setName('message')
+			.setDescription('The message to send')
+			.setMaxLength(1500)
+			.setRequired(true)
+		)
+		.setDefaultMemberPermissions(PermissionFlagsBits.BanMembers + PermissionFlagsBits.KickMembers),
+	execute: async (interaction = ChatInputCommandInteraction.prototype) => {
 		try {
-			message.client.users.cache.get(args[0]).send({ embeds: [ embed ]});
-			message.react('✅');
-		} catch { message.react('❌'); }
+			await interaction.options.getUser('user').send({ embeds: [{
+				color: 16711680,
+				title: 'Incoming Mod Message',
+				description: interaction.options.getString('message')
+			}]});
+			await interaction.reply('✅ Sent!');
+		} catch { await interaction.reply('❌ Failed to send'); }
 	}
 }

@@ -1,11 +1,8 @@
-const Discord = require('discord.js');
+import { ChatInputCommandInteraction } from 'discord.js';
 
-module.exports = {
+export const command = {
 	name: 'alwayswatching',
-	description: 'I\'m watching you, always',
-	type: 'fun',
-	execute(message = Discord.Message.prototype) {
-		message.delete();
-		message.channel.send({ content: 'https://tenor.com/view/mike-wazowski-watching-im-you-gif-5352035' });
-	}
+	description: '[FUN] I\'m watching you, always',
+	global: true,
+	execute: async (interaction = ChatInputCommandInteraction.prototype) => await interaction.reply({ content: 'https://tenor.com/view/mike-wazowski-watching-im-you-gif-5352035' })
 }

@@ -1,24 +1,39 @@
-const Discord = require('discord.js');
-const { prefix } = require('../config.json');
+import { ChatInputCommandInteraction, SlashCommandBuilder } from 'discord.js';
+const numbers = [ '1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '8️⃣', '9️⃣', '🔟' ];
 
-module.exports = {
+export const command = {
 	name: 'poll',
 	description: 'Start a poll',
-	usage: '<name> <options (up to 10)>',
-	args: true,
-	execute(message = Discord.Message.prototype) {
+	global: true,
+	builder: new SlashCommandBuilder()
+		.addStringOption((option) => option
+			.setName('name')
+			.setDescription('The name of the poll')
+			.setMaxLength(200)
+			.setRequired(true)
+		)
+		.addStringOption((option) => option
+			.setName('options')
+			.setDescription('Up to 10 options (separated by commas) to choose from')
+			.setMaxLength(1500)
+			.setRequired(true)
+		),
+	execute: async (interaction = ChatInputCommandInteraction.prototype) => {
 		let pollOptions = '';
-		let react = '';
-		const numbers = [ '1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '8️⃣', '9️⃣', '🔟' ];
-		const args = message.content.slice(`${prefix}poll`.length).trim().split(/,/);
+		let react = 0;
+		const options = interaction.options.getString('options').split(/,/);
 
-		for (i = 1; i < args.length; i++) {
-			pollOptions += `${i}. ${args[i].trim()}\n`;
-			react += `sentEmbed.react('${numbers[i - 1]}');\n`;
+		for (const option in options) {
+			pollOptions += `${option + 1}. ${options[option]}\n`;
+			react++;
 		}
 
-		const embed = new Discord.MessageEmbed().setColor('#ff0000').setTitle('Poll! (Beta) - ' + args[0]).setDescription('**Options:**\n' + pollOptions);
-
-		message.channel.send({ embeds: [ embed ]}).then(sentEmbed => { eval(react) });
+		await interaction.reply({ embeds: [{
+			color: 16711680,
+			title: `Poll! (Beta) - ${interaction.options.getString('name')}`,
+			descripition: `**Options:**\n${pollOptions}`
+		}]})
+		const sent = await interaction.fetchReply();
+		for (let i = 0; i < react; i++) await sent.react(numbers[i]);
 	}
 }

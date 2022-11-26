@@ -1,10 +1,11 @@
-const Discord = require('discord.js');
-const { misc: { modMessaging } } = require('../config.json');
+import { client } from '../index.js';
+import { ChannelType } from 'discord.js';
+import config from '../config.json' assert { type: 'json' };
+const { misc } = config; const { modMessaging } = misc;
 
-module.exports = (message = Discord.Message.prototype) => {
-	if (message.channel.type != 'DM' || message.author.bot) return;
-	let embed = new Discord.MessageEmbed().setColor('#ff0000').setTitle(`New Message: ${message.author.username}#${message.author.discriminator} - ${message.author.id}`).setDescription(message.content);
+client.on('messageCreate', async message => {
+	if (message.channel.type != ChannelType.DM || message.author.bot) return;
 	const attachments = message.attachments.map(m => m.url);
-	message.client.channels.cache.find(channel => channel.id == modMessaging).send({ embeds: [ embed ], files: attachments });
-	try { message.react('✅'); } catch {}
-}
+	await message.client.channels.cache.get(modMessaging).send({ embeds: [{ color: 16711680, title: `New Message: ${message.author.tag}`, description: message.content }], files: attachments });
+	try { await message.react('✅'); } catch {}
+});

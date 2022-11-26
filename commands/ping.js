@@ -1,11 +1,11 @@
-const Discord = require('discord.js');
+import { ChatInputCommandInteraction } from 'discord.js';
 
-module.exports = {
+export const command = {
 	name: 'ping',
-	description: 'Pings to bot to see if it\'s still alive',
-	type: 'info',
-	execute(message = Discord.Message.prototype) {
-		const ping = Math.round(message.guild.shard.ping);
-		message.channel.send({ content: `Pong. \`${ping}ms\`` });
+	description: '[INFO] Pings to bot to see if it\'s still alive',
+	global: true,
+	execute: async (interaction = ChatInputCommandInteraction.prototype) => {
+		const ping = Math.round(interaction.guild.shard.ping);
+		await interaction.reply({ content: `Pong. \`${ping}ms\`` });
 	}
 }

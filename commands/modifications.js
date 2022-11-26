@@ -1,25 +1,33 @@
-const Discord = require('discord.js');
-const fs = require('fs');
-const path = require('path');
+import { ChatInputCommandInteraction, PermissionFlagsBits, SlashCommandBuilder } from 'discord.js';
+import fs from 'fs';
+import path from 'path';
+import { URL } from 'url';
+const __dirname = decodeURI(new URL('.', import.meta.url).pathname);
 
-module.exports = {
+export const command = {
 	name: 'modifications',
-	description: 'Information about cda94581 modifications',
-	type: 'fun',
-	perms: [ 'ADMINISTRATOR' ],
-	execute(message = Discord.Message.prototype, args = []) {
+	description: '[FUN] Sets modifications to be open or closed',
+	global: true,
+	builder: new SlashCommandBuilder()
+		.addStringOption((option) => option
+			.setName('action')
+			.setDescription('Whether or not to open or close the modifications')
+			.setChoices('open', 'close')
+			.setAutocomplete(true)
+			.setRequired(true)
+		)
+		.setDefaultMemberPermissions(PermissionFlagsBits.Administrator),
+	execute: async (interaction = ChatInputCommandInteraction.prototype) => {
 		const filePath = path.resolve(__dirname, '../config.json');
-		let file = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
-		switch (args[0].toLowerCase()) {
+		let file = await import(filePath, { assert: { type: 'json' }});
+		switch (interaction.options.getString('action')) {
 			case 'open':
 				file.misc.modifications.open = true;
-				message.client.channels.cache.find(channel => channel.id == file.misc.modifications.channel)
-					.send({ content: `Modification Submissions are now OPEN! DM ${message.client.user} and start your message with **Modification Submission** to submit your modification.\nVoting is also OPEN! React with :+1: to vote for a modification.` });
+				await message.client.channels.cache.get(file.misc.modifications.channel).send({ content: `Modification Submissions are now OPEN! DM ${interaction.client.user} and start your message with **Modification Submission** to submit your modification.\nVoting is also OPEN! React with :+1: to vote for a modification.` });
 				break;
 			case 'close':
 				file.misc.modifications.open = false;
-				message.client.channels.cache.find(channel => channel.id == file.misc.modifications.channel)
-					.send({ content: `Modification Submissions & Voting is now CLOSED! A winner will be announced soon.` });
+				await message.client.channels.cache.get(file.misc.modifications.channel).send({ content: `Modification Submissions & Voting is now CLOSED! A winner will be announced soon.` });
 				break;
 		}
 		fs.writeFileSync(filePath, JSON.stringify(file, null, '\t'), 'utf-8');

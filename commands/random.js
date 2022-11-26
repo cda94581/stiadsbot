@@ -1,22 +1,39 @@
-const Discord = require('discord.js');
-const { prefix } = require('../config.json');
-const { ball8, cat, dog, bite, blush, hug, kiss, nuzzle, poke, pout, slap, stare } = require('./random.json');
+import { ChatInputCommandInteraction, SlashCommandBuilder } from 'discord.js';
+import random from './random.json' assert { type: 'json' };
 
-module.exports = {
+export const command = {
 	name: 'random',
-	description: 'Handles Commands with Random Responses',
-	aliases: [ 'ball8', 'bite', 'blush', 'cat', 'dog', 'hug', 'kiss', 'nuzzle', 'poke', 'pout', 'slap', 'stare' ],
-	type: 'fun',
-	execute(message = Discord.Message.prototype) {
-		const commandName = message.content.slice(prefix.length).trim().split(/ +/)[0];
-		if (commandName == 'action') return;
-		const randomNum = Math.floor(Math.random() * eval(commandName).length);
-		let embed = null;
+	description: '[FUN] Handles Commands with Random Responses',
+	global: true,
+	builder: new SlashCommandBuilder()
+		.addStringOption((option) => option
+			.setName('command')
+			.setDescription('Choose the random action option')
+			.setChoices(...Object.keys(random))
+			.setAutocomplete(true)
+			.setRequired(true)
+		),
+	execute: async (interaction = ChatInputCommandInteraction.prototype) => {
+		const commandName = interaction.options.getString('command');
+		const randomNum = Math.floor(Math.random() * random[commandName].length);
+		let embed;
 
-		if ([ 'ball8' ].some(x => commandName == x)) embed = new Discord.MessageEmbed().setColor('#ff0000').setTitle('').setDescription(eval(commandName)[randomNum]);
-		else if (['cat', 'dog'].some(x => commandName == x)) embed = new Discord.MessageEmbed().setColor('#ff0000').setTitle('Lazy Title').setImage(eval(commandName)[randomNum]);
-		else embed = new Discord.MessageEmbed().setColor('#ff0000').setTitle('Lazy Title').setThumbnail(eval(commandName)[randomNum]);
+		if (['ball8'].includes(commandName)) embed = {
+			color: 16711680,
+			title: '',
+			description: random[commandName][randomNum]
+		}
+		else if (['cat', 'dog'].includes(commandName)) embed = {
+			color: 16711680,
+			title: 'Lazy Title',
+			image: { url: random[commandName][randomNum] }
+		}
+		else embed = {
+			color: 16711680,
+			title: 'Lazy Title',
+			thumbnail: { url: random[commandName][randomNum] }
+		}
 
-		message.channel.send({ embeds: [ embed ]});
+		await interaction.reply({ embeds: [ embed ]});
 	}
 }

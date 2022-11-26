@@ -1,13 +1,15 @@
-const Discord = require('discord.js');
-const fs = require('fs');
-const path = require('path');
+import { client } from '../index.js';
+import { ChannelType } from 'discord.js';
+import path from 'path';
+import { URL } from 'url';
+const __dirname = decodeURI(new URL('.', import.meta.url).pathname);
 
-module.exports = (message = Discord.Message.prototype) => {
-	const { misc: { modifications } } = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../config.json'), 'utf8'));
-	if (message.channel.type != 'DM' || message.author.bot || !message.content.toLowerCase().startsWith('modification submission')) return;
-	if (!modifications.open) return message.channel.send({ content: 'Sorry, Modification submissions are closed at this time' });
+client.on('messageCreate', async message => {
+	const { misc } = await import(path.resolve(__dirname, '../config.json'), { assert: { type: 'json' }});
+	const { modifications } = misc;
+	if (message.channel.type != ChannelType.DM || message.author.bot || !message.content.toLowerCase().startsWith('modification submission')) return;
+	if (!modifications.open) return await message.channel.send({ content: 'Sorry, Modification submissions are closed at this time' });
 	const attachments = message.attachments.map(m => m.url);
-	const embed = new Discord.MessageEmbed().setColor('#ff0000').setTitle(`Modification Submission - ${message.author.username}#${message.author.discriminator}`).setDescription(message.content);
-	message.client.channels.cache.find(channel => channel.id == modifications.channel).send({ embeds: [ embed ], files: attachments }).then(sentMsg => sentMsg.react('👍'));
-	try { message.react('✅'); } catch {}
-}
+	await client.channels.cache.get(modifications.channel).send({ embeds: [{ color: 16711680, title: `Modification Submission - ${message.author.tag}`, description: message.content }], files: attachments }).then(async sentMsg => await sentMsg.react('👍'));
+	try { await message.react('✅'); } catch {}
+});

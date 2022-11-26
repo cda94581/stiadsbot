@@ -1,14 +1,18 @@
-const Discord = require('discord.js');
-const fs = require('fs-extra');
-const path = require('path');
+import { client } from '../index.js';
+import { ChannelType } from 'discord.js';
+import fs from 'fs-extra';
+import path from 'path';
+import { URL } from 'url';
+const __dirname = decodeURI(new URL('.', import.meta.url).pathname);
+import config from '../config.json' assert { type: 'json' };
+const { leveling } = config;
 const xpCooldowns = new Set();
-const { prefix, leveling } = require('../config.json');
 
-module.exports = (message = Discord.Message.prototype) => {
+client.on('messageCreate', async message => {
 	const author = message.author.id;
-	if (Object.keys(leveling.blacklist.channels).includes(message.channel.id)
-		|| Object.keys(leveling.blacklist.users).includes(author) || message.channel.type=='DM'
-		|| message.content.startsWith(prefix) || message.author.bot ) return;
+	if (Object.keys(leveling.blacklist.channels).includes(message.channelId)
+		|| Object.keys(leveling.blacklist.users).includes(author) || message.channel.type==ChannelType.DM
+		|| message.author.bot ) return;
 	if (xpCooldowns.has(author)) return;
 
 	xpCooldowns.add(author);
@@ -17,7 +21,7 @@ module.exports = (message = Discord.Message.prototype) => {
 	const filePath = path.resolve(__dirname, `../_data/leveling/${author}.json`);
 
 	if (!fs.existsSync(filePath)) fs.outputFileSync(filePath, `{"id":"${author}","level":0,"xp":0}`, 'utf-8');
-	let text = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
+	let text = await import(filePath, { assert: { type: 'json' }});
 	const addXp = Math.floor(Math.random() * 11) + 15;
 	text.xp += addXp;
 	text.messages++;
@@ -25,8 +29,8 @@ module.exports = (message = Discord.Message.prototype) => {
 	if (xpToLevel <= text.xp) {
 		text.xp -= xpToLevel;
 		text.level++;
-		message.channel.send({ content: `Nice chatting, ${message.author}, you've advanced to level ${text.level}!` });
+		await message.channel.send({ content: `Nice chatting, ${message.author}, you've advanced to level ${text.level}!` });
 	}
-	if (Object.keys(leveling.roles).includes(text.level)) message.member.roles.add(message.member.guild.roles.cache.get(level.roles[`${text.level}`]));
+	if (Object.keys(leveling.roles).includes(text.level)) await message.member.roles.add(message.member.guild.roles.cache.get(level.roles[`${text.level}`]));
 	fs.writeFileSync(filePath, JSON.stringify(text), 'utf-8');
-}
+});

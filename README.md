@@ -1,32 +1,30 @@
 # stiadsbot
+Version 0.0.3
+
 *So This Is A Discord Server Bot 👀* is a [*Discord*](https://discord.com) bot designed for [*So This Is A Discord Server*](https://discord.gg/byxaSZr). It features leveling, custom commands, mod messaging, welcome messages, suggestions, and a No Vowels Chat filter, with more to come!
 
-## Installing & Running
-### Ubuntu Command Line
-1. Download node.js and npm - `sudo apt install nodejs && sudo apt install npm`
-	- You may need to update node.js if `node -v` returns anything less than v16 - `sudo npm cache clean -f && sudo npm i -g n && sudo n latest`
-2. Download [`stiadsbot.zip`](./stiadsbot.zip) - `wget https://github.com/cda94581/stiadsbot/blob/main/stiadsbot.zip?raw=true`
-3. **Unzip** the downloaded file - `unzip 'stiadsbot.zip?raw=true'`
-	- You may need to install `unzip` - `sudo apt-get install unzip`
-4. `cd` to the file path
-5. Modify the [`config.json`](config.json) file to fit your needs - `nano config.json` to edit. To write, press `CTRL+O`, to close, press `CTRL+X`
-6. Download the packages if you haven't already - `npm i`
-7. Run `node .` or `npm run start`
+A quick note- I've set all "stable" commands to have the "global" flag. This may not necessarily be the most secure practice if running for multiple servers and you'll have to modify this.
 
-### Windows 10
-1. Download [Node.js](https://nodejs.org/) (v16 or higher) and install with **NPM**
-2. Navigate to the [Downloads](../Downloads) folder
-3. [Download `stiadsbot.zip`](./stiadsbot.zip?raw=true) by clicking the file, then **View Raw**
-4. Unzip the file
-5. Modify the [`config.json`](config.json) file to fit your needs
-6. `cd` to the file path in **Command Prompt**
-7. Download the packages if you haven't already - `npm i`
-8. Run `node .` or `npm run start`
+## Installing & Running
+1. Download [Node.js](https://nodejs.org/) (v16 or higher) and NPM
+2. Download the [`source code`](https://github.com/cda94581/stiadsbot/releases) from the releases
+3. Unzip the file
+4. Modify the [`config.json`](config.json) file to fit your needs
+5. Open the folder in the Command Prompt or Terminal
+6. Download the packages with `npm i`
+7. Run with `node .` or `npm run start`
+	- You may need to register slash commands with `npm run register`
+	- Scripts are also available to delete the slash commands
+	- All scripts: `start`, `dev`, `build`, `register`, `deleteServer`, `deleteGlobal`
 
 Packages required:
 - discord.js
+- @discordjs/rest
+- lodash
 - fs-extra
 - he
+- xml2js
+- archiver
 
 ## Contributing
 Contributions are welcome, and they're fairly simple, however it is beyond the scope of a README file to explain in detail. In general however, look up information as needed:

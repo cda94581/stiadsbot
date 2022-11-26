@@ -1,15 +1,22 @@
-const Discord = require('discord.js');
-const fs = require('fs');
-const path = require('path');
+import { ChatInputCommandInteraction, SlashCommandBuilder } from 'discord.js';
+import fs from 'fs';
+import path from 'path';
+import { URL } from 'url';
+const __dirname = decodeURI(new URL('.', import.meta.url).pathname);
 
-module.exports = {
+export const command = {
 	name: 'leaderboard',
-	description: 'Server rank leaderboard',
-	type: 'leveling',
-	execute(message = Discord.Message.prototype, args = []) {
+	description: '[LEVELING] Server rank leaderboard',
+	global: true,
+	builder: new SlashCommandBuilder()
+		.addIntegerOption((option) => option
+			.setName('page')
+			.setDescription('Optional page number of the leaderboard')
+		),
+	execute: async (interaction = ChatInputCommandInteraction.prototype) => {
 		const levelFiles = fs.readdirSync(path.resolve(__dirname, '../_data/leveling'), 'utf-8').filter(f => f.endsWith('.json'));
 		let levelData = [];
-		levelFiles.forEach(file => levelData.push(require(`../_data/leveling/${file}`)));
+		levelFiles.forEach(async file => levelData.push(await import(`../_data/leveling/${file}`, { assert: { type: 'json' }})));
 		levelData.sort((a, b) => b.level - a.level || b.xp - a.xp);
 
 		let data = ['**PLACE. USER - LEVEL/XP**\n'];
@@ -19,10 +26,13 @@ module.exports = {
 			data[dataIndex] += `${i*1+1}. <@!${member.id}> - ${member.level}/${member.xp}\n`;
 		});
 
-		message.channel.send({ embeds: [
-			new Discord.MessageEmbed().setColor('#ff0000').setTitle('STIADS:eyes: Bot Leaderboard')
-				.setDescription(data[args.length ? args[0] - 1 : 0])
-				.setFooter({ text: `Leaderboard Page ${args[0]}/${data.length}` })
-		]});
+		const page = interaction.options.getInteger('page');
+
+		interaction.reply({ embeds: [{
+			color: 16711680,
+			title: 'STIADS:eyes: Bot Leaderboard',
+			description: data[page ? page - 1 : 0],
+			footer: { text: `Leaderboard Page ${page}/${data.length}` }
+		}]});
 	}
 }

@@ -1,11 +1,13 @@
-const Discord = require('discord.js');
-const { misc: { feedback } } = require('../config.json');
+import { client } from '../index.js';
+import config from '../config.json' assert { type: 'json' };
+const { misc } = config; const { feedback } = misc;
 
-module.exports = async (message = Discord.Message.prototype) => {
-	if (message.author.bot || !message.content.toLowerCase().startsWith('suggestion')) return;
-	if (message.channel.id == feedback) {
+client.on('messageCreate', async message => {
+	if (!message.content.toLowerCase().startsWith('suggestion') || message.author.bot) return;
+	if (message.channelId == feedback) {
 		await message.react('⬆');
 		await message.react('⬇');
-		message.startThread({ name: message.content, autoArchiveDuration: 1440, reason: 'New Suggestion.' }).then(threadChannel => { threadChannel.join() });
+		const thread = await message.startThread({ name: message.content, autoArchiveDuration: 1440, reason: 'New Suggestion.' });
+		await thread.join();
 	}
-}
+});
