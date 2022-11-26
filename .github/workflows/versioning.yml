@@ -19,7 +19,7 @@ jobs:
       - id: bump
         name: Bump Version
         run: |
-          npm run version
+          npm run bump
           npm i
           rm -rf node_modules
       - name: Push and Tag Commits
