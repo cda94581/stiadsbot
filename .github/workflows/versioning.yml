@@ -14,8 +14,9 @@ jobs:
           node-version: 18
       - name: Setup Git Enviornment
         run: |
-          git config --global user.name = "cda94581"
-          git config --global user.email = "76138236+cda94581@users.noreply.github.com"
+          git config --global user.name = "${{ github.triggering_actor }}"
+          git config --global user.email = "${{ github.triggering_actor }}@users.noreply.github.com"
+          git config --global user.password = "${{ github.token }}"
       - id: bump
         name: Bump Version
         run: |
@@ -25,9 +26,11 @@ jobs:
       - name: Push and Tag Commits
         run: |
           git add -A
-          git commit -m "Bump version"
-          git tag -a "${{ env.VERSION }}" -m "Tag for version ${{ env.VERSION }}"
-          git push
+          git commit -m "Bump version to $VERSION"
+          git tag -a "$VERSION" -m "Tag for version $VERSION"
+          git push --follow-tags
+        env:
+          VERSION: ${{ env.VERSION }}
   release:
     runs-on: ubuntu-latest
     needs: bump
@@ -38,3 +41,4 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           generate_release_notes: true
+          tag: ${{ needs.bump.outputs.version }}
