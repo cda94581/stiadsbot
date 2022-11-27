@@ -7,8 +7,8 @@ import https from 'https';
 import xml from 'xml2js';
 
 const run = async () => {
-	let config = await import('../config.json', { assert: { type: 'json' }});
 	const filePath = path.resolve(__dirname, '../config.json');
+	let config = (await import(filePath, { assert: { type: 'json' }})).default;
 	const channels = Object.keys(config.youtube.channels);
 	channels.forEach(channel => {
 		https.get(`https://www.youtube.com/feeds/videos.xml?channel_id=${channel}`, res => {

@@ -1,6 +1,6 @@
 import { ChatInputCommandInteraction, PermissionFlagsBits, SlashCommandBuilder } from 'discord.js';
 
-module.exports = {
+export const command = {
 	name: 'purge',
 	description: '[MODERATION] Purge a specific number of messages',
 	global: true,

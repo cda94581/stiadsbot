@@ -12,14 +12,13 @@ export const command = {
 		.addStringOption((option) => option
 			.setName('action')
 			.setDescription('Whether or not to open or close the modifications')
-			.setChoices('open', 'close')
-			.setAutocomplete(true)
+			.setChoices({ name: 'Open', value: 'open' }, { name: 'Close', value: 'close' })
 			.setRequired(true)
 		)
 		.setDefaultMemberPermissions(PermissionFlagsBits.Administrator),
 	execute: async (interaction = ChatInputCommandInteraction.prototype) => {
 		const filePath = path.resolve(__dirname, '../config.json');
-		let file = await import(filePath, { assert: { type: 'json' }});
+		let file = (await import(filePath, { assert: { type: 'json' }})).default;
 		switch (interaction.options.getString('action')) {
 			case 'open':
 				file.misc.modifications.open = true;

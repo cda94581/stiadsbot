@@ -21,7 +21,7 @@ client.on('messageCreate', async message => {
 	const filePath = path.resolve(__dirname, `../_data/leveling/${author}.json`);
 
 	if (!fs.existsSync(filePath)) fs.outputFileSync(filePath, `{"id":"${author}","level":0,"xp":0}`, 'utf-8');
-	let text = await import(filePath, { assert: { type: 'json' }});
+	let text = (await import(filePath, { assert: { type: 'json' }})).default;
 	const addXp = Math.floor(Math.random() * 11) + 15;
 	text.xp += addXp;
 	text.messages++;

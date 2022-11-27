@@ -5,7 +5,7 @@ import { URL } from 'url';
 const __dirname = decodeURI(new URL('.', import.meta.url).pathname);
 
 client.on('messageCreate', async message => {
-	const { misc } = await import(path.resolve(__dirname, '../config.json'), { assert: { type: 'json' }});
+	const { misc } = (await import(path.resolve(__dirname, '../config.json'), { assert: { type: 'json' }})).default;
 	const { modifications } = misc;
 	if (message.channel.type != ChannelType.DM || message.author.bot || !message.content.toLowerCase().startsWith('modification submission')) return;
 	if (!modifications.open) return await message.channel.send({ content: 'Sorry, Modification submissions are closed at this time' });

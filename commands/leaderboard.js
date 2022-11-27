@@ -16,7 +16,7 @@ export const command = {
 	execute: async (interaction = ChatInputCommandInteraction.prototype) => {
 		const levelFiles = fs.readdirSync(path.resolve(__dirname, '../_data/leveling'), 'utf-8').filter(f => f.endsWith('.json'));
 		let levelData = [];
-		levelFiles.forEach(async file => levelData.push(await import(`../_data/leveling/${file}`, { assert: { type: 'json' }})));
+		levelFiles.forEach(async file => levelData.push((await import(`../_data/leveling/${file}`, { assert: { type: 'json' }})).default));
 		levelData.sort((a, b) => b.level - a.level || b.xp - a.xp);
 
 		let data = ['**PLACE. USER - LEVEL/XP**\n'];

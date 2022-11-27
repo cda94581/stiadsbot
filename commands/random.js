@@ -9,8 +9,7 @@ export const command = {
 		.addStringOption((option) => option
 			.setName('command')
 			.setDescription('Choose the random action option')
-			.setChoices(...Object.keys(random))
-			.setAutocomplete(true)
+			.setChoices(...Object.keys(random).map(r => {return { name: r, value: r }}))
 			.setRequired(true)
 		),
 	execute: async (interaction = ChatInputCommandInteraction.prototype) => {

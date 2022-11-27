@@ -15,7 +15,7 @@ for (const file of commandFiles) {
 	client.commands.set(command.name, command);
 }
 
-import './modules';
+import './modules.js';
 
 client.once('ready', () => {
 	console.log('Ready!');

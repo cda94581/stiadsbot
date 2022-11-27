@@ -18,7 +18,7 @@ export const command = {
 		const author = member.id;
 		const filePath = path.resolve(__dirname, `../_data/leveling/${author}.json`);
 		if (!fs.existsSync(filePath)) return await interaction.reply({ content: 'You aren\'t ranked yet, send some messages to gain XP.' });
-		const info = await import(filePath, { assert: { type: 'json' }});
+		const info = (await import(filePath, { assert: { type: 'json' }})).default;
 		const toLevelUp = 5 * (info.level ** 2) + 50 * info.level + 100;
 		await interaction.reply({ embeds: [{
 			color: 16711680,
