@@ -27,7 +27,7 @@ const run = async () => {
 			});
 		});
 	});
-	setTimeout(async () => await this.run(client), 60000);
+	setTimeout(async () => await run(client), 60000);
 }
 
 client.once('ready', run);
